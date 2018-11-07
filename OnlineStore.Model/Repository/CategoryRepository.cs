@@ -37,9 +37,13 @@ namespace OnlineStore.Model.Repository
         /// <returns></returns>
         public IEnumerable<ecom_Categories> GetAllCategoriesWithoutDelete()
         {
-            return dbSet.Where(c => c.Status != (int)Define.Status.Delete).ToList();
+            return dbSet.Where(c => c.Status != (int)Define.Status.Delete && c.Status != (int)Define.Status.WaitingCreate).ToList();
         }
-        
+        public IEnumerable<ecom_Categories> GetAllWaitingCategories()
+        {
+            return dbSet.Where(c => c.Status == (int)Define.Status.WaitingCreate || c.Status == (int)Define.Status.WaitingDelete).ToList();
+        }
+
         /// <summary>
         /// Find category by id with status not equal to Delete
         /// </summary>

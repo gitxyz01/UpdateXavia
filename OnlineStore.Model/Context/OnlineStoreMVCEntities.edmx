@@ -141,6 +141,7 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreateTy" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="ecom_OrderDetails">
           <Key>
@@ -214,6 +215,7 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreateTy" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="ecom_Products_Categories">
           <Key>
@@ -690,6 +692,7 @@
           <Property Name="ModifiedBy" Type="Guid" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ecom_Products" Relationship="Self.ecom_Products_Categories" FromRole="ecom_Categories" ToRole="ecom_Products" />
+          <Property Name="CreateTy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ecom_OrderDetails">
           <Key>
@@ -764,6 +767,7 @@
           <NavigationProperty Name="share_Images" Relationship="Self.ecom_Products_Images" FromRole="ecom_Products" ToRole="share_Images" />
           <NavigationProperty Name="CoverImage" Relationship="OnlineStoreMVCModel.FK_ecom_Products_share_Images" FromRole="ecom_Products" ToRole="share_Images" />
           <NavigationProperty Name="ecom_ProductGroups" Relationship="OnlineStoreMVCModel.ecom_Products_ProductGroups1" FromRole="ecom_Products" ToRole="ecom_ProductGroups" />
+          <Property Name="CreateTy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="share_Categories">
           <Key>
@@ -1225,6 +1229,7 @@
           <EntitySetMapping Name="ecom_Categories">
             <EntityTypeMapping TypeName="OnlineStoreMVCModel.ecom_Categories">
               <MappingFragment StoreEntitySet="ecom_Categories">
+                <ScalarProperty Name="CreateTy" ColumnName="CreateTy" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ParentId" ColumnName="ParentId" />
@@ -1282,6 +1287,7 @@
           <EntitySetMapping Name="ecom_Products">
             <EntityTypeMapping TypeName="OnlineStoreMVCModel.ecom_Products">
               <MappingFragment StoreEntitySet="ecom_Products">
+                <ScalarProperty Name="CreateTy" ColumnName="CreateTy" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

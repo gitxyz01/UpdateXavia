@@ -36,6 +36,7 @@ namespace OnlineStore.Model.MessageModel
         public Nullable<int> SortOrder { get; set; }
         [DisplayName("Trạng thái")]
         public Nullable<int> Status { get; set; }
+        public String CreateBy { get; set; }
     }
     public class UpdateProductImageRequest
     {

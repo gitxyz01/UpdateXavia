@@ -49,6 +49,8 @@ public partial class ecom_Categories
 
     public Nullable<System.DateTime> ModifiedDate { get; set; }
 
+    public string CreateTy { get; set; }
+
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

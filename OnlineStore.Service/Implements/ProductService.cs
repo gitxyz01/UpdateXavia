@@ -159,7 +159,8 @@ namespace OnlineStore.Service.Implements
                     IsNewProduct = newProduct.IsNewProduct,
                     IsBestSellProduct = newProduct.IsBestSellProduct,
                     SortOrder = newProduct.SortOrder,
-                    Status = newProduct.Status
+                    Status = (int)Define.Status.WaitingCreate,
+                    CreateTy = newProduct.CreateBy                
                 };
 
                 share_Images coverImage = imageRepository.GetByID(newProduct.CoverImageId);
@@ -334,7 +335,7 @@ namespace OnlineStore.Service.Implements
             try
             {
                 ecom_Products product = GetProductById(id);
-                product.Status = (int)Define.Status.Delete;
+                product.Status = (int)Define.Status.WaitingDelete;
                 db.Save();
                 RefreshAll();
                 return true;
@@ -453,6 +454,38 @@ namespace OnlineStore.Service.Implements
                 CoverImage = p.CoverImage
             }).ToList();
             return returnCategoryList;
+        }
+
+        public IEnumerable<ProductSummaryViewModel> GetProductsVerify()
+        {
+            IEnumerable<ecom_Products> products = db.GetAllProductsWaiting();
+            IEnumerable<ProductSummaryViewModel> returnCategoryList = products.OrderBy(b => b.Name).Select(p => new ProductSummaryViewModel()
+            {
+                Id = p.Id,
+                Name = p.Name,
+                ProductCode = p.ProductCode,
+                Price = p.Price,
+                SortOrder = p.SortOrder,
+                Status = EnumHelper.GetDescriptionFromEnum((Define.Status)p.Status),
+                CoverImage = p.CoverImage
+            }).ToList();
+            return returnCategoryList;
+        }
+
+        public bool VerifyProduct(int id, int status)
+        {
+            try
+            {
+                ecom_Products product = GetProductById(id);
+                product.Status = status;
+                db.Save();
+                RefreshAll();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         #endregion

@@ -62,7 +62,7 @@ namespace OnlineStore.Model.Mapper
                 SortOrder = category.SortOrder,
                 Status = EnumHelper.GetDescriptionFromEnum((Define.Status)category.Status),
                 ParentId = category.ParentId,
-                //CreatedBy = createBy != null ? createBy.UserName : "",
+                CreatedBy = category.CreateTy != null ? category.CreateTy : "",
                 CreatedDate = string.Format("{0:yyyy-MM-dd}", category.CreatedDate),
                 //ModifiedBy = modifiredBy != null ? createBy.UserName : "",
                 ModifiedDate = string.Format("{0:yyyy-MM-dd}", category.ModifiedDate)
@@ -101,11 +101,12 @@ namespace OnlineStore.Model.Mapper
                 Url = viewModel.Url,
                 SortOrder = viewModel.SortOrder,
                 ParentId = viewModel.ParentId,
-                Status = viewModel.Status != null? (int)viewModel.Status:(int)Define.Status.Deactive,
+                Status = (int)Define.Status.WaitingCreate,
                 CreatedBy = null,
                 CreatedDate = DateTime.Now,
                 ModifiedBy = null,
-                ModifiedDate = null
+                ModifiedDate = null,
+                CreateTy = viewModel.CreateBy
             };
 
             return category;

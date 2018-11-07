@@ -130,7 +130,7 @@ var productController = {
                 data: $(this).serialize(),
                 success: function (response) {                             
                     $('#modalDelete').modal('hide');
-                    window.location.replace("/Admin/Product/Index1");
+                    window.location.replace("/Admin/Product/Index");
                     productController.notify("top", "right", '', "success", "", "");
                 
                 },

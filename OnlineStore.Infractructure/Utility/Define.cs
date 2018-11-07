@@ -25,7 +25,13 @@ namespace OnlineStore.Infractructure.Utility
             Active = 1,
 
             [Description("Xóa")]
-            Delete = 2
+            Delete = 2,
+
+            [Description("Duyệt đăng")]
+            WaitingCreate = 3,
+
+            [Description("Duyệt xóa")]
+            WaitingDelete = 4
         }
 
         public enum MenuEnum

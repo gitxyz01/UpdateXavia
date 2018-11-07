@@ -157,30 +157,46 @@
                         <div class="pcoded-inner-navbar main-menu">
                             <div class="pcoded-navigatio-lavel">Navigation</div>
                             <ul class="pcoded-item pcoded-left-item">
-                                <li class="pcoded-hasmenu">
-                                    <a href="/Admin/Home">
-                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                                        <span class="pcoded-mtext">Quản Trị</span>
-                                    </a>
-                                </li>
+                                @if (User.IsInRole("Administrator"))
+    {
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="feather icon-shield"></i></span>
-                                        <span class="pcoded-mtext">Thành Viên</span>
+                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-mtext">Quản Trị Admin</span>
                                     </a>
                                     <ul class="pcoded-submenu">
-                                        <li class="">
-                                            <a href="/Admin/User/Index">
-                                                <span class="pcoded-mtext">Danh Sách</span>
+                                        <li class=" ">
+                                            <a href="/Admin/Verify/Categories">
+                                                <span class="pcoded-mtext">Duyệt Danh Mục Sản Phẩm</span>
                                             </a>
                                         </li>
-                                        <li class=" ">
-                                            <a href="/Admin/Role/Index">
-                                                <span class="pcoded-mtext">Phân Quyền</span>
+                                        <li class="">
+                                            <a href="/Admin/Verify/Products">
+                                                <span class="pcoded-mtext">Duyệt Sản Phẩm</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
+
+                            <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="feather icon-shield"></i></span>
+                                    <span class="pcoded-mtext">Thành Viên</span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class="">
+                                        <a href="/Admin/User/Index">
+                                            <span class="pcoded-mtext">Danh Sách</span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a href="/Admin/Role/Index">
+                                            <span class="pcoded-mtext">Phân Quyền</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+}
                                 <li class="">
                                     <a href="/Admin/Category/Categories">
                                         <span class="pcoded-micon"><i class="feather icon-menu"></i></span>

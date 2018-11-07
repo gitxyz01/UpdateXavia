@@ -32,7 +32,7 @@ namespace OnlineStore.Model.Mapper
                 IsBestSellProduct = product.IsBestSellProduct,
                 SortOrder = product.SortOrder,
                 Status = product.Status,
-                //CreatedBy = product.CreatedBy.to,
+                CreatedBy = product.CreateTy != null ? product.CreateTy : "",
                 //CreatedDate = product.CreatedDate,
                 //ModifiedBy = product.ModifiedBy,
                 //ModifiedDate = product.ModifiedDate

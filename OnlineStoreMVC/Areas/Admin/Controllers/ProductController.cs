@@ -15,6 +15,7 @@ using System.IO;
 using OnlineStore.Infractructure.Utility;
 using OnlineStore.Model.Mapper;
 using OnlineStoreMVC.Models.ImageModels;
+using Microsoft.AspNet.Identity;
 
 namespace OnlineStoreMVC.Areas.Admin.Controllers
 {
@@ -150,6 +151,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         [HttpPost, ValidateInput(false)]
         public ActionResult Create(CreateProductPostRequest productRequest)
         {
+            productRequest.CreateBy = User.Identity.GetUserName();
             if (ModelState.IsValid)
             {
                 var file = Request.Files["coverImage"];

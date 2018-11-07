@@ -22,5 +22,7 @@ namespace OnlineStore.Model.MessageModel
         public Nullable<int> SortOrder { get; set; }
         [DisplayName("Trạng Thái")]
         public Nullable<int> Status { get; set; }
+        public String CreateBy { get; set; }
+        
     }
 }

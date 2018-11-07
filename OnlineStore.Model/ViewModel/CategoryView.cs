@@ -16,6 +16,7 @@ namespace OnlineStore.Model.ViewModel
         public Nullable<int> SortOrder { get; set; }
         [DisplayName("TRẠNG THÁI")]
         public string Status { get; set; }
+        public String CreateDate { get; set; }
     }
 
     public class DetailCategoryViewModel

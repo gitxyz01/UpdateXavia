@@ -13,6 +13,7 @@ namespace OnlineStore.Service.Interfaces
     {
         void RefreshAll();
         IEnumerable<ProductSummaryViewModel> GetListProducts();
+        IEnumerable<ProductSummaryViewModel> GetProductsVerify();
         IEnumerable<ProductSummaryViewModel> GetListProductsAdminTy(int categoryId);
         IEnumerable<ProductSummaryViewModel> GetProducts(int pageNumber, int pageSize, out int totalItems);
 
@@ -95,5 +96,7 @@ namespace OnlineStore.Service.Interfaces
         /// </summary>
         /// <returns></returns>
         IEnumerable<ecom_Categories> GetListCategory();
+
+        bool VerifyProduct(int id, int status);
     }
 }

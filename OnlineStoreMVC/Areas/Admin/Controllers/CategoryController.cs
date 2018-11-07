@@ -15,6 +15,7 @@ using OnlineStore.Infractructure.Helper;
 using OnlineStore.Model.MessageModel;
 using PagedList;
 using System.Web.Script.Serialization;
+using Microsoft.AspNet.Identity;
 
 namespace OnlineStoreMVC.Areas.Admin.Controllers
 {
@@ -122,6 +123,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(CreateCategoryPostRequest category)
         {
+            var user = User.Identity.GetUserName();
+            category.CreateBy = User.Identity.GetUserName();
             if (ModelState.IsValid)
             {
                 bool isSuccess = categoryService.AddCategory(category);
@@ -229,6 +232,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         public ActionResult SaveCategory(CreateCategoryPostRequest category)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
+        
             try
             {
                 if (category.Id == 0)
@@ -239,6 +243,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
 
                         return Json(new { status = false, message = js.Serialize(fail) });
                     }
+                    category.CreateBy = User.Identity.GetUserName();
                     categoryService.AddCategory(category);
                     string addSuccess = "Thêm mới Danh Mục Sản Phẩm thành công!";
                     return Json(new { status = true, message = js.Serialize(addSuccess) });

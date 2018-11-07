@@ -13,6 +13,7 @@ namespace OnlineStore.Service.Interfaces
     {
         IEnumerable<SummaryCategoryViewModel> GetListCategories();
         IEnumerable<ecom_Categories> GetAllCategories();
+        IEnumerable<DetailCategoryViewModel> GetAllWaitingCategories();
         IEnumerable<SummaryCategoryViewModel> GetCategories(int pageNumber, int pageSize, out int totalItems);
         ecom_Categories GetCategoryById(int id);
         DetailCategoryViewModel GetDetailCategory(int id);
@@ -21,6 +22,6 @@ namespace OnlineStore.Service.Interfaces
         bool DeleteCategory(int id);
         CategoryViewModel getCategoryViewModel(int id);
         IEnumerable<DetailCategoryViewModel> GetCategoriesAdminTy();
-
+        bool VerifyCategory(int id, int status);
     }
 }

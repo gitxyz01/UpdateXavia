@@ -28,6 +28,8 @@ public partial class Customer
 
     public string Email { get; set; }
 
+
+
     public virtual ecom_Orders ecom_Orders { get; set; }
 
 }

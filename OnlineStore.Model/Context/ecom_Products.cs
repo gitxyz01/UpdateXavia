@@ -75,6 +75,8 @@ public partial class ecom_Products
 
     public Nullable<System.DateTime> ModifiedDate { get; set; }
 
+    public string CreateTy { get; set; }
+
 
 
     public virtual ecom_Brands ecom_Brands { get; set; }

@@ -166,7 +166,7 @@ namespace OnlineStore.Service.Implements
             try
             {
                 ecom_Categories category = db.GetByID(id);
-                category.Status = (int)Define.Status.Delete;
+                category.Status = (int)Define.Status.WaitingDelete;
                 db.Update(category);
                 db.Save();
                 return true;
@@ -213,6 +213,29 @@ namespace OnlineStore.Service.Implements
             IEnumerable<ecom_Categories> categories = db.GetAllCategoriesWithoutDelete();
             return categories.ConvertToListDetailCategoryViewModelAminTy();
         }
+
+        public IEnumerable<DetailCategoryViewModel> GetAllWaitingCategories()
+        {
+            var model =  db.GetAllWaitingCategories();
+            return   model.ConvertToListDetailCategoryViewModelAminTy();
+        }
+
+        public bool VerifyCategory(int id, int status)
+        {
+            try
+            {
+                ecom_Categories category = db.GetByID(id);
+                category.Status = status;
+                db.Update(category);
+                db.Save();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
 
         #endregion
     }
