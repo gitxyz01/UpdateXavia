@@ -1,0 +1,85 @@
+﻿@using PagedList.Mvc
+@using PagedList;
+@model List<OnlineStore.Model.ViewModel.ProductSummaryViewModel>
+@{
+    ViewBag.Title = "Quản lý danh mục sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/Admin/product-management.js"></script>
+<!-- Content Header (Page header) -->
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="box-tools pull-right" style="padding-right: 15px; padding-bottom: 10px;">
+            @Html.ActionLink("THÊM", "Create", null, new { @class = "btn btn-primary btn-sm" })
+        </div>
+    </div><!--Function group buttons panel-->
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div class="box-header with-border">
+                    <h3 class="box-title">Danh sách</h3>
+                </div><!--Header-->
+                <div class="box-body">
+                    <table id="datatable" class="table table-hover table-condensed table-responsive table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    MÃ SẢN PHẨM
+                                </th>
+                                <th>
+                                    TÊN
+                                </th>
+                                <th>
+                                    GIÁ BÁN
+                                </th>
+                                <th>
+                                    ẢNH ĐẠI DIỆN
+                                </th>
+                                <th>
+                                    ƯU TIÊN SẮP XẾP
+                                </th>
+                                <th>
+                                    TRẠNG THÁI
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProductCode)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td>
+                                        @if (item.CoverImage != null)
+                                        {
+                                            <img src="@item.CoverImage.ImagePath" height="70" width="70" alt="ảnh không tồn tại" />
+                                        }
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SortOrder)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Status)
+                                    </td>
+                                    <td class="center-text">
+                                        @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-primary glyphicon glyphicon-edit" })
+                                        <a class="btn btn-danger glyphicon glyphicon-trash" onclick="ProductManagement.deleteProduct(@item.Id, '@item.Name')"></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div><!--Body-->
+            </div>
+        </div>
+    </div><!--Content panel-->
+</section>

@@ -1,0 +1,139 @@
+﻿@model OnlineStore.Model.ViewModel.CMSNewsView
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutTy.cshtml";
+}
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2></h2>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <ul class="breadcrumb-title">
+                            <li class="breadcrumb-item">
+                                <a href="/Admin/Home/NewLayout"> <i class="feather icon-home"></i> </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#!">Thêm Mới Sản Phẩm</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-block">
+                    @using (Html.BeginForm("Edit", "CMSNews", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.HiddenFor(model => model.CoverImageId)
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group row">
+                                <label class="control-label col-md-2" for="ImageBanner">Ảnh banner</label>
+                                <div class="col-sm-9">
+                                    <img src="@(Model.CoverImagePath)" />
+                                    <input type="file" id="ImageBanner" name="uploadFile" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-md-2" for="CategoryId">Thể loại</label>
+                                <div class="col-sm-9">
+                                    @Html.DropDownList("CategoryId", ViewBag.AvailableCategories as List<SelectListItem>, "Vui lòng chọn", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-md-2" for="Title">Tiêu đề</label>
+                                <div class="col-sm-9">
+                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-md-2" for="SubTitle">Tóm tắt</label>
+                                <div class="col-sm-9">
+                                    @Html.EditorFor(model => model.SubTitle, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.SubTitle, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-md-2" for="ContentNews">Nội dung</label>
+                                <div class="col-sm-9">
+                                    @Html.TextAreaFor(model => model.ContentNews, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ContentNews, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-md-2" for="Authors">Tác giả</label>
+                                <div class="col-sm-9">
+                                    @Html.EditorFor(model => model.Authors, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Authors, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-md-2" for="Tags">Tags</label>
+                                <div class="col-sm-9">
+                                    @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-md-2" for="TotalView">Lượt xem</label>
+                                <div class="col-sm-9">
+                                    @Html.EditorFor(model => model.TotalView, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TotalView, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-md-2" for="DisplayHomePage">Hiện ở trang chủ</label>
+                                <div class="col-sm-9">
+                                    @Html.CheckBox("DisplayHomePage", new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DisplayHomePage, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-md-2" for="Status">Tình trạng</label>
+                                <div class="col-sm-9">
+                                    @Html.DropDownList("Status", ViewBag.Status as SelectList, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Cập nhật" class="btn btn-primary" />
+                                    @Html.ActionLink("Quay lại danh sách", "Index", "CMSNews", null, new { @class = "btn btn-default" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Content Header (Page header) -->
+@section scripts{
+    <script type="text/javascript">
+        function BrowseServer() {
+            var finder = new CKFinder();
+            //finder.basePath = '../';
+            finder.selectActionFunction = SetFileField;
+            finder.popup();
+        }
+        function SetFileField(fileUrl) {
+            document.getElementById('ImageBanner').value = fileUrl;
+        }
+    </script>
+    <script>
+    $(document).ready(function () {
+        // CKEditor
+        CKEDITOR.replace('ContentNews');
+        CKFinder.setupCKEditor(null, '/Areas/Admin/Scripts/plugins/ckfinder');
+    })
+    </script>
+}

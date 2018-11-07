@@ -1,0 +1,506 @@
+﻿
+@{
+    ViewBag.Title = "NewLayout";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutTy.cshtml";
+}
+<div class="page-body">
+    <div class="row">
+        <!-- task, page, download counter  start -->
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-c-yellow update-card">
+                <div class="card-block">
+                    <div class="row align-items-end">
+                        <div class="col-8">
+                            <h4 class="text-white">$30200</h4>
+                            <h6 class="text-white m-b-0">All Earnings</h6>
+                        </div>
+                        <div class="col-4 text-right">
+                            <iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+                            <canvas id="update-chart-1" height="50" style="display: block; width: 89px; height: 50px;" width="89"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-c-green update-card">
+                <div class="card-block">
+                    <div class="row align-items-end">
+                        <div class="col-8">
+                            <h4 class="text-white">290+</h4>
+                            <h6 class="text-white m-b-0">Page Views</h6>
+                        </div>
+                        <div class="col-4 text-right">
+                            <iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+                            <canvas id="update-chart-2" height="50" width="89" style="display: block; width: 89px; height: 50px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-c-pink update-card">
+                <div class="card-block">
+                    <div class="row align-items-end">
+                        <div class="col-8">
+                            <h4 class="text-white">145</h4>
+                            <h6 class="text-white m-b-0">Task Completed</h6>
+                        </div>
+                        <div class="col-4 text-right">
+                            <iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+                            <canvas id="update-chart-3" height="50" width="89" style="display: block; width: 89px; height: 50px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-c-lite-green update-card">
+                <div class="card-block">
+                    <div class="row align-items-end">
+                        <div class="col-8">
+                            <h4 class="text-white">500</h4>
+                            <h6 class="text-white m-b-0">Downloads</h6>
+                        </div>
+                        <div class="col-4 text-right">
+                            <iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+                            <canvas id="update-chart-4" height="50" width="89" style="display: block; width: 89px; height: 50px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
+                </div>
+            </div>
+        </div>
+        <!-- task, page, download counter  end -->
+        <!--  sale analytics start -->
+        <div class="col-xl-9 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Sales Analytics</h5>
+                    <span class="text-muted">For more details about usage, please refer <a href="https://www.amcharts.com/online-store/" target="_blank">amCharts</a> licences.</span>
+                    <div class="card-header-right">
+                        <ul class="list-unstyled card-option">
+                            <li><i class="feather icon-maximize full-card"></i></li>
+                            <li><i class="feather icon-minus minimize-card"></i></li>
+                            <li><i class="feather icon-trash-2 close-card"></i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div id="sales-analytics" style="height: 265px; overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left; width: 722px; height: 265px; padding: 0px; cursor: default; touch-action: auto;"><svg version="1.1" style="position: absolute; width: 722px; height: 265px; top: -0.203125px; left: -0.203125px;"><desc>JavaScript chart by amCharts 3.21.5</desc><g><path cs="100,100" d="M0.5,0.5 L721.5,0.5 L721.5,264.5 L0.5,264.5 Z" fill="#FFFFFF" stroke="#000000" fill-opacity="0" stroke-width="1" stroke-opacity="0"></path><path cs="100,100" d="M0.5,0.5 L671.5,0.5 L671.5,179.5 L0.5,179.5 L0.5,0.5 Z" fill="#FFFFFF" stroke="#000000" fill-opacity="0" stroke-width="1" stroke-opacity="0" transform="translate(50,55)"></path></g><g><g transform="translate(50,0)" visibility="hidden"></g><g transform="translate(50,55)"><g><path cs="100,100" d="M0.5,0.5 L0.5,5.5" fill="none" stroke-width="1" stroke-opacity="0.3" stroke="#000000" transform="translate(0,179)"></path></g><g><path cs="100,100" d="M120.5,0.5 L120.5,5.5" fill="none" stroke-width="1" stroke-opacity="0.3" stroke="#000000" transform="translate(0,179)"></path></g><g><path cs="100,100" d="M240.5,0.5 L240.5,5.5" fill="none" stroke-width="1" stroke-opacity="0.3" stroke="#000000" transform="translate(0,179)"></path></g><g><path cs="100,100" d="M359.5,0.5 L359.5,5.5" fill="none" stroke-width="1" stroke-opacity="0.3" stroke="#000000" transform="translate(0,179)"></path></g><g><path cs="100,100" d="M479.5,0.5 L479.5,5.5" fill="none" stroke-width="1" stroke-opacity="0.3" stroke="#000000" transform="translate(0,179)"></path></g><g><path cs="100,100" d="M599.5,0.5 L599.5,5.5" fill="none" stroke-width="1" stroke-opacity="0.3" stroke="#000000" transform="translate(0,179)"></path></g></g><g transform="translate(50,55)" visibility="visible"></g></g><g transform="translate(50,55)" clip-path="url(#AmChartsEl-11)"><g visibility="hidden"><g transform="translate(0,0)" visibility="hidden"><rect x="0.5" y="0.5" width="12" height="179" rx="0" ry="0" stroke-width="0" fill="#000000" stroke="#000000" fill-opacity="0" stroke-opacity="0" transform="translate(-7,0)"></rect></g></g></g><g></g><g></g><g></g><g><g transform="translate(50,55)"><g clip-path="url(#AmChartsEl-15)"><path cs="100,100" d="M6,162 C9,161,12,140,18,137 C24,135,24,122,30,120 C36,119,36,111,42,112 C48,114,48,150,54,152 C60,155,60,157,66,158 C72,159,72,172,78,170 C84,168,84,124,90,121 C96,118,96,109,102,109 C108,109,108,120,114,121 C120,122,120,130,126,130 C132,129,132,113,138,112 C144,111,144,112,150,111 C156,111,156,105,162,107 C168,110,168,158,174,160 C180,162,180,148,186,146 C192,145,192,134,198,134 C204,133,204,134,210,134 C216,134,216,137,222,136 C228,135,228,110,234,109 C240,109,240,118,246,120 C252,121,252,142,258,141 C264,141,264,120,270,117 C276,115,276,92,282,94 C288,95,288,143,294,146 C300,148,300,137,306,138 C312,138,312,155,318,153 C324,151,324,106,330,104 C336,102,336,119,342,119 C348,118,347,100,353,98 C359,97,359,94,365,94 C371,93,371,85,377,86 C383,87,383,106,389,105 C395,105,395,75,401,76 C407,76,407,109,413,111 C419,113,419,114,425,114 C431,114,431,104,437,102 C443,100,443,77,449,75 C455,74,455,75,461,75 C467,76,467,89,473,89 C479,88,479,63,485,62 C491,61,491,68,497,70 C503,72,503,95,509,96 C515,97,515,89,521,88 C527,87,527,78,533,77 C539,75,539,59,545,59 C551,60,551,83,557,82 C563,81,563,48,569,44 C575,41,575,9,581,9 C587,10,587,52,593,54 C599,57,599,61,605,60 C611,59,611,36,617,34 C623,32,623,25,629,25 C635,24,635,23,641,23 C647,23,647,28,653,28 C659,28,662,23,665,23 M0,0 L0,0" fill="none" fill-opacity="0" stroke-width="2" stroke-opacity="0.9" stroke="#fe9365"></path></g><g clip-path="url(#AmChartsEl-14)"><path cs="100,100" d="M6,162 C9,161,12,140,18,137 C24,135,24,122,30,120 C36,119,36,111,42,112 C48,114,48,150,54,152 C60,155,60,157,66,158 C72,159,72,172,78,170 C84,168,84,124,90,121 C96,118,96,109,102,109 C108,109,108,120,114,121 C120,122,120,130,126,130 C132,129,132,113,138,112 C144,111,144,112,150,111 C156,111,156,105,162,107 C168,110,168,158,174,160 C180,162,180,148,186,146 C192,145,192,134,198,134 C204,133,204,134,210,134 C216,134,216,137,222,136 C228,135,228,110,234,109 C240,109,240,118,246,120 C252,121,252,142,258,141 C264,141,264,120,270,117 C276,115,276,92,282,94 C288,95,288,143,294,146 C300,148,300,137,306,138 C312,138,312,155,318,153 C324,151,324,106,330,104 C336,102,336,119,342,119 C348,118,347,100,353,98 C359,97,359,94,365,94 C371,93,371,85,377,86 C383,87,383,106,389,105 C395,105,395,75,401,76 C407,76,407,109,413,111 C419,113,419,114,425,114 C431,114,431,104,437,102 C443,100,443,77,449,75 C455,74,455,75,461,75 C467,76,467,89,473,89 C479,88,479,63,485,62 C491,61,491,68,497,70 C503,72,503,95,509,96 C515,97,515,89,521,88 C527,87,527,78,533,77 C539,75,539,59,545,59 C551,60,551,83,557,82 C563,81,563,48,569,44 C575,41,575,9,581,9 C587,10,587,52,593,54 C599,57,599,61,605,60 C611,59,611,36,617,34 C623,32,623,25,629,25 C635,24,635,23,641,23 C647,23,647,28,653,28 C659,28,662,23,665,23 M0,0 L0,0" fill="none" fill-opacity="0" stroke-width="2" stroke-opacity="0.9" stroke="#fe5d70"></path></g><clipPath id="AmChartsEl-14"><rect x="0" y="0" width="671" height="107" rx="0" ry="0" stroke-width="0"></rect></clipPath><clipPath id="AmChartsEl-15"><rect x="0" y="107" width="671" height="72" rx="0" ry="0" stroke-width="0"></rect></clipPath><g></g></g></g><g></g><g><path cs="100,100" d="M0.5,107.5 L671.5,107.5 L671.5,107.5" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000" transform="translate(50,55)"></path><path cs="100,100" d="M0.5,37.5 L672.5,37.5 L672.5,37.5" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000" transform="translate(50,0)"></path><g><path cs="100,100" d="M0.5,0.5 L671.5,0.5" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000" transform="translate(0,55)"></path></g><g><path cs="100,100" d="M0.5,0.5 L0.5,55.5" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000" transform="translate(50,0)" visibility="hidden"></path></g><g><path cs="100,100" d="M0.5,0.5 L671.5,0.5" fill="none" stroke-width="1" stroke-opacity="0.3" stroke="#000000" transform="translate(50,234)"></path></g><g><path cs="100,100" d="M0.5,0.5 L0.5,179.5" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000" transform="translate(50,55)" visibility="visible"></path></g></g><g><g transform="translate(50,55)" clip-path="url(#AmChartsEl-12)" style="pointer-events: none;"><path cs="100,100" d="M0.5,0.5 L671.5,0.5 L671.5,0.5" fill="none" stroke-width="1" stroke-opacity="0.5" stroke="#000000" visibility="hidden"></path></g><clipPath id="AmChartsEl-12"><rect x="0" y="0" width="671" height="179" rx="0" ry="0" stroke-width="0"></rect></clipPath></g><g><g visibility="visible" transform="translate(50,0)" style="touch-action: none;"><rect x="0.5" y="0.5" width="672" height="55" rx="0" ry="0" stroke-width="1" fill="#000000" stroke="#000000" fill-opacity="0" stroke-opacity="0"></rect><rect x="0.5" y="0.5" width="671" height="56" rx="0" ry="0" stroke-width="0" fill="#888888" stroke="#888888" fill-opacity="0.1" stroke-opacity="0.1" transform="translate(0,0)"></rect><g transform="translate(0,0)"><g></g><g><path cs="100,100" d="M6,48 C9,48,12,43,18,43 C24,42,24,40,30,39 C36,39,36,37,42,38 C48,38,48,45,54,46 C60,46,60,47,66,47 C72,47,72,50,78,49 C84,49,84,40,90,39 C96,39,96,37,102,37 C108,37,108,39,114,39 C120,40,120,41,126,41 C132,41,132,38,138,38 C144,37,144,38,150,37 C156,37,156,36,162,37 C168,37,168,47,174,48 C180,48,180,45,186,45 C192,44,192,42,198,42 C204,42,204,42,210,42 C216,42,216,43,222,43 C228,42,228,37,234,37 C240,37,240,39,246,39 C252,39,252,44,258,44 C264,44,264,39,270,39 C276,38,276,34,282,34 C288,34,288,44,294,44 C300,45,300,43,306,43 C312,43,312,46,318,46 C324,46,324,36,330,36 C336,36,336,39,342,39 C348,39,347,35,353,35 C359,35,359,34,365,34 C371,34,371,32,377,32 C383,32,383,36,389,36 C395,36,395,30,401,30 C407,30,407,37,413,37 C419,38,419,38,425,38 C431,38,431,36,437,36 C443,35,443,30,449,30 C455,30,455,30,461,30 C467,30,467,33,473,33 C479,33,479,28,485,27 C491,27,491,29,497,29 C503,29,503,34,509,34 C515,34,515,33,521,33 C527,32,527,31,533,30 C539,30,539,27,545,27 C551,27,551,32,557,31 C563,31,563,24,569,24 C575,23,575,16,581,17 C587,17,587,25,593,26 C599,26,599,27,605,27 C611,27,611,22,617,22 C623,21,623,20,629,20 C635,20,635,19,641,19 C647,19,647,20,653,20 C659,20,662,19,665,19 M0,0 L0,0" fill="none" fill-opacity="0" stroke-width="1" stroke-opacity="0.2" stroke="#c2c2c2"></path></g><g></g></g><g transform="translate(0,0)" clip-path="url(#AmChartsEl-16)"><g></g><g><path cs="100,100" d="M6,48 C9,48,12,43,18,43 C24,42,24,40,30,39 C36,39,36,37,42,38 C48,38,48,45,54,46 C60,46,60,47,66,47 C72,47,72,50,78,49 C84,49,84,40,90,39 C96,39,96,37,102,37 C108,37,108,39,114,39 C120,40,120,41,126,41 C132,41,132,38,138,38 C144,37,144,38,150,37 C156,37,156,36,162,37 C168,37,168,47,174,48 C180,48,180,45,186,45 C192,44,192,42,198,42 C204,42,204,42,210,42 C216,42,216,43,222,43 C228,42,228,37,234,37 C240,37,240,39,246,39 C252,39,252,44,258,44 C264,44,264,39,270,39 C276,38,276,34,282,34 C288,34,288,44,294,44 C300,45,300,43,306,43 C312,43,312,46,318,46 C324,46,324,36,330,36 C336,36,336,39,342,39 C348,39,347,35,353,35 C359,35,359,34,365,34 C371,34,371,32,377,32 C383,32,383,36,389,36 C395,36,395,30,401,30 C407,30,407,37,413,37 C419,38,419,38,425,38 C431,38,431,36,437,36 C443,35,443,30,449,30 C455,30,455,30,461,30 C467,30,467,33,473,33 C479,33,479,28,485,27 C491,27,491,29,497,29 C503,29,503,34,509,34 C515,34,515,33,521,33 C527,32,527,31,533,30 C539,30,539,27,545,27 C551,27,551,32,557,31 C563,31,563,24,569,24 C575,23,575,16,581,17 C587,17,587,25,593,26 C599,26,599,27,605,27 C611,27,611,22,617,22 C623,21,623,20,629,20 C635,20,635,19,641,19 C647,19,647,20,653,20 C659,20,662,19,665,19 M0,0 L0,0" fill="none" fill-opacity="0" stroke-width="1" stroke-opacity="1" stroke="#888888"></path></g><g></g></g><g transform="translate(0,0)"></g><g transform="translate(0,0)" visibility="visible"><text y="6" fill="#888888" font-family="Verdana" font-size="11px" opacity="1" text-anchor="start" transform="translate(3,43.5)"><tspan y="6" x="0">1950</tspan></text><text y="6" fill="#888888" font-family="Verdana" font-size="11px" opacity="1" text-anchor="start" transform="translate(123,43.5)"><tspan y="6" x="0">1960</tspan></text><text y="6" fill="#888888" font-family="Verdana" font-size="11px" opacity="1" text-anchor="start" transform="translate(243,43.5)"><tspan y="6" x="0">1970</tspan></text><text y="6" fill="#888888" font-family="Verdana" font-size="11px" opacity="1" text-anchor="start" transform="translate(362,43.5)"><tspan y="6" x="0">1980</tspan></text><text y="6" fill="#888888" font-family="Verdana" font-size="11px" opacity="1" text-anchor="start" transform="translate(482,43.5)"><tspan y="6" x="0">1990</tspan></text><text y="6" fill="#888888" font-family="Verdana" font-size="11px" opacity="1" text-anchor="start" transform="translate(602,43.5)"><tspan y="6" x="0">2000</tspan></text></g><rect x="0.5" y="0.5" width="672" height="55" rx="0" ry="0" stroke-width="0" fill="#000" stroke="#000" fill-opacity="0.005" stroke-opacity="0.005"></rect><rect x="0" y="0.5" width="671" height="55" rx="0" ry="0" stroke-width="0" fill="#000" stroke="#000" fill-opacity="0.005" stroke-opacity="0.005" aria-label="Zoom chart using cursor arrows" role="menuitem"></rect><g aria-label="Zoom chart using cursor arrows" role="menuitem" transform="translate(-17,10)"><image x="0" y="0" width="35" height="35" xlink:href="https://colorlib.com//polygon/adminty/files/assets/pages/widget/amchart/images/dragIconRoundBig.svg"></image><rect x="0.5" y="0.5" width="25" height="55" rx="0" ry="0" stroke-width="0" fill="#000" stroke="#000" fill-opacity="0.005" stroke-opacity="0.005" transform="translate(5,-10)"></rect></g><g aria-label="Zoom chart using cursor arrows" role="menuitem" transform="translate(654,10)"><image x="0" y="0" width="35" height="35" xlink:href="https://colorlib.com//polygon/adminty/files/assets/pages/widget/amchart/images/dragIconRoundBig.svg"></image><rect x="0.5" y="0.5" width="25" height="55" rx="0" ry="0" stroke-width="0" fill="#000" stroke="#000" fill-opacity="0.005" stroke-opacity="0.005" transform="translate(5,-10)"></rect></g><clipPath id="AmChartsEl-16"><rect x="0" y="0" width="671" height="56" rx="0" ry="0" stroke-width="0"></rect></clipPath></g></g><g><g transform="translate(0,0)"></g><g transform="translate(0,0)"></g><g transform="translate(50,55)"><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(6,162)" aria-label=" 1950 -0.307"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(18,137)" aria-label=" 1951 -0.168"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(30,120)" aria-label=" 1952 -0.073"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(42,112)" aria-label=" 1953 -0.027"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(54,152)" aria-label=" 1954 -0.251"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(66,158)" aria-label=" 1955 -0.281"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(78,170)" aria-label=" 1956 -0.348"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(90,121)" aria-label=" 1957 -0.074"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(102,109)" aria-label=" 1958 -0.011"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(114,121)" aria-label=" 1959 -0.074"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(126,130)" aria-label=" 1960 -0.124"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(138,112)" aria-label=" 1961 -0.024"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(150,111)" aria-label=" 1962 -0.022"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(162,107)" aria-label=" 1963 0"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(174,160)" aria-label=" 1964 -0.296"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(186,146)" aria-label=" 1965 -0.217"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(198,134)" aria-label=" 1966 -0.147"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(210,134)" aria-label=" 1967 -0.15"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(222,136)" aria-label=" 1968 -0.16"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(234,109)" aria-label=" 1969 -0.011"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(246,120)" aria-label=" 1970 -0.068"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(258,141)" aria-label=" 1971 -0.19"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(270,117)" aria-label=" 1972 -0.056"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(282,94)" aria-label=" 1973 0.077"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(294,146)" aria-label=" 1974 -0.213"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(306,138)" aria-label=" 1975 -0.17"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(318,153)" aria-label=" 1976 -0.254"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(330,104)" aria-label=" 1977 0.019"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(342,119)" aria-label=" 1978 -0.063"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(353,98)" aria-label=" 1979 0.05"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(365,94)" aria-label=" 1980 0.077"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(377,86)" aria-label=" 1981 0.12"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(389,105)" aria-label=" 1982 0.011"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(401,76)" aria-label=" 1983 0.177"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(413,111)" aria-label=" 1984 -0.021"></circle><circle r="4" cx="0" cy="0" fill="#fe9365" stroke="#fe9365" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(425,114)" aria-label=" 1985 -0.037"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(437,102)" aria-label=" 1986 0.03"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(449,75)" aria-label=" 1987 0.179"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(461,75)" aria-label=" 1988 0.18"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(473,89)" aria-label=" 1989 0.104"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(485,62)" aria-label=" 1990 0.255"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(497,70)" aria-label=" 1991 0.21"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(509,96)" aria-label=" 1992 0.065"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(521,88)" aria-label=" 1993 0.11"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(533,77)" aria-label=" 1994 0.172"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(545,59)" aria-label=" 1995 0.269"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(557,82)" aria-label=" 1996 0.141"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(569,44)" aria-label=" 1997 0.353"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(581,9)" aria-label=" 1998 0.548"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(593,54)" aria-label=" 1999 0.298"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(605,60)" aria-label=" 2000 0.267"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(617,34)" aria-label=" 2001 0.411"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(629,25)" aria-label=" 2002 0.462"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(641,23)" aria-label=" 2003 0.47"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(653,28)" aria-label=" 2004 0.445"></circle><circle r="4" cx="0" cy="0" fill="#fe5d70" stroke="#fe5d70" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(665,23)" aria-label=" 2005 0.47"></circle></g></g><g><g></g></g><g><g transform="translate(50,0)" visibility="hidden"></g><g transform="translate(50,55)" visibility="visible"><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="start" transform="translate(3,191.5)"><tspan y="6" x="0">1950</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="start" transform="translate(123,191.5)"><tspan y="6" x="0">1960</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="start" transform="translate(243,191.5)"><tspan y="6" x="0">1970</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="start" transform="translate(362,191.5)"><tspan y="6" x="0">1980</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="start" transform="translate(482,191.5)"><tspan y="6" x="0">1990</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="start" transform="translate(602,191.5)"><tspan y="6" x="0">2000</tspan></text></g><g transform="translate(50,55)" visibility="visible"><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="end" transform="translate(-12,178)"><tspan y="6" x="0">-0.4</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="end" transform="translate(-12,142)"><tspan y="6" x="0">-0.2</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="end" transform="translate(-12,106)"><tspan y="6" x="0">0.0</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="end" transform="translate(-12,71)"><tspan y="6" x="0">0.2</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="end" transform="translate(-12,35)"><tspan y="6" x="0">0.4</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="end" transform="translate(-12,-1)"><tspan y="6" x="0">0.6</tspan></text></g></g><g></g><g transform="translate(50,55)"></g><g></g><g></g><clipPath id="AmChartsEl-11"><rect x="-1" y="-1" width="673" height="181" rx="0" ry="0" stroke-width="0"></rect></clipPath></svg><a href="http://www.amcharts.com/javascript-charts/" title="JavaScript charts" style="position: absolute; text-decoration: none; color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; opacity: 0.7; display: block; left: 55px; top: 60px;">JS chart by amCharts</a></div></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-12">
+            <div class="card user-card2">
+                <div class="card-block text-center">
+                    <h6 class="m-b-15">Project Risk</h6>
+                    <div class="risk-rate">
+                        <span><b>5</b></span>
+                    </div>
+                    <h6 class="m-b-10 m-t-10">Balanced</h6>
+                    <a href="#!" class="text-c-yellow b-b-warning">Change Your Risk</a>
+                    <div class="row justify-content-center m-t-10 b-t-default m-l-0 m-r-0">
+                        <div class="col m-t-15 b-r-default">
+                            <h6 class="text-muted">Nr</h6>
+                            <h6>AWS 2455</h6>
+                        </div>
+                        <div class="col m-t-15">
+                            <h6 class="text-muted">Created</h6>
+                            <h6>30th Sep</h6>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-warning btn-block p-t-15 p-b-15">Download Overall Report</button>
+            </div>
+        </div>
+        <!--  sale analytics end -->
+
+        <div class="col-xl-8 col-md-12">
+            <div class="card table-card">
+                <div class="card-header">
+                    <h5>Application Sales</h5>
+                    <div class="card-header-right">
+                        <ul class="list-unstyled card-option">
+                            <li><i class="feather icon-maximize full-card"></i></li>
+                            <li><i class="feather icon-minus minimize-card"></i></li>
+                            <li><i class="feather icon-trash-2 close-card"></i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="table-responsive">
+                        <table class="table table-hover  table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="chk-option">
+                                            <div class="checkbox-fade fade-in-primary">
+                                                <label class="check-task">
+                                                    <input type="checkbox" value="">
+                                                    <span class="cr">
+                                                        <i class="cr-icon feather icon-check txt-default"></i>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        Application
+                                    </th>
+                                    <th>Sales</th>
+                                    <th>Change</th>
+                                    <th>Avg Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="chk-option">
+                                            <div class="checkbox-fade fade-in-primary">
+                                                <label class="check-task">
+                                                    <input type="checkbox" value="">
+                                                    <span class="cr">
+                                                        <i class="cr-icon feather icon-check txt-default"></i>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline-block align-middle">
+                                            <h6>Able Pro</h6>
+                                            <p class="text-muted m-b-0">Powerful Admin Theme</p>
+                                        </div>
+                                    </td>
+                                    <td>16,300</td>
+                                    <td><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe><canvas id="app-sale1" height="71" width="142" style="display: block; width: 142px; height: 71px;"></canvas></td>
+                                    <td>$53</td>
+                                    <td class="text-c-blue">$15,652</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chk-option">
+                                            <div class="checkbox-fade fade-in-primary">
+                                                <label class="check-task">
+                                                    <input type="checkbox" value="">
+                                                    <span class="cr">
+                                                        <i class="cr-icon feather icon-check txt-default"></i>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline-block align-middle">
+                                            <h6>Photoshop</h6>
+                                            <p class="text-muted m-b-0">Design Software</p>
+                                        </div>
+                                    </td>
+                                    <td>26,421</td>
+                                    <td><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe><canvas id="app-sale2" height="71" width="142" style="display: block; width: 142px; height: 71px;"></canvas></td>
+                                    <td>$35</td>
+                                    <td class="text-c-blue">$18,785</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chk-option">
+                                            <div class="checkbox-fade fade-in-primary">
+                                                <label class="check-task">
+                                                    <input type="checkbox" value="">
+                                                    <span class="cr">
+                                                        <i class="cr-icon feather icon-check txt-default"></i>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline-block align-middle">
+                                            <h6>Guruable</h6>
+                                            <p class="text-muted m-b-0">Best Admin Template</p>
+                                        </div>
+                                    </td>
+                                    <td>8,265</td>
+                                    <td><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe><canvas id="app-sale3" height="71" width="142" style="display: block; width: 142px; height: 71px;"></canvas></td>
+                                    <td>$98</td>
+                                    <td class="text-c-blue">$9,652</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chk-option">
+                                            <div class="checkbox-fade fade-in-primary">
+                                                <label class="check-task">
+                                                    <input type="checkbox" value="">
+                                                    <span class="cr">
+                                                        <i class="cr-icon feather icon-check txt-default"></i>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline-block align-middle">
+                                            <h6>Flatable</h6>
+                                            <p class="text-muted m-b-0">Admin App</p>
+                                        </div>
+                                    </td>
+                                    <td>10,652</td>
+                                    <td><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe><canvas id="app-sale4" height="71" width="142" style="display: block; width: 142px; height: 71px;"></canvas></td>
+                                    <td>$20</td>
+                                    <td class="text-c-blue">$7,856</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-center">
+                            <a href="#!" class=" b-b-primary text-primary">View all Projects</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-12">
+            <div class="card user-activity-card">
+                <div class="card-header">
+                    <h5>User Activity</h5>
+                </div>
+                <div class="card-block">
+                    <div class="row m-b-25">
+                        <div class="col-auto p-r-0">
+                            <div class="u-img">
+
+                                <img src="~/Areas/Admin/adminty/files/assets/images/breadcrumb-bg.jpg" alt="user image" class="img-radius cover-img">
+                                <img src="~/Areas/Admin/adminty/files/assets/images/avatar-2.jpg" alt="user image" class="img-radius profile-img">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h6 class="m-b-5">John Deo</h6>
+                            <p class="text-muted m-b-0">Lorem Ipsum is simply dummy text.</p>
+                            <p class="text-muted m-b-0"><i class="feather icon-clock m-r-10"></i>2 min ago</p>
+                        </div>
+                    </div>
+                    <div class="row m-b-25">
+                        <div class="col-auto p-r-0">
+                            <div class="u-img">
+                                <img src="~/Areas/Admin/adminty/files/assets/images/breadcrumb-bg.jpg" alt="user image" class="img-radius cover-img">
+                                <img src="~/Areas/Admin/adminty/files/assets/images/avatar-2.jpg" alt="user image" class="img-radius profile-img">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h6 class="m-b-5">John Deo</h6>
+                            <p class="text-muted m-b-0">Lorem Ipsum is simply dummy text.</p>
+                            <p class="text-muted m-b-0"><i class="feather icon-clock m-r-10"></i>2 min ago</p>
+                        </div>
+                    </div>
+                    <div class="row m-b-25">
+                        <div class="col-auto p-r-0">
+                            <div class="u-img">
+                                <img src="~/Areas/Admin/adminty/files/assets/images/breadcrumb-bg.jpg" alt="user image" class="img-radius cover-img">
+                                <img src="~/Areas/Admin/adminty/files/assets/images/avatar-2.jpg" alt="user image" class="img-radius profile-img">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h6 class="m-b-5">John Deo</h6>
+                            <p class="text-muted m-b-0">Lorem Ipsum is simply dummy text.</p>
+                            <p class="text-muted m-b-0"><i class="feather icon-clock m-r-10"></i>2 min ago</p>
+                        </div>
+                    </div>
+                    <div class="row m-b-5">
+                        <div class="col-auto p-r-0">
+                            <div class="u-img">
+                                <img src="~/Areas/Admin/adminty/files/assets/images/breadcrumb-bg.jpg" alt="user image" class="img-radius cover-img">
+                                <img src="~/Areas/Admin/adminty/files/assets/images/avatar-2.jpg" alt="user image" class="img-radius profile-img">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h6 class="m-b-5">John Deo</h6>
+                            <p class="text-muted m-b-0">Lorem Ipsum is simply dummy text.</p>
+                            <p class="text-muted m-b-0"><i class="feather icon-clock m-r-10"></i>2 min ago</p>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="#!" class="b-b-primary text-primary">View all Projects</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- wather user -->
+        <div class="col-xl-6 col-md-12">
+            <div class="card latest-update-card">
+                <div class="card-header">
+                    <h5>Latest Updates</h5>
+                    <div class="card-header-right">
+                        <ul class="list-unstyled card-option">
+                            <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                            <li><i class="fa fa-window-maximize full-card"></i></li>
+                            <li><i class="fa fa-minus minimize-card"></i></li>
+                            <li><i class="fa fa-refresh reload-card"></i></li>
+                            <li><i class="fa fa-trash close-card"></i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="latest-update-box">
+                        <div class="row p-b-15">
+                            <div class="col-auto text-right update-meta">
+                                <p class="text-muted m-b-0 d-inline">4 hrs ago</p>
+                                <i class="feather icon-briefcase bg-simple-c-pink update-icon"></i>
+                            </div>
+                            <div class="col">
+                                <h6>+ 5 New Products were added!</h6>
+                                <p class="text-muted m-b-0">Congratulations!</p>
+                            </div>
+                        </div>
+                        <div class="row p-b-15">
+                            <div class="col-auto text-right update-meta">
+                                <p class="text-muted m-b-0 d-inline">1 day ago</p>
+                                <i class="feather icon-check bg-simple-c-yellow  update-icon"></i>
+                            </div>
+                            <div class="col">
+                                <h6>Database backup completed!</h6>
+                                <p class="text-muted m-b-0">Download the <span class="text-c-blue">latest backup</span>.</p>
+                            </div>
+                        </div>
+                        <div class="row p-b-0">
+                            <div class="col-auto text-right update-meta">
+                                <p class="text-muted m-b-0 d-inline">2 day ago</p>
+                                <i class="feather icon-facebook bg-simple-c-green update-icon"></i>
+                            </div>
+                            <div class="col">
+                                <h6>+1 Friend Requests</h6>
+                                <p class="text-muted m-b-10">This is great, keep it up!</p>
+                                <div class="table-responsive">
+                                    <table class="table table-hover m-b-0">
+                                        <tbody>
+                                            <tr>
+                                                <td class="b-none">
+                                                    <a href="#!" class="align-middle">
+                                                        <img src="~/Areas/Admin/adminty/files/assets/images/avatar-2.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                        <div class="d-inline-block">
+                                                            <h6>Jeny William</h6>
+                                                            <p class="text-muted m-b-0">Graphic Designer</p>
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a href="#!" class="b-b-primary text-primary">View all Projects</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6 col-md-12">
+            <div class="card user-card-full">
+                <div class="row m-l-0 m-r-0">
+                    <div class="col-sm-4 bg-c-lite-green user-profile">
+                        <div class="card-block text-center text-white">
+                            <div class="m-b-25">
+                                <img src="~/Areas/Admin/adminty/files/assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+                            </div>
+                            <h6 class="f-w-600">Jeny William</h6>
+                            <p>Web Designer</p>
+                            <i class="feather icon-edit m-t-10 f-16"></i>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="card-block">
+                            <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Email</p>
+                                    <h6 class="text-muted f-w-400">jeny@gmail.com</h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Phone</p>
+                                    <h6 class="text-muted f-w-400">0023-333-526136</h6>
+                                </div>
+                            </div>
+                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Recent</p>
+                                    <h6 class="text-muted f-w-400">Guruable Admin</h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Most Viewed</p>
+                                    <h6 class="text-muted f-w-400">Able Pro Admin</h6>
+                                </div>
+                            </div>
+                            <ul class="social-link list-unstyled m-t-40 m-b-10">
+                                <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook"><i class="feather icon-facebook facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter"><i class="feather icon-twitter twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram"><i class="feather icon-instagram instagram" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- wather user -->
+        <!-- social download  start -->
+        <div class="col-xl-4 col-md-6">
+            <div class="card social-card bg-simple-c-blue">
+                <div class="card-block">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <i class="feather icon-mail f-34 text-c-blue social-icon"></i>
+                        </div>
+                        <div class="col">
+                            <h6 class="m-b-0">Mail</h6>
+                            <p>231.2w downloads</p>
+                            <p class="m-b-0">Lorem Ipsum is simply dummy text of the printing</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#!" class="download-icon"><i class="feather icon-arrow-down"></i></a>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card social-card bg-simple-c-pink">
+                <div class="card-block">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <i class="feather icon-twitter f-34 text-c-pink social-icon"></i>
+                        </div>
+                        <div class="col">
+                            <h6 class="m-b-0">twitter</h6>
+                            <p>231.2w downloads</p>
+                            <p class="m-b-0">Lorem Ipsum is simply dummy text of the printing</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#!" class="download-icon"><i class="feather icon-arrow-down"></i></a>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-12">
+            <div class="card social-card bg-simple-c-green">
+                <div class="card-block">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <i class="feather icon-instagram f-34 text-c-green social-icon"></i>
+                        </div>
+                        <div class="col">
+                            <h6 class="m-b-0">Instagram</h6>
+                            <p>231.2w downloads</p>
+                            <p class="m-b-0">Lorem Ipsum is simply dummy text of the printing</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#!" class="download-icon"><i class="feather icon-arrow-down"></i></a>
+            </div>
+        </div>
+        <!-- social download  end -->
+
+    </div>
+</div>

@@ -1,0 +1,378 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>XaviaDecor</title>
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="#">
+    <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="#">
+    <!-- Favicon icon -->
+    <link rel="icon" href="../files/assets/images/favicon.ico" type="image/x-icon">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link href="~/Areas/Admin/adminty/files/bower_components/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- themify-icons line icon -->
+    <link href="~/Areas/Admin/adminty/files/assets/icon/themifi-icons/themify-icons.css" rel="stylesheet" />
+    <!-- ico font -->
+    <link href="~/Areas/Admin/adminty/files/assets/icon/icofont/css/icofont.css" rel="stylesheet" />
+    <!-- feather Awesome -->
+    <link href="~/Areas/Admin/adminty/files/assets/icon/feather/css/feather.css" rel="stylesheet" />
+    <!-- Data Table Css -->
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/adminty/files/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/adminty/files/assets/pages/data-table/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/adminty/files/bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
+    <!-- Syntax highlighter Prism css -->
+    <link href="~/Areas/Admin/adminty/files/assets/pages/prims/prism.css" rel="stylesheet" />
+    <!-- Form css -->
+    <link href="~/Areas/Admin/adminty/files/bower_components/jquery.steps/css/jquery.steps.css" rel="stylesheet" />
+    <!-- Select 2 css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <!-- Switch component css -->
+    <link href="~/Areas/Admin/adminty/files/bower_components/switchery/css/switchery.min.css" rel="stylesheet" />
+    <!-- Tags js -->
+    <script type="text/javascript" src="../files/bower_components/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
+    <!-- Notification.css -->
+    <link href="~/Areas/Admin/adminty/files/assets/pages/notification/notification.css" rel="stylesheet" />
+
+    <!-- Animate.css -->
+    <link href="~/Areas/Admin/adminty/files/bower_components/animate.css/css/animate.css" rel="stylesheet" />
+
+    <!-- Style.css -->
+    <link href="~/Areas/Admin/adminty/files/assets/css/style.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/adminty/files/assets/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+
+    <script src="~/Areas/Admin/Scripts/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/Admin/Scripts/plugins/ckfinder/ckfinder.js"></script>
+    <script src="~/Areas/Admin/adminty/files/bower_components/jquery_js/js/jquery.min.js"></script>
+
+    @Scripts.Render("~/bundles/others")
+    @Scripts.Render("~/bundles/adminScript")
+</head>
+<!-- Menu sidebar layout -->
+
+<body>
+    <!-- Pre-loader start -->
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+            </div>
+        </div>
+    </div>
+    <!-- Pre-loader end -->
+    <!-- Menu header start -->
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            <nav class="navbar header-navbar pcoded-header">
+                <div class="navbar-wrapper">
+
+                    <div class="navbar-logo">
+                        <a class="mobile-menu" id="mobile-collapse" href="#!">
+                            <i class="feather icon-menu"></i>
+                        </a>
+                        <a href="/Admin/Home/NewLayout">
+                            <img class="img-fluid" src="~/Areas/Admin/adminty/files/assets/images/logo.png" alt="Theme-Logo" />
+                        </a>
+                        <a class="mobile-options">
+                            <i class="feather icon-more-horizontal"></i>
+                        </a>
+                    </div>
+
+                    <div class="navbar-container container-fluid">
+                        <ul class="nav-left">
+                            <li class="header-search">
+                                <div class="main-search morphsearch-search">
+                                    <div class="input-group">
+                                        <span class="input-group-addon search-close"><i class="feather icon-x"></i></span>
+                                        <input type="text" class="form-control">
+                                        <span class="input-group-addon search-btn"><i class="feather icon-search"></i></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#!" onclick="javascript:toggleFullScreen()">
+                                    <i class="feather icon-maximize full-screen"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav-right">
+                            <li class="header-notification">
+                                <div class="dropdown-primary dropdown">
+                                    <div class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="feather icon-bell"></i>
+                                        <span class="badge bg-c-pink">5</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="user-profile header-notification">
+                                <div class="dropdown-primary dropdown">
+                                    <div class="dropdown-toggle" data-toggle="dropdown">
+                                        <img src="/Areas/Admin/adminty/files/assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+                                        <span>@User.Identity.GetUserName()</span>
+                                        <i class="feather icon-chevron-down"></i>
+                                    </div>
+                                    <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                        @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+                                    @Html.AntiForgeryToken()
+}
+                                        <li class="feather icon-settings"> @Html.ActionLink("Cài Đặt", "Index", "Manage", new { Area = "" }, htmlAttributes: new { title = "Manage" })  </li>
+                                        <li class="feather icon-log-out"><a href="javascript:document.getElementById('logoutForm').submit()">Đăng Xuất</a></li>
+                                    </ul>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Sidebar inner chat end-->
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    <nav class="pcoded-navbar" pcoded-header-position="relative">
+                        <div class="pcoded-inner-navbar main-menu">
+                            <div class="pcoded-navigatio-lavel">Navigation</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="/Admin/Home/NewLayout">
+                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-mtext">Quản Trị</span>
+                                    </a>
+                                </li>
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-shield"></i></span>
+                                        <span class="pcoded-mtext">Thành Viên</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="/Admin/User/Index">
+                                                <span class="pcoded-mtext">Danh Sách</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="/Admin/Role/Index">
+                                                <span class="pcoded-mtext">Phân Quyền</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="">
+                                    <a href="/Admin/Category/Categories">
+                                        <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
+                                        <span class="pcoded-mtext">Danh Mục Sản Phẩm</span>
+                                    </a>
+                                </li>
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-layers"></i></span>
+                                        <span class="pcoded-mtext">Sản Phẩm</span>
+                                    </a>
+                                    @{Html.RenderAction("_AdminMenuCategoryPartial", "Product");}
+                                </li>
+                            </ul>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="/Admin/Brand/Index1">
+                                        <span class="pcoded-micon"><i class="feather icon-box"></i></span>
+                                        <span class="pcoded-mtext">Nhà Cung Cấp</span>
+                                    </a>
+                                </li>
+                                <li class="pcoded-hasmenu">
+                                    <a href="/Admin/CMSCategory/Index1">
+                                        <span class="pcoded-micon"><i class="feather icon-gitlab"></i></span>
+                                        <span class="pcoded-mtext">Danh Mục Tin Tức</span>
+                                    </a>
+                                </li>
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-package"></i></span>
+                                        <span class="pcoded-mtext">Tin Tức</span>
+                                    </a>
+                                    @{Html.RenderAction("_AdminNewsCategoryPartial", "CMSNews");}
+                                </li>
+                                <li class=" ">
+                                    <a href="/Admin/Banner/Index1">
+                                        <span class="pcoded-micon"><i class="feather icon-aperture rotate-refresh"></i><b>A</b></span>
+                                        <span class="pcoded-mtext">Banner</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+
+                            <!-- Main-body start -->
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <!-- Page body start -->
+                                    <div class="page-body">
+                                        @RenderBody()
+                                    </div>
+                                    <!-- Page body end -->
+                                </div>
+                            </div>
+                            <!-- Main-body end -->
+
+                            <div id="styleSelector">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Warning Section Starts -->
+    <!-- Older IE warning message -->
+    <!--[if lt IE 10]>
+    <div class="ie-warning">
+        <h1>Warning!!</h1>
+        <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+        <div class="iew-container">
+            <ul class="iew-download">
+                <li>
+                    <a href="http://www.google.com/chrome/">
+                        <img src="../files/assets/images/browser/chrome.png" alt="Chrome">
+                        <div>Chrome</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.mozilla.org/en-US/firefox/new/">
+                        <img src="../files/assets/images/browser/firefox.png" alt="Firefox">
+                        <div>Firefox</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.opera.com">
+                        <img src="../files/assets/images/browser/opera.png" alt="Opera">
+                        <div>Opera</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.apple.com/safari/">
+                        <img src="../files/assets/images/browser/safari.png" alt="Safari">
+                        <div>Safari</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                        <img src="../files/assets/images/browser/ie.png" alt="">
+                        <div>IE (9 & above)</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <p>Sorry for the inconvenience!</p>
+    </div>
+    <![endif]-->
+    <!-- Warning Section Ends -->
+    <!-- Required Jquery -->
+    <script src="~/Areas/Admin/adminty/files/bower_components/jquery_js/js/jquery.min.js"></script>
+    <script src="~/Areas/Admin/adminty/files/bower_components/jquery-us_js/js/jquery-ui.min.js"></script>
+    <script src="~/Areas/Admin/adminty/files/bower_components/poper.js_js/js/popper.min.js"></script>
+    <script src="~/Areas/Admin/adminty/files/bower_components/bootstrap/js/bootstrap.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script src="~/Areas/Admin/adminty/files/bower_components/jquery-slimscroll_js/js/jquery.slimscroll.js"></script>
+    <!-- Masking js -->
+    <script src="~/Areas/Admin/adminty/files/assets/pages/form-masking/autoNumeric.js"></script>
+    <script src="~/Areas/Admin/adminty/files/assets/pages/form-masking/form-mask.js"></script>
+    <script src="~/Areas/Admin/adminty/files/assets/pages/form-masking/inputmask.js"></script>
+    <script src="~/Areas/Admin/adminty/files/assets/pages/form-masking/jquery.inputmask.js"></script>
+    <!-- modernizr js -->
+    <script src="~/Areas/Admin/adminty/files/bower_components/modernizr_js/js/modernizr.js"></script>
+    <script src="~/Areas/Admin/adminty/files/bower_components/modernizr_js/js/css-scrollbars.js"></script>
+    <!-- data-table js -->
+    <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+
+    <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/Areas/Admin/adminty/files/assets/pages/data-table/js/jszip.min.js"></script>
+    <script src="~/Areas/Admin/adminty/files/assets/pages/data-table/js/pdfmake.min.js"></script>
+    <script src="~/Areas/Admin/adminty/files/assets/pages/data-table/js/vfs_fonts.js"></script>
+    <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+    <!-- i18next.min.js -->
+    <script type="text/javascript" src="~/Areas/Admin/adminty/files/bower_components/i18next/js/i18next.min.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/adminty/files/bower_components/i18next-xhr-backend/js/i18nextXHRBackend.min.js"></script>
+    <script type="text/javascript"
+            src="~/Areas/Admin/adminty/files/bower_components/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="~/Areas/Admin/adminty/files/bower_components/jquery-i18.next/js/jquery-i18next.min.js"></script>
+
+    <!-- Syntax highlighter prism js -->
+    <script src="~/Areas/Admin/adminty/files/assets/pages/prims/custom-prism.js"></script>
+    <!-- Switch component js -->
+    <script src="~/Areas/Admin/adminty/files/bower_components/switchery/js/switchery.min.js"></script>
+    <!-- Max-length js -->
+
+    <script src="~/Areas/Admin/adminty/files/bower_components/bootstrap-maxlength/js/bootstrap-maxlength.js"></script>
+    <!-- Tags css -->
+    <link href="~/Areas/Admin/adminty/files/bower_components/bootstrap-tagsinput/css/bootstrap-tagsinput.css" rel="stylesheet" />
+
+    <!-- Multiselect js -->
+    <script src="~/Areas/Admin/adminty/files/bower_components/bootstrap-multiselect/js/bootstrap-multiselect.js"></script>
+    <script src="~/Areas/Admin/adminty/files/bower_components/multiselect/js/jquery.multi-select.js"></script>
+    <script src="~/Areas/Admin/adminty/files/assets/js/jquery.quicksearch.js"></script>
+    <!-- Select 2 js -->
+    <script src="~/Areas/Admin/adminty/files/bower_components/select2/js/select2.full.min.js"></script>
+    <!-- Tags js -->
+    <script src="~/Areas/Admin/adminty/files/bower_components/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
+    <!-- notification js -->
+    <script src="~/Areas/Admin/adminty/files/assets/js/bootstrap-growl.min.js"></script>
+    @*<script src="~/Areas/Admin/adminty/files/assets/pages/notification/notification.js"></script>*@
+
+
+    <!-- Custom js -->
+    <script src="~/Areas/Admin/adminty/files/assets/pages/advance-elements/swithces.js"></script>
+    <script src="~/Areas/Admin/adminty/files/assets/pages/advance-elements/select2-custom.js"></script>
+    <script src="~/Areas/Admin/adminty/files/assets/pages/data-table/js/data-table-custom.js"></script>
+    <script src="~/Areas/Admin/adminty/files/assets/js/pcoded.min.js"></script>
+    <script src="~/Areas/Admin/adminty/files/assets/js/menu/menu-sidebar-fixed.js"></script>
+    <script src="~/Areas/Admin/adminty/files/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/Areas/Admin/adminty/files/assets/js/script.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

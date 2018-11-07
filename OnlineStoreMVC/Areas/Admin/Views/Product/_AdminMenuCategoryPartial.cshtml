@@ -1,0 +1,29 @@
+﻿@model IEnumerable<OnlineStore.Model.Context.ecom_Categories>
+@{int total = 0;
+}
+
+
+<ul class="pcoded-submenu">
+    @foreach (var cate in Model)
+    {
+        <li>
+            <a style="text-decoration:none;" href="@Url.Action("Index1","Product",new {Area="Admin", id=cate.Id})">
+                <span class="pcoded-mtext">@cate.Name</span>
+                <span class="badge badge-inverse-primary">
+                    @{int count = cate.ecom_Products.Where(x=>x.Status != 2).Count();
+            total += count;
+                    }
+                    @count
+                </span>
+            </a>
+        </li>
+    }
+    <li>
+        <a class="left-category-link-displayproduct left-menu-product" href="@Url.Action("Index1","Product",new {Area="Admin", id=0})">
+            Tất Cả <span class="badge badge-inverse-primary">@ViewBag.total</span>
+        </a>
+    </li>
+
+</ul>
+
+
