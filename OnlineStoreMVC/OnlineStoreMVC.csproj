@@ -1407,6 +1407,8 @@
     <Content Include="Areas\Admin\Scripts\StyleSheet1.css" />
     <Content Include="Areas\Admin\Scripts\TreeTableCss.css" />
     <Content Include="Areas\Admin\Scripts\verify\verifyCategory.js" />
+    <Content Include="Areas\Admin\Scripts\verify\verifyCMSCategories.js" />
+    <Content Include="Areas\Admin\Scripts\verify\verifyCMSNews.js" />
     <Content Include="Areas\Admin\Scripts\verify\verifyProduct.js" />
     <Content Include="Areas\Admin\template\.gitignore" />
     <Content Include="Areas\Admin\template\build\css\custom.css" />
@@ -7389,6 +7391,9 @@
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Verify\Products.cshtml" />
     <Content Include="Areas\Admin\Views\Verify\Categories.cshtml" />
+    <Content Include="Areas\Admin\Views\Verify\CMSCategories.cshtml" />
+    <Content Include="Areas\Admin\Views\Verify\CMSNews.cshtml" />
+    <Content Include="Areas\Admin\Views\Verify\NewDetail.cshtml" />
     <None Include="Properties\PublishProfiles\xaviadecor.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DisplayProduct\DetailProduct.js" />

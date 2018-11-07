@@ -21,5 +21,7 @@ namespace OnlineStore.Service.Interfaces
         bool UpdateCMSNewsCountView(int? newsId);
         CMSNewsView GetCMSNewsById(int? newsId);
         IList<CMSNewsView> GetCMSNewsTy(int categoryId = 0);
+        IList<CMSNewsView> GetWaitingCMSNews();
+        bool VerifyCMSNews(int id, int status);
     }
 }

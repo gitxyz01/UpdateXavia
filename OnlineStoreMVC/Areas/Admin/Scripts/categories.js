@@ -108,6 +108,7 @@ var CategoryController = {
                             id: item.Id,
                             SortOrder: item.SortOrder,
                             Description: item.Description,
+                            CreateBy: item.CreatedBy,
                             CategoryName: item.Name,
                             CreatedDate: item.CreatedDate,
                             CategoryId: item.Id
@@ -119,6 +120,7 @@ var CategoryController = {
                             id: item.Id,
                             SortOrder: item.SortOrder,
                             Description: item.Description,
+                            CreateBy: item.CreatedBy,
                             CategoryName: item.Name,
                             CreatedDate: item.CreatedDate,
                             CategoryId: item.Id

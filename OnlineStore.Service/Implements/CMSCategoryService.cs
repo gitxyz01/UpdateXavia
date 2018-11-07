@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OnlineStore.Model.Mapper;
+using OnlineStore.Infractructure.Utility;
 
 namespace OnlineStore.Service.Implements
 {
@@ -17,9 +18,13 @@ namespace OnlineStore.Service.Implements
         {
             using (var db = new OnlineStoreMVCEntities())
             {
-                totalItems = db.cms_Categories.Count(x => x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.Delete);
+                totalItems = db.cms_Categories.Count(x => x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.Delete
+                || x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingCreate
+                );
 
-                return db.cms_Categories.Where(x => x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.Delete)
+                return db.cms_Categories.Where(x => x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.Delete
+                || x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingCreate
+                )
                     .OrderBy(x => x.ParentId).ThenBy(x => x.SortOrder)
                     .Skip(pageSize * (pageNumber - 1)).Take(pageSize)
                     .Select(x => new CMSCategoryView
@@ -47,7 +52,7 @@ namespace OnlineStore.Service.Implements
                         Description = categoryView.Description,
                         Url = categoryView.Url,
                         SortOrder = categoryView.SortOrder,
-                        Status = (int)OnlineStore.Infractructure.Utility.Define.Status.Active,
+                        Status = (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingCreate,
                         CreatedDate = DateTime.Now,
                         ModifiedDate = DateTime.Now
                     };
@@ -156,7 +161,7 @@ namespace OnlineStore.Service.Implements
                 using (var db = new OnlineStoreMVCEntities())
                 {
                     var category = db.cms_Categories.Find(id);
-                    category.Status = (int)OnlineStore.Infractructure.Utility.Define.Status.Delete;
+                    category.Status = (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingDelete;
                     db.SaveChanges();
 
                     return true;
@@ -174,7 +179,7 @@ namespace OnlineStore.Service.Implements
             {
                
 
-                return db.cms_Categories.Where(x => x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.Delete)
+                return db.cms_Categories.Where(x => x.Status != (int)Define.Status.Delete && x.Status != (int)Define.Status.WaitingCreate)
                     .OrderBy(x => x.ParentId).ThenBy(x => x.SortOrder)
                     .Select(x => new CMSCategoryView
                     {
@@ -193,8 +198,48 @@ namespace OnlineStore.Service.Implements
         {
             using (var db = new OnlineStoreMVCEntities())
             {
-                return db.cms_Categories.Where(x => x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.Delete)
+                return db.cms_Categories.Where(x => x.Status != (int)Define.Status.Delete && x.Status != (int)Define.Status.WaitingCreate)
                     .OrderBy(x => x.ParentId).ThenBy(x => x.SortOrder).ToList();
+            }
+        }
+
+        public IList<CMSCategoryView> GetCMSCategoriesWaiting()
+        {
+            using (var db = new OnlineStoreMVCEntities())
+            {
+
+
+                return db.cms_Categories.Where(x => x.Status == (int)Define.Status.WaitingDelete || x.Status == (int)Define.Status.WaitingCreate)
+                    .OrderBy(x => x.ParentId).ThenBy(x => x.SortOrder)
+                    .Select(x => new CMSCategoryView
+                    {
+                        Id = x.Id,
+                        ParentId = x.ParentId,
+                        Title = x.Title,
+                        Url = x.Url,
+                        Description = x.Description,
+                        Status = x.Status,
+                        totalNews = x.cms_News.Count()
+                    }).ToList();
+            }
+        }
+
+        public bool VerifyCMSCategory(int id, int status)
+        {
+            try
+            {
+                using (var db = new OnlineStoreMVCEntities())
+                {
+                    var category = db.cms_Categories.Find(id);
+                    category.Status = status;
+                    db.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

@@ -1,7 +1,12 @@
 ﻿
 
-var NewCategoryController = {
+var VerifyController = {
     init: function () {
+        VerifyController.registerEvent();
+        VerifyController.datatable();
+
+    },
+    datatable: function () {
         var table = $("#table").DataTable({
 
             "searching": true,
@@ -25,8 +30,7 @@ var NewCategoryController = {
             columnDefs: [
 
                 { responsivePriority: 2, targets: -1 },
-                 { responsivePriority: 3, targets: -2 },
-
+                 { responsivePriority: 3, targets: -2 }
             ],
 
             "language": {
@@ -41,23 +45,36 @@ var NewCategoryController = {
                 },
                 "zeroRecords": "Không Có Bản Ghi Nào Được Tìm Thấy",
                 "infoEmpty": "Không Có Bản Ghi Nào Hiển Thị",
-                "infoFiltered": "(Trong Tổng Cộng _MAX_ Bản Ghi)",
+                "infoFiltered": "(Trong Tổng Cộng _MAX_ Bản Ghi)"
+            }
+        });
+
+    },
+    verify: function (id, status) {
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/Verify/VerifyCMSCategory',
+            data: {
+                id: id,
+                status: status
             },
-        });
-        $(document).ready(function () {
-            $(".select2insidemodal").select2({
-                dropdownParent: $("#modalAddUpdate")
-            });
-        });
-        NewCategoryController.registerEvent();
+            success: function (response) {
+                $('#modalDelete').modal('hide');
+                window.location.replace("/Admin/Verify/CMSCategories");
+                VerifyController.notify("top", "right", '', "success", "", "");
 
-
+            },
+            error: function (result) {
+                $('#resultDelete').addClass('btn-danger fa fa-exclamation-triangle')
+                    .text('Duyệt Sản Phẩm Thất Bại');
+            }
+        });
     },
     notify: function (from, align, icon, type, animIn, animOut) {
         $.growl({
             icon: icon,
-            title: ' Xóa ',
-            message: 'thương hiệu thành công',
+            title: ' Duyệt ',
+            message: 'Danh Mục Tin Tức Thành Công',
             url: ''
         }, {
             element: 'body',
@@ -96,46 +113,55 @@ var NewCategoryController = {
     },
 
 
+    resetFormCreate: function () {
+        $('#resultCreate').removeClass()
+            .addClass('btn btn-success fa fa-exclamation-triangle')
+                           .text('Bạn Muốn Đăng Danh Mục Tin Tức Phẩm Này?');
+    },
     resetFormDelete: function () {
-        $('#submitDelete').show();
         $('#resultDelete').removeClass()
             .addClass('btn btn-warning fa fa-exclamation-triangle')
-                           .text('Bạn Muốn Xóa Thương Hiệu Này?');
+                           .text('Bạn Muốn Xóa Danh Mục Tin Tức Này?');
     },
 
 
 
 
     registerEvent: function () {
-        $(document).off('submit').on('submit', '#frm-Delete', function (e) {
-            e.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: '/Admin/Brand/Delete',
-                data: $(this).serialize(),
-                success: function (response) {
-                    $('#modalDelete').modal('hide');
-                    window.location.replace("/Admin/Brand/Index");
-                    NewCategoryController.notify("top", "right", '', "success", "", "");
 
-                },
-                error: function (result) {
-                    $('#resultDelete').addClass('btn-danger fa fa-exclamation-triangle')
-                        .text('xóa thương hiệu thất bại');
-                }
-            });
+        $(document).on('click', '#AcceptCreate', function (e) {
+            e.preventDefault();
+            VerifyController.verify($('.IdCreate').val(), 1);
         });
 
-
-        $('.btn-Delete').off('click').on('click', function () {
-            $('#modalDelete').modal('show');
-            console.log($(this).data('id'));
+        $(document).on('click', '#CancelCreate', function (e) {
+            e.preventDefault();
+            VerifyController.verify($('.IdCreate').val(), 2);
+        });
+        $(document).on('click', '#AcceptDelete', function (e) {
+            e.preventDefault();
+            VerifyController.verify($('.IdDelete').val(), 2);
+        });
+        $(document).on('click', '#CancelDelete', function (e) {
+            e.preventDefault();
+            VerifyController.verify($('.IdDelete').val(), 1);
+        });
+        $('.showCreate').off('click').on('click', function () {
+            $('#modalCreate').modal('show');
             var id = $(this).data('id');
-            $('#hidenId').val(id);
-            NewCategoryController.resetFormDelete();
+            console.log(id);
+            $('.IdCreate').val(id);
+            VerifyController.resetFormCreate();
+        });
+        $('.showDelete').off('click').on('click', function () {
+            $('#modalDelete').modal('show');
+            var id = $(this).data('id');
+            console.log(id);
+            $('.IdDelete').val(id);
+            VerifyController.resetFormDelete();
         });
     }
-}
+};
 
-NewCategoryController.init();
+VerifyController.init();
 

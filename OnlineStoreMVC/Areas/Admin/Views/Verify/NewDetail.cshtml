@@ -1,0 +1,39 @@
+﻿@model OnlineStore.Model.ViewModel.CMSNewsView
+@{
+    ViewBag.Title = "NewDetail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutTy.cshtml";
+}
+
+<div class="pcoded-inner-content">
+    <!-- Page-body start -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2></h2>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <ul class="breadcrumb-title">
+                                <li class="breadcrumb-item">
+                                    <a href="/Admin/Home/NewLayout"> <i class="feather icon-home"></i> </a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="#!">Danh Sách Danh Mục Chờ Duyệt</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div id="simpletable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                            <div class="col-xs-12 col-sm-12">
+                                @Html.Raw(Model.ContentNews);
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

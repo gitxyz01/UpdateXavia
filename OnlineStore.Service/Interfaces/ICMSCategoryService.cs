@@ -12,11 +12,13 @@ namespace OnlineStore.Service.Interfaces
     {
         IList<CMSCategoryView> GetCMSCategories(int pageNumber, int pageSize, out int totalItems);
         IList<CMSCategoryView> GetCMSCategoriesTy();
+        IList<CMSCategoryView> GetCMSCategoriesWaiting();
         IList<cms_Categories> Getcms_CategoriesTy();
         bool AddCMSCategory(CMSCategoryView categoryView);
         bool EditCMSCategory(CMSCategoryView categoryView);
         bool DeleteCMSCategory(int id);
         CMSCategoryView GetCategoryById(int? categoryId);
         IList<CMSCategoryView> GetChildCategoriesByParentId(int? parentId);
+        bool VerifyCMSCategory(int id, int status);
     }
 }

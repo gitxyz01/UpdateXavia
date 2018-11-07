@@ -68,7 +68,7 @@ var NewCategoryController = {
                 data: $(this).serialize(),
                 success: function (response) {
                     $('#modalDelete').modal('hide');
-                    window.location.replace("/Admin/CMSNews/Index1");
+                    window.location.replace("/Admin/CMSNews/Index");
                     NewCategoryController.notify("top", "right", '', "success", "", "");
 
                 },

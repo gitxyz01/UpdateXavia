@@ -1,0 +1,153 @@
+﻿@model List<OnlineStore.Model.ViewModel.CMSCategoryView>
+@{
+    ViewBag.Title = "CMSCategories";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutTy.cshtml";
+}
+
+<div class="pcoded-inner-content">
+    <!-- Page-body start -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2></h2>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <ul class="breadcrumb-title">
+                                <li class="breadcrumb-item">
+                                    <a href="/Admin/Home/NewLayout"> <i class="feather icon-home"></i> </a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="#!">Danh Sách Danh Mục Chờ Duyệt</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div id="simpletable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                            <div class="col-xs-12 col-sm-12">
+                                <table id="table" class="table table-striped table-bordered nowrap dataTable" role="grid" aria-describedby="datatable_info">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Tiêu đề
+                                            </th>
+                                            <th>
+                                                Mô tả
+                                            </th>
+                                            <th style="width: 100px;">
+                                                Trạng Thái
+                                            </th>
+                                            <th style="width: 100px;"> Thao Tác</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Title)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Description)
+                                                </td>
+                                                @*<td>
+                                                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                                                    </td>*@
+                                                <td>
+                                                    @if (item.Status == 3)
+                                                    {
+                                                        <label class="label label-success">Chờ Đăng</label>
+                                                    }
+                                                    @if (item.Status == 4)
+                                                    {
+                                                        <label class=" label label-warning">Chờ Xóa</label>
+                                                    }
+                                                </td>
+                                                <td class="center-text">
+                                                    @if (item.Status == 3)
+                                                    {
+                                                        <a class="btn btn hor-grd btn-grd-info  btn-sm icofont icofont-check-circled showCreate" data-id="@item.Id">Duyệt</a>
+                                                    }
+                                                    @if (item.Status == 4)
+                                                    {
+                                                        <a class="btn btn hor-grd btn-grd-info  btn-sm icofont icofont-check-circled showDelete" data-id="@item.Id">Duyệt</a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal Verify Create-->
+<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="resultCreate" style="font-size:1.25em;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div>
+                    <form action="@Url.Action("Delete", "Admin/product/delete",new { area="Admin"})" method="get">
+                        <input class="IdCreate"
+                               type="hidden"
+                               name="id"
+                               value="0" />
+                        <button type="button" class="btn btn-primary" id="AcceptCreate">
+                            Duyệt
+                        </button>
+                        <button type="button" class="btn btn-default" id="CancelCreate">
+                            Hủy
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Verify Delete-->
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="resultDelete" style="font-size:1.25em;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div>
+                    <form action="@Url.Action("Delete", "Admin/product/delete",new { area="Admin"})" method="get">
+                        <input class="IdDelete"
+                               type="hidden"
+                               name="id"
+                               value="0" />
+                        <button type="button" class="btn btn-primary" id="AcceptDelete">
+                            Duyệt
+                        </button>
+                        <button type="button" class="btn btn-default" id="CancelDelete">
+                            Hủy
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Areas/Admin/Scripts/verify/verifyCMSCategories.js"></script>
+}

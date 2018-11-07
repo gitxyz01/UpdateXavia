@@ -19,7 +19,7 @@ namespace OnlineStore.Service.Implements
             {
                 totalItems = db.cms_News.Count(x => x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.Delete);
 
-                return db.cms_News.Where(x => x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.Delete)
+                return db.cms_News.Where(x => x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.Delete && x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingCreate)
                     .OrderByDescending(x => x.SortOrder).ThenByDescending(x => x.CreatedDate)
                     .Skip(pageSize * (pageNumber - 1)).Take(pageSize)
                     .Select(x => new CMSNewsView
@@ -53,7 +53,8 @@ namespace OnlineStore.Service.Implements
 
                 foreach (var category in childCategories)
                 {
-                    news.AddRange(db.cms_News.Where(x => x.CategoryId == category.Id && x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active)
+                    news.AddRange(db.cms_News.Where(x => x.CategoryId == category.Id && x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active
+                    ||  x.CategoryId == category.Id && x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingDelete)
                         .Select(x => new CMSNewsView
                     {
                         Id = x.Id,
@@ -81,7 +82,9 @@ namespace OnlineStore.Service.Implements
         {
             using (var db = new OnlineStoreMVCEntities())
             {
-                var news = db.cms_News.Where(x => x.CategoryId == categoryId && x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active)
+                var news = db.cms_News.Where(x => x.CategoryId == categoryId && x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active
+                || x.CategoryId == categoryId && x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingDelete
+                )
                     .Select(x => new CMSNewsView
                     {
                         Id = x.Id,
@@ -109,7 +112,7 @@ namespace OnlineStore.Service.Implements
         {
             using (var db = new OnlineStoreMVCEntities())
             {
-                return db.cms_News.Where(x => x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active)
+                return db.cms_News.Where(x => x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active || x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingDelete)
                     .OrderByDescending(x => x.CreatedDate)
                     .Take(3)
                     .Select(x => new CMSNewsView
@@ -136,7 +139,9 @@ namespace OnlineStore.Service.Implements
             using (var db = new OnlineStoreMVCEntities())
             {
                 var news = db.cms_News.Find(id);
-                return db.cms_News.Where(x => x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active && x.CategoryId == news.CategoryId && x.Id != news.Id)
+                return db.cms_News.Where(x => x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active && x.CategoryId == news.CategoryId && x.Id != news.Id
+                || x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingDelete && x.CategoryId == news.CategoryId && x.Id != news.Id
+                )
                     .OrderByDescending(x => x.CreatedDate)
                     .Take(3)
                     .Select(x => new CMSNewsView
@@ -162,7 +167,9 @@ namespace OnlineStore.Service.Implements
         {
             using (var db = new OnlineStoreMVCEntities())
             {
-                return db.cms_News.Where(x => x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active && x.DisplayHomePage == true)
+                return db.cms_News.Where(x => x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active && x.DisplayHomePage == true
+                || x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingDelete && x.DisplayHomePage == true
+                )
                     .OrderByDescending(x => x.CreatedDate)
                     .Take(3)
                     .Select(x => new CMSNewsView
@@ -200,7 +207,7 @@ namespace OnlineStore.Service.Implements
                         Tags = cmsNewsView.Tags,
                         TotalView = cmsNewsView.TotalView,
                         DisplayHomePage = cmsNewsView.DisplayHomePage,
-                        Status = (int)OnlineStore.Infractructure.Utility.Define.Status.Active,
+                        Status = (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingCreate,
                         SortOrder = cmsNewsView.SortOrder,
                         CreatedDate = DateTime.Now,
                         ModifiedDate = DateTime.Now
@@ -303,7 +310,7 @@ namespace OnlineStore.Service.Implements
                 using (var db = new OnlineStoreMVCEntities())
                 {
                     var news = db.cms_News.Find(id);
-                    news.Status = (int)OnlineStore.Infractructure.Utility.Define.Status.Delete;
+                    news.Status = (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingDelete;
                     db.SaveChanges();
 
                     return true;
@@ -319,8 +326,11 @@ namespace OnlineStore.Service.Implements
         {
             using (var db = new OnlineStoreMVCEntities())
             {              
-                return db.cms_News.Where(x => x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.Delete && categoryId==0 ||
-                 x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.Delete && x.CategoryId == categoryId)
+                return db.cms_News.Where(x => x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active && categoryId==0 ||
+                x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Deactive && categoryId == 0 ||
+                 x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active && x.CategoryId == categoryId ||
+                 x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Deactive && x.CategoryId == categoryId
+                 )
                     .OrderByDescending(x => x.SortOrder).ThenByDescending(x => x.CreatedDate)
                     .Select(x => new CMSNewsView
                     {
@@ -336,6 +346,49 @@ namespace OnlineStore.Service.Implements
                         Status = x.Status,
                         CreatedDate = x.CreatedDate
                     }).ToList();
+            }
+        }
+
+        public IList<CMSNewsView> GetWaitingCMSNews()
+        {
+            using (var db = new OnlineStoreMVCEntities())
+            {
+                return db.cms_News.Where(x => x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingCreate||
+                x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingDelete)
+                    .OrderByDescending(x => x.SortOrder).ThenByDescending(x => x.CreatedDate)
+                    .Select(x => new CMSNewsView
+                    {
+                        Id = x.Id,
+                        CategoryId = x.CategoryId,
+                        CategoryTitle = x.cms_Categories.Title,
+                        Title = x.Title,
+                        SubTitle = x.SubTitle,
+                        ContentNews = x.ContentNews,
+                        Authors = x.Authors,
+                        Tags = x.Tags,
+                        TotalView = x.TotalView,
+                        Status = x.Status,
+                        CreatedDate = x.CreatedDate
+                    }).ToList();
+            }
+        }
+
+        public bool VerifyCMSNews(int id, int status)
+        {
+            try
+            {
+                using (var db = new OnlineStoreMVCEntities())
+                {
+                    var news = db.cms_News.Find(id);
+                    news.Status = status;
+                    db.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }
