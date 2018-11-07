@@ -326,10 +326,10 @@ namespace OnlineStore.Service.Implements
         {
             using (var db = new OnlineStoreMVCEntities())
             {              
-                return db.cms_News.Where(x => x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active && categoryId==0 ||
-                x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Deactive && categoryId == 0 ||
-                 x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active && x.CategoryId == categoryId ||
-                 x.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Deactive && x.CategoryId == categoryId
+                return db.cms_News.Where(x => x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.Delete && categoryId==0 &&
+                x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingCreate && categoryId == 0 ||
+                 x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.Delete && x.CategoryId == categoryId &&
+                 x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingCreate && x.CategoryId == categoryId
                  )
                     .OrderByDescending(x => x.SortOrder).ThenByDescending(x => x.CreatedDate)
                     .Select(x => new CMSNewsView

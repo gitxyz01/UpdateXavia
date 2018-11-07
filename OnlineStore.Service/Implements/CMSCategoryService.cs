@@ -121,7 +121,8 @@ namespace OnlineStore.Service.Implements
 
             using (var db = new OnlineStoreMVCEntities())
             {
-                var categories = db.cms_Categories.Where(x => x.ParentId == parentId.Value)
+                var categories = db.cms_Categories.Where(x => x.ParentId == parentId.Value && x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.Delete && x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingCreate
+                )
                     .Select(x => new CMSCategoryView
                     {
                         Id = x.Id,
@@ -131,7 +132,7 @@ namespace OnlineStore.Service.Implements
                         Description = x.Description,
                         Status = x.Status,
                         SortOrder = x.SortOrder
-                    });
+                    }).ToList();
 
                 if (categories.Count() == 0)
                 {
@@ -189,7 +190,7 @@ namespace OnlineStore.Service.Implements
                         Url = x.Url,
                         Description = x.Description,
                         Status = x.Status,
-                        totalNews = x.cms_News.Count()
+                        totalNews = x.cms_News.Where( c=> c.Status != (int)Define.Status.Delete && c.Status != (int)Define.Status.WaitingCreate).Count()
                     }).ToList();
             }
         }

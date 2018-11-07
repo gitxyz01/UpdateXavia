@@ -136,9 +136,9 @@
                                     </div>
                                     <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                                         @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-                                    @Html.AntiForgeryToken()
-}
+                                        {
+                                            @Html.AntiForgeryToken()
+                                        }
                                         <li class="feather icon-settings"> @Html.ActionLink("Cài Đặt", "Index", "Manage", new { Area = "" }, htmlAttributes: new { title = "Manage" })  </li>
                                         <li class="feather icon-log-out"><a href="javascript:document.getElementById('logoutForm').submit()">Đăng Xuất</a></li>
                                     </ul>
@@ -158,55 +158,55 @@
                             <div class="pcoded-navigatio-lavel">Navigation</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 @if (User.IsInRole("Administrator"))
-    {
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                                        <span class="pcoded-mtext">Quản Trị Admin</span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="/Admin/Verify/Categories">
-                                                <span class="pcoded-mtext">Duyệt Danh Mục Sản Phẩm</span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="/Admin/Verify/Products">
-                                                <span class="pcoded-mtext">Duyệt Sản Phẩm</span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="/Admin/Verify/CmsCategories">
-                                                <span class="pcoded-mtext">Duyệt Danh Mục Tin Tức</span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="/Admin/Verify/CMSNews">
-                                                <span class="pcoded-mtext">Duyệt Tin Tức</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                {
+                                    <li class="pcoded-hasmenu">
+                                        <a href="javascript:void(0)">
+                                            <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                            <span class="pcoded-mtext">Quản Trị Admin</span>
+                                        </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class=" ">
+                                                <a href="/Admin/Verify/Categories">
+                                                    <span class="pcoded-mtext">Duyệt Danh Mục Sản Phẩm</span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="/Admin/Verify/Products">
+                                                    <span class="pcoded-mtext">Duyệt Sản Phẩm</span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="/Admin/Verify/CmsCategories">
+                                                    <span class="pcoded-mtext">Duyệt Danh Mục Tin Tức</span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="/Admin/Verify/CMSNews">
+                                                    <span class="pcoded-mtext">Duyệt Tin Tức</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
 
-                            <li class="pcoded-hasmenu">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-shield"></i></span>
-                                    <span class="pcoded-mtext">Thành Viên</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class="">
-                                        <a href="/Admin/User/Index">
-                                            <span class="pcoded-mtext">Danh Sách</span>
+                                    <li class="pcoded-hasmenu">
+                                        <a href="javascript:void(0)">
+                                            <span class="pcoded-micon"><i class="feather icon-shield"></i></span>
+                                            <span class="pcoded-mtext">Thành Viên</span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="/Admin/User/Index">
+                                                    <span class="pcoded-mtext">Danh Sách</span>
+                                                </a>
+                                            </li>
+                                            <li class=" ">
+                                                <a href="/Admin/Role/Index">
+                                                    <span class="pcoded-mtext">Phân Quyền</span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class=" ">
-                                        <a href="/Admin/Role/Index">
-                                            <span class="pcoded-mtext">Phân Quyền</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-}
+                                }
                                 <li class="">
                                     <a href="/Admin/Category/Categories">
                                         <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
@@ -385,7 +385,8 @@
     <script src="~/Areas/Admin/adminty/files/assets/pages/advance-elements/select2-custom.js"></script>
     <script src="~/Areas/Admin/adminty/files/assets/pages/data-table/js/data-table-custom.js"></script>
     <script src="~/Areas/Admin/adminty/files/assets/js/pcoded.min.js"></script>
-    <script src="~/Areas/Admin/adminty/files/assets/js/menu/menu-sidebar-fixed.js"></script>
+    <script src="~/Areas/Admin/adminty/files/assets/js/menu/menu-sidebar-static.js"></script>
+    @*<script src="~/Areas/Admin/adminty/files/assets/js/menu/menu-sidebar-fixed.js"></script>*@
     <script src="~/Areas/Admin/adminty/files/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="~/Areas/Admin/adminty/files/assets/js/script.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -397,6 +398,7 @@
   gtag('js', new Date());
 
   gtag('config', 'UA-23581568-13');
+
     </script>
     @RenderSection("scripts", required: false)
 </body>
