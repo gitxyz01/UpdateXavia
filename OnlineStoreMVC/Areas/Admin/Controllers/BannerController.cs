@@ -21,16 +21,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         private IBannerService _bannerService = new BannerService();
         private IProductService _productService = new ProductService();
 
-        // GET: /Admin/Banner/
-        public ActionResult Index(string keyword, int page = 1)
-        {
-            int totalItems = 0;
-            var banners = _bannerService.GetBanners(page, OnlineStore.Infractructure.Utility.Define.PAGE_SIZE, out totalItems);
-
-            IPagedList<BannerViewModel> pageBanners = new StaticPagedList<BannerViewModel>(banners, page, OnlineStore.Infractructure.Utility.Define.PAGE_SIZE, totalItems);
-            return View(pageBanners);
-        }
-
         // GET: /Admin/Banner/Create
         public ActionResult Create()
         {
@@ -145,7 +135,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Index1()
+        public ActionResult Index()
         {
             var banners = _bannerService.GetBannersTy();          
             return View(banners);

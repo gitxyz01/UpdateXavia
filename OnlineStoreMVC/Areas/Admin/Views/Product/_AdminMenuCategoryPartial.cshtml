@@ -7,7 +7,7 @@
     @foreach (var cate in Model)
     {
         <li>
-            <a style="text-decoration:none;" href="@Url.Action("Index1","Product",new {Area="Admin", id=cate.Id})">
+            <a style="text-decoration:none;" href="@Url.Action("Index","Product",new {Area="Admin", id=cate.Id})">
                 <span class="pcoded-mtext">@cate.Name</span>
                 <span class="badge badge-inverse-primary">
                     @{int count = cate.ecom_Products.Where(x=>x.Status != 2).Count();
@@ -19,7 +19,7 @@
         </li>
     }
     <li>
-        <a class="left-category-link-displayproduct left-menu-product" href="@Url.Action("Index1","Product",new {Area="Admin", id=0})">
+        <a class="left-category-link-displayproduct left-menu-product" href="@Url.Action("Index","Product",new {Area="Admin", id=0})">
             Tất Cả <span class="badge badge-inverse-primary">@ViewBag.total</span>
         </a>
     </li>

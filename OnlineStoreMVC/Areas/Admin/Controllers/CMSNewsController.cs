@@ -44,14 +44,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         }
 
         // GET: /Admin/CMSNews/
-        public ActionResult Index(string keyword, int page = 1)
-        {
-            int totalItems = 0;
-            var categories = _cmsNewsService.GetCMSNews(page, OnlineStore.Infractructure.Utility.Define.PAGE_SIZE, out totalItems);
 
-            IPagedList<CMSNewsView> pageNews = new StaticPagedList<CMSNewsView>(categories, page, OnlineStore.Infractructure.Utility.Define.PAGE_SIZE, totalItems);
-            return View(pageNews);
-        }
 
         // GET: /Admin/CMSNews/Create
         public ActionResult Create()
@@ -192,7 +185,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
 
             return View();
         }
-        public ActionResult Index1(int categoryId = 0)
+        public ActionResult Index(int categoryId = 0)
         {
             var news = _cmsNewsService.GetCMSNewsTy(categoryId);
             foreach(var item in news)

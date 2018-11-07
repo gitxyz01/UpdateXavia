@@ -140,27 +140,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// <param name="keyword"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-          public ActionResult Index(string keyword, int page = 1)
-        {
-            int totalItems = 0;
-            var products = service.GetProducts(page, OnlineStore.Infractructure.Utility.Define.PAGE_SIZE, out totalItems);
 
-            IPagedList<ProductSummaryViewModel> pageProducts = new StaticPagedList<ProductSummaryViewModel>(products, page, OnlineStore.Infractructure.Utility.Define.PAGE_SIZE, totalItems);
-            return View(products);
-    }
-
-
-        /// <summary>
-        /// Return Create view to let user input information of new product
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Create()
-        {
-            PopulateStatusDropDownList();
-            //ViewBag.ProductGroupId = PopulateListProductGroup();
-            ViewBag.BrandId = PopulateListBrand();
-            return View();
-        }
 
         /// <summary>
         /// Create a product
@@ -202,7 +182,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
                             // Add product
                             productRequest.CoverImageId = imageId;
                             service.AddProduct(productRequest);
-                            return RedirectToAction("Index1");
+                            return RedirectToAction("Index");
                         }
                         else
                         {
@@ -219,60 +199,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         }
 
         /// <summary>
-        /// Get information of product and return Edit View for user update data for product
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ecom_Products product = service.GetProductById((int)id);
-            int[] listCategory;
-            int[] listProductGroup;
-
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-
-            // Populate status dropdownlist
-            if (product.Status != null)
-            {
-                var status = (Define.Status)product.Status;
-                PopulateStatusDropDownList(status);
-            }
-            else
-            {
-                PopulateStatusDropDownList();
-            }
-            // Populate category dropdownlist
-            if (product.ecom_Categories.Count > 0)
-            {
-                listCategory = product.ecom_Categories.Select(c => c.Id).ToArray();
-            }
-            else
-            {
-                listCategory = null;
-            }
-            // Populate product group dropdownlist
-            if (product.ecom_ProductGroups.Count > 0)
-            {
-                listProductGroup = product.ecom_ProductGroups.Select(c => c.Id).ToArray();
-            }
-            else
-            {
-                listProductGroup = null;
-            }
-            ViewBag.BrandId = PopulateListBrand(product.BrandId);
-            ViewBag.Categories = PopulateListCategory(listCategory);
-            ViewBag.ProductGroups = PopulateListProductGroup(listProductGroup);
-            return View(product.ConvertToProductFullView());
-        }
-
-        /// <summary>
         /// Update product
         /// </summary>
         /// <param name="product">information of product need to updated</param>
@@ -285,7 +211,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
                 bool isSuccess = service.UpdateProduct(product);
                 if (isSuccess)
                 {
-                    return RedirectToAction("Index1");
+                    return RedirectToAction("Index");
                 }
             }
             if (product.Status != null)
@@ -402,7 +328,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
                 ModelState.AddModelError("ServerError", "Delete product fail!");
             }
 
-            return RedirectToAction("Index1");
+            return RedirectToAction("Index");
         }
 
         /// <summary>
@@ -447,7 +373,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             return PartialView("ListImageProduct", listImageViewModels);
         }
 
-        public ActionResult Index1(int id =0)
+        public ActionResult Index(int id =0)
         {
             var products = service.GetListProductsAdminTy(id);
             return View(products);
@@ -463,14 +389,14 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         //      JsonRequestBehavior.AllowGet
         //  );
         //}
-        public ActionResult Create1()
+        public ActionResult Create()
         {
             PopulateStatusDropDownList();
             //ViewBag.ProductGroupId = PopulateListProductGroup();
             ViewBag.BrandId = PopulateListBrand();
             return View();
         }
-        public ActionResult Edit1(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {

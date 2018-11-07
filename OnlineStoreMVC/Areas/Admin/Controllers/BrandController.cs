@@ -43,14 +43,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// <param name="keyword"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public ActionResult Index(string keyword, int page = 1)
-        {
-            int totalItems = 0;
-            var brands = brandService.GetBrands(page, OnlineStore.Infractructure.Utility.Define.PAGE_SIZE, out totalItems);
-
-            IPagedList<ecom_Brands> pageBrands = new StaticPagedList<ecom_Brands>(brands, page, OnlineStore.Infractructure.Utility.Define.PAGE_SIZE, totalItems);
-            return View(pageBrands);
-        }
         /// <summary>
         /// Details of brand
         /// </summary>
@@ -155,9 +147,9 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             {
                 ModelState.AddModelError("ServerError", "Delete brand fail!");
             }
-            return Redirect("Index1");
+            return Redirect("Index");
         }
-        public ActionResult Index1(string keyword, int page = 1)
+        public ActionResult Index(string keyword, int page = 1)
         {
             var brands = brandService.GetBrandsTy();
             return View(brands);

@@ -6463,7 +6463,6 @@
     <Content Include="Content\ckeditor\skins\moono\readme.md" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\ListImageProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_HeaderPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Profile\Create.cshtml" />
@@ -7347,7 +7346,6 @@
     <Content Include="Areas\Admin\template\vendors\validator\.bower.json" />
     <Content Include="Areas\Admin\template\vendors\validator\README.md" />
     <Content Include="Areas\Admin\template\vendors\validator\validator.jquery.json" />
-    <Content Include="Areas\Admin\Views\Product\Index1.cshtml" />
     <Content Include="Areas\Admin\adminty\files\assets\icon\feather\fonts\feather.woff" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutTy.cshtml" />
     <Content Include="Areas\Admin\adminty\files\assets\icon\icofont\fonts\icofont.ttf" />
@@ -7373,8 +7371,6 @@
     <Content Include="Areas\Admin\Scripts\plugins\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Areas\Admin\Scripts\plugins\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Areas\Admin\Scripts\plugins\ckeditor\skins\moono-lisa\readme.md" />
-    <Content Include="Areas\Admin\Views\Product\Create1.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Edit1.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_AdminMenuCategoryPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Categories.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
@@ -7384,13 +7380,10 @@
     <Content Include="Areas\Admin\Views\Role\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Role\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\CMSCategory\CmsCategories.cshtml" />
-    <Content Include="Areas\Admin\Views\CMSCategory\Index1.cshtml" />
-    <Content Include="Areas\Admin\Views\CMSCategory\Edit1.cshtml" />
-    <Content Include="Areas\Admin\Views\CMSCategory\Create1.cshtml" />
     <Content Include="Areas\Admin\Views\CMSNews\Index1.cshtml" />
     <Content Include="Areas\Admin\Views\CMSNews\_AdminNewsCategoryPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Brand\Index1.cshtml" />
     <Content Include="Areas\Admin\Views\Banner\Index1.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <None Include="Properties\PublishProfiles\xaviadecor.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DisplayProduct\DetailProduct.js" />

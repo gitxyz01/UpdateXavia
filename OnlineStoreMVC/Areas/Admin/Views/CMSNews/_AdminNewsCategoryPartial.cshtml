@@ -4,7 +4,7 @@
     @foreach (var cate in Model)
     {
         <li>
-            <a style="text-decoration:none;" href="@Url.Action("Index1","CMSNews",new {Area="Admin", categoryId=cate.Id})">
+            <a style="text-decoration:none;" href="@Url.Action("Index","CMSNews",new {Area="Admin", categoryId=cate.Id})">
                 <span class="pcoded-mtext">@cate.Title</span>
                 <span class="badge badge-inverse-primary">
                    @cate.totalNews
@@ -13,7 +13,7 @@
         </li>
     }
     <li>
-        <a class="left-category-link-displayproduct left-menu-product" href="@Url.Action("Index1","CMSNews",new {Area="Admin", categoryId=0})">
+        <a class="left-category-link-displayproduct left-menu-product" href="@Url.Action("Index","CMSNews",new {Area="Admin", categoryId=0})">
             Tất Cả <span class="badge badge-inverse-primary">@ViewBag.total</span>
         </a>
     </li>
