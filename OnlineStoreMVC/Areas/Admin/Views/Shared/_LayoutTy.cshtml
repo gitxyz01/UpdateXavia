@@ -31,8 +31,17 @@
     <link href="~/Areas/Admin/adminty/files/assets/icon/feather/css/feather.css" rel="stylesheet" />
     <!-- Data Table Css -->
     <link rel="stylesheet" type="text/css" href="~/Areas/Admin/adminty/files/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/adminty/files/assets/pages/data-table/css/buttons.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/adminty/files/bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
+        <link rel="stylesheet" type="text/css" href="~/Areas/Admin/adminty/files/assets/pages/data-table/css/buttons.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="~/Areas/Admin/adminty/files/bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
+
+    <!-- Datatables bs3 -->
+    @*<link href="~/Areas/Admin/datatable_bs3/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/datatable_bs3/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/datatable_bs3/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/datatable_bs3/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/datatable_bs3/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet" />*@
+
+
     <!-- Syntax highlighter Prism css -->
     <link href="~/Areas/Admin/adminty/files/assets/pages/prims/prism.css" rel="stylesheet" />
     <!-- Form css -->
@@ -338,16 +347,34 @@
     <script src="~/Areas/Admin/adminty/files/bower_components/modernizr_js/js/css-scrollbars.js"></script>
     <!-- data-table js -->
     <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="~/Areas/Admin/adminty/files/assets/pages/data-table/js/jszip.min.js"></script>
+        <script src="~/Areas/Admin/adminty/files/assets/pages/data-table/js/pdfmake.min.js"></script>
+        <script src="~/Areas/Admin/adminty/files/assets/pages/data-table/js/vfs_fonts.js"></script>
+        <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
-    <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="~/Areas/Admin/adminty/files/assets/pages/data-table/js/jszip.min.js"></script>
-    <script src="~/Areas/Admin/adminty/files/assets/pages/data-table/js/pdfmake.min.js"></script>
-    <script src="~/Areas/Admin/adminty/files/assets/pages/data-table/js/vfs_fonts.js"></script>
-    <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="~/Areas/Admin/adminty/files/bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    <!-- Datatables bs3 -->
+    @*<script src="~/Areas/Admin/datatable_bs3/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Admin/datatable_bs3/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Areas/Admin/datatable_bs3/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/Areas/Admin/datatable_bs3/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="~/Areas/Admin/datatable_bs3/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/Areas/Admin/datatable_bs3/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/Areas/Admin/datatable_bs3/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/Areas/Admin/datatable_bs3/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="~/Areas/Admin/datatable_bs3/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="~/Areas/Admin/datatable_bs3/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Areas/Admin/datatable_bs3/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Areas/Admin/datatable_bs3/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="~/Areas/Admin/datatable_bs3/jszip/dist/jszip.min.js"></script>
+    <script src="~/Areas/Admin/datatable_bs3/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/Areas/Admin/datatable_bs3/pdfmake/build/vfs_fonts.js"></script>*@
+
+
 
     <!-- i18next.min.js -->
     <script type="text/javascript" src="~/Areas/Admin/adminty/files/bower_components/i18next/js/i18next.min.js"></script>

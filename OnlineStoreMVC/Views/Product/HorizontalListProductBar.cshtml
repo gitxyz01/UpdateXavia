@@ -16,14 +16,14 @@
         <ul class="clearfix">
             @foreach (var item in @Model)
             {
-                <li class="product-box item product-box-horizontal-list-product-bar" style="float: left; list-style: none; position: relative; margin-right: 20px;">
-                    <a href="/Product/ProductDetails/@item.Id" class="lnk_img product-image product-image-horizontal-list-product-bar" title="@item.Name">
-                        <img src='@item.CoverImageUrl' alt="@item.Name" title="@item.Name">
-                    </a>
-                    <h5 itemprop="name" class="product-name">
-                        <a href="/Product/ProductDetails/@item.Id" title="@item.Name">@item.Name</a>
-                    </h5>
-                </li>
+            <li class="product-box item product-box-horizontal-list-product-bar" style="float: left; list-style: none; position: relative; margin-right: 20px;">
+                <a href="/Product/ProductDetails/@item.Id" class="lnk_img product-image product-image-horizontal-list-product-bar" title="@item.Name">
+                    <img src='@item.CoverImageUrl' alt="@item.Name" title="@item.Name">
+                </a>
+                <h5 itemprop="name" class="product-name">
+                    <a href="/Product/ProductDetails/@item.Id" title="@item.Name">@item.Name</a>
+                </h5>
+            </li>
             }
         </ul>
     </div>

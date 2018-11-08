@@ -42,6 +42,8 @@ public partial class ecom_OrderDetails
 
     public Nullable<System.DateTime> ModifiedDate { get; set; }
 
+    public string CreatedByTy { get; set; }
+
 
 
     public virtual ecom_Products ecom_Products { get; set; }

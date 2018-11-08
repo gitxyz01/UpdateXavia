@@ -23,6 +23,17 @@
                             @item.Price
                         </span>
                     </div>
+                    <div class="content_price" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+                        <form action="@Url.Action("AddToCart", "Cart")" method="post">
+                            <input type="hidden"
+                                   name="id"
+                                   value="@item.Id" />
+                            <button type="submit" class="btn btn-xs btn-success">
+                                Thêm Vào Giỏ Hàng
+                                <i class="glyphicon glyphicon-shopping-cart"></i>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </li>
         }

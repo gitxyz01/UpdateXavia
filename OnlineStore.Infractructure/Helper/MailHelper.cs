@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Web;
 
@@ -8,25 +9,44 @@ namespace OnlineStore.Infractructure.Helper
 {
     public class MailHelper
     {
-        public static void Send(string _mail, string title, string body)
+        public void Send(
+          string subject,
+          string receiver,
+          string body,
+          IList<string> cc,
+          IList<string> bcc
+          )
         {
-            try
+            using (var smtpClient = new SmtpClient())
             {
-                MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("mail.xxx");
-                SmtpServer.UseDefaultCredentials = true;
-                mail.From = new MailAddress("info@xxx");
-                mail.To.Add(_mail);
-                mail.Subject = title;
-                mail.Body = body;
-                mail.IsBodyHtml = true;
-                SmtpServer.Port = 25;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("info@xxx", "xxx");
+                smtpClient.Credentials = new NetworkCredential("skypexyz01@gmail.com", "rglzefqqpxvhldmo");
+                smtpClient.Host = "smtp.gmail.com";
+                smtpClient.Port = 587;
+                smtpClient.EnableSsl = true;
 
-                SmtpServer.Send(mail);
-            }
-            catch (Exception)
-            {
+                MailMessage message = new MailMessage();
+                message.From = new MailAddress("skypexyz01@gmail.com");
+                message.To.Add(receiver);
+
+                if (cc != null)
+                {
+                    foreach (var c in cc)
+                    {
+                        message.CC.Add(c);
+                    }
+                }
+                if (bcc != null)
+                {
+                    foreach (var b in bcc)
+                    {
+                        message.Bcc.Add(b);
+                    }
+                }
+                message.Subject = subject;
+                message.Body = body;
+                message.IsBodyHtml = true;
+                smtpClient.Send(message);
+
             }
         }
     }

@@ -103,16 +103,6 @@
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="Customer">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="250" />
-          <Property Name="Address" Type="nvarchar" MaxLength="250" />
-          <Property Name="OrderId" Type="int" />
-          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
-        </EntityType>
         <EntityType Name="ecom_Brands">
           <Key>
             <PropertyRef Name="Id" />
@@ -143,6 +133,16 @@
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="CreateTy" Type="nvarchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="ecom_Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="250" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+        </EntityType>
         <EntityType Name="ecom_OrderDetails">
           <Key>
             <PropertyRef Name="Id" />
@@ -159,27 +159,32 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedByTy" Type="nchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <EntityType Name="ecom_Orders">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderCode" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="OrderCode" Type="nchar" MaxLength="100" />
           <Property Name="UserId" Type="uniqueidentifier" />
-          <Property Name="TotalPrice" Type="decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="FeeShip" Type="decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="TotalOrder" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="TotalPrice" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="FeeShip" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="TotalOrder" Type="decimal" Precision="19" Scale="4" />
           <Property Name="OrderStatus" Type="int" Nullable="false" />
           <Property Name="OrderNote" Type="nvarchar" MaxLength="500" />
           <Property Name="NameOfRecipient" Type="nchar" MaxLength="200" />
           <Property Name="PhoneOfRecipient" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="AddressOfRecipient" Type="nvarchar" MaxLength="500" Nullable="false" />
-          <Property Name="Status" Type="int" />
+          <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="CreatedBy" Type="uniqueidentifier" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="EmailOfRecipient" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreateByTy" Type="nvarchar" MaxLength="100" />
+          <Property Name="ModifiedByTy" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="ecom_ProductGroups">
           <Key>
@@ -358,18 +363,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Customer_ecom_Orders">
-          <End Role="ecom_Orders" Type="Self.ecom_Orders" Multiplicity="0..1" />
-          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ecom_Orders">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Customer">
-              <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -435,6 +428,18 @@
             </Principal>
             <Dependent Role="ecom_OrderDetails">
               <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ecom_Orders_ecom_Customer">
+          <End Role="ecom_Customer" Type="Self.ecom_Customer" Multiplicity="1" />
+          <End Role="ecom_Orders" Type="Self.ecom_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ecom_Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ecom_Orders">
+              <PropertyRef Name="CustomerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -555,9 +560,9 @@
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cms_Categories" EntityType="Self.cms_Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cms_News" EntityType="Self.cms_News" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ecom_Brands" EntityType="Self.ecom_Brands" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ecom_Categories" EntityType="Self.ecom_Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ecom_Customer" EntityType="Self.ecom_Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ecom_OrderDetails" EntityType="Self.ecom_OrderDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ecom_Orders" EntityType="Self.ecom_Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ecom_ProductGroups" EntityType="Self.ecom_ProductGroups" Schema="dbo" store:Type="Tables" />
@@ -580,10 +585,6 @@
             <End Role="share_Images" EntitySet="share_Images" />
             <End Role="cms_News" EntitySet="cms_News" />
           </AssociationSet>
-          <AssociationSet Name="FK_Customer_ecom_Orders" Association="Self.FK_Customer_ecom_Orders">
-            <End Role="ecom_Orders" EntitySet="ecom_Orders" />
-            <End Role="Customer" EntitySet="Customer" />
-          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -603,6 +604,10 @@
           <AssociationSet Name="FK_ecom_OrderDetails_ecom_Products" Association="Self.FK_ecom_OrderDetails_ecom_Products">
             <End Role="ecom_Products" EntitySet="ecom_Products" />
             <End Role="ecom_OrderDetails" EntitySet="ecom_OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ecom_Orders_ecom_Customer" Association="Self.FK_ecom_Orders_ecom_Customer">
+            <End Role="ecom_Customer" EntitySet="ecom_Customer" />
+            <End Role="ecom_Orders" EntitySet="ecom_Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_ecom_Products_Categories_ecom_Categories" Association="Self.FK_ecom_Products_Categories_ecom_Categories">
             <End Role="ecom_Categories" EntitySet="ecom_Categories" />
@@ -712,29 +717,34 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ecom_Products" Relationship="Self.FK_ecom_OrderDetails_ecom_Products" FromRole="ecom_OrderDetails" ToRole="ecom_Products" />
           <NavigationProperty Name="ecom_Orders" Relationship="Self.FK_product_OrderDetails_product_Orders" FromRole="ecom_OrderDetails" ToRole="ecom_Orders" />
+          <Property Name="CreatedByTy" Type="String" Nullable="false" MaxLength="250" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="ecom_Orders">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderCode" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="OrderCode" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="UserId" Type="Guid" />
-          <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="FeeShip" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="TotalOrder" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FeeShip" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalOrder" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="OrderStatus" Type="Int32" Nullable="false" />
           <Property Name="OrderNote" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="NameOfRecipient" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
           <Property Name="PhoneOfRecipient" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AddressOfRecipient" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Status" Type="Int32" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="CreatedBy" Type="Guid" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="Guid" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ecom_OrderDetails" Relationship="Self.FK_product_OrderDetails_product_Orders" FromRole="ecom_Orders" ToRole="ecom_OrderDetails" />
-          <NavigationProperty Name="Customers" Relationship="OnlineStoreMVCModel.FK_Customer_ecom_Orders" FromRole="ecom_Orders" ToRole="Customer" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ecom_Customer" Relationship="OnlineStoreMVCModel.FK_ecom_Orders_ecom_Customer" FromRole="ecom_Orders" ToRole="ecom_Customer" />
+          <Property Name="EmailOfRecipient" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateByTy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedByTy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ecom_Products">
           <Key>
@@ -927,10 +937,10 @@
             <End Role="ecom_ProductGroups" EntitySet="ecom_ProductGroups" />
             <End Role="ecom_Products" EntitySet="ecom_Products" />
           </AssociationSet>
-          <EntitySet Name="Customers" EntityType="OnlineStoreMVCModel.Customer" />
-          <AssociationSet Name="FK_Customer_ecom_Orders" Association="OnlineStoreMVCModel.FK_Customer_ecom_Orders">
+          <EntitySet Name="ecom_Customer" EntityType="OnlineStoreMVCModel.ecom_Customer" />
+          <AssociationSet Name="FK_ecom_Orders_ecom_Customer" Association="OnlineStoreMVCModel.FK_ecom_Orders_ecom_Customer">
+            <End Role="ecom_Customer" EntitySet="ecom_Customer" />
             <End Role="ecom_Orders" EntitySet="ecom_Orders" />
-            <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="system_Menu">
@@ -1166,26 +1176,26 @@
           <End Type="OnlineStoreMVCModel.ecom_ProductGroups" Role="ecom_ProductGroups" Multiplicity="*" />
           <End Type="OnlineStoreMVCModel.ecom_Products" Role="ecom_Products" Multiplicity="*" />
         </Association>
-        <EntityType Name="Customer">
+        <EntityType Name="ecom_Customer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="OrderId" Type="Int32" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ecom_Orders" Relationship="OnlineStoreMVCModel.FK_Customer_ecom_Orders" FromRole="Customer" ToRole="ecom_Orders" />
+          <Property Name="Phone" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ecom_Orders" Relationship="OnlineStoreMVCModel.FK_ecom_Orders_ecom_Customer" FromRole="ecom_Customer" ToRole="ecom_Orders" />
         </EntityType>
-        <Association Name="FK_Customer_ecom_Orders">
-          <End Type="OnlineStoreMVCModel.ecom_Orders" Role="ecom_Orders" Multiplicity="0..1" />
-          <End Type="OnlineStoreMVCModel.Customer" Role="Customer" Multiplicity="*" />
+        <Association Name="FK_ecom_Orders_ecom_Customer">
+          <End Type="OnlineStoreMVCModel.ecom_Customer" Role="ecom_Customer" Multiplicity="1" />
+          <End Type="OnlineStoreMVCModel.ecom_Orders" Role="ecom_Orders" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ecom_Orders">
+            <Principal Role="ecom_Customer">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Customer">
-              <PropertyRef Name="OrderId" />
+            <Dependent Role="ecom_Orders">
+              <PropertyRef Name="CustomerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1247,6 +1257,7 @@
           <EntitySetMapping Name="ecom_OrderDetails">
             <EntityTypeMapping TypeName="OnlineStoreMVCModel.ecom_OrderDetails">
               <MappingFragment StoreEntitySet="ecom_OrderDetails">
+                <ScalarProperty Name="CreatedByTy" ColumnName="CreatedByTy" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
@@ -1265,6 +1276,10 @@
           <EntitySetMapping Name="ecom_Orders">
             <EntityTypeMapping TypeName="OnlineStoreMVCModel.ecom_Orders">
               <MappingFragment StoreEntitySet="ecom_Orders">
+                <ScalarProperty Name="ModifiedByTy" ColumnName="ModifiedByTy" />
+                <ScalarProperty Name="CreateByTy" ColumnName="CreateByTy" />
+                <ScalarProperty Name="EmailOfRecipient" ColumnName="EmailOfRecipient" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1531,13 +1546,13 @@
               <ScalarProperty Name="Id" ColumnName="GroupId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="OnlineStoreMVCModel.Customer">
-              <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
+          <EntitySetMapping Name="ecom_Customer">
+            <EntityTypeMapping TypeName="OnlineStoreMVCModel.ecom_Customer">
+              <MappingFragment StoreEntitySet="ecom_Customer">
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

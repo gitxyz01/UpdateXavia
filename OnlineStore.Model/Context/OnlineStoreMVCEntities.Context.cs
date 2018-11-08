@@ -72,7 +72,7 @@ public partial class OnlineStoreMVCEntities : DbContext
 
     public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
-    public virtual DbSet<Customer> Customers { get; set; }
+    public virtual DbSet<ecom_Customer> ecom_Customer { get; set; }
 
 }
 

@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abtract\IOrderRepository.cs" />
     <Compile Include="Context\AspNetRole.cs">
       <DependentUpon>OnlineStoreMVCEntities.tt</DependentUpon>
     </Compile>
@@ -71,9 +72,6 @@
     <Compile Include="Context\cms_News.cs">
       <DependentUpon>OnlineStoreMVCEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\Customer.cs">
-      <DependentUpon>OnlineStoreMVCEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Context\C__MigrationHistory.cs">
       <DependentUpon>OnlineStoreMVCEntities.tt</DependentUpon>
     </Compile>
@@ -81,6 +79,9 @@
       <DependentUpon>OnlineStoreMVCEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\ecom_Categories.cs">
+      <DependentUpon>OnlineStoreMVCEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\ecom_Customer.cs">
       <DependentUpon>OnlineStoreMVCEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\ecom_OrderDetails.cs">
@@ -143,10 +144,14 @@
     <Compile Include="Repository\BrandRepository.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Repository\ProductGroupRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="ViewModel\BannerViewModel.cs" />
+    <Compile Include="ViewModel\CartLineViewModel.cs" />
+    <Compile Include="ViewModel\CustomerViewModel.cs" />
+    <Compile Include="ViewModel\OrderViewModel.cs" />
     <Compile Include="ViewModel\ProductGroupViewModel.cs" />
     <Compile Include="ViewModel\ProfileViewModel.cs" />
     <Compile Include="ViewModel\CMSNewsView.cs" />
@@ -156,6 +161,7 @@
     <Compile Include="ViewModel\BrandManagementView.cs" />
     <Compile Include="ViewModel\ProductDisplayView.cs" />
     <Compile Include="ViewModel\ProductManagementView.cs" />
+    <Compile Include="ViewModel\ShippingDetailsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OnlineStore.Infractructure\OnlineStore.Infractructure.csproj">

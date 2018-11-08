@@ -33,6 +33,20 @@ namespace OnlineStore.Infractructure.Utility
             [Description("Duyệt xóa")]
             WaitingDelete = 4
         }
+        public enum OrderStatus
+        {
+            [Description("Chờ Xác Nhận")]
+            Waiting = 0,
+
+            [Description("Đang Giao Hàng")]
+            Shipping = 1,
+
+            [Description("Đã Giao Hàng")]
+            Finish = 2,
+
+            [Description("Đã Hủy")]
+            Remove = 3,
+        }
 
         public enum MenuEnum
         {

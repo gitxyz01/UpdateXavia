@@ -33,7 +33,19 @@
                         <span class="price product-price product-price-new">
                             @product.Price
                         </span>
-                    </div><!-- product price -->
+                    </div>
+                    <div class="content_price" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+                        <form action="@Url.Action("AddToCart", "Cart")" method="post">
+                            <input type="hidden"
+                                   name="id"
+                                   value="@product.Id" />
+                            <button type="submit" class="btn btn-sm btn-success">
+                                Thêm Vào Giỏ Hàng
+                                <i class="glyphicon glyphicon-shopping-cart"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <!-- product price -->
                 </div>
             </div>
         </li>

@@ -24,8 +24,6 @@ public partial class ecom_Orders
 
         this.ecom_OrderDetails = new HashSet<ecom_OrderDetails>();
 
-        this.Customers = new HashSet<Customer>();
-
     }
 
 
@@ -35,11 +33,11 @@ public partial class ecom_Orders
 
     public Nullable<System.Guid> UserId { get; set; }
 
-    public decimal TotalPrice { get; set; }
+    public Nullable<decimal> TotalPrice { get; set; }
 
-    public decimal FeeShip { get; set; }
+    public Nullable<decimal> FeeShip { get; set; }
 
-    public decimal TotalOrder { get; set; }
+    public Nullable<decimal> TotalOrder { get; set; }
 
     public int OrderStatus { get; set; }
 
@@ -51,7 +49,7 @@ public partial class ecom_Orders
 
     public string AddressOfRecipient { get; set; }
 
-    public Nullable<int> Status { get; set; }
+    public int Status { get; set; }
 
     public Nullable<System.Guid> CreatedBy { get; set; }
 
@@ -61,15 +59,21 @@ public partial class ecom_Orders
 
     public Nullable<System.DateTime> ModifiedDate { get; set; }
 
+    public int CustomerId { get; set; }
+
+    public string EmailOfRecipient { get; set; }
+
+    public string CreateByTy { get; set; }
+
+    public string ModifiedByTy { get; set; }
+
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<ecom_OrderDetails> ecom_OrderDetails { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Customer> Customers { get; set; }
+    public virtual ecom_Customer ecom_Customer { get; set; }
 
 }
 

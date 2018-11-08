@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+</style>
+
+
+<div class="columns-container">
+    <div id="columns" class="container">
+        @*<div class="breadcrumb clearfix">
+                <a class="home" href="/" title="Trở về Trang chủ">
+                    <i class="fa fa-home"></i>
+                </a>
+                <span class="navigation-pipe">&gt;</span>
+
+            </div><!-- breadcrumb -->
+        *@
+        <div class="row">
+
+            <!-- content -->
+            <div class="large-left col-sm-12">
+                <div class="row">
+                    <div id="center_column" class="center_column col-xs-12 col-sm-12 accordionBox">
+
+                        <h3 style="text-align:center;">
+                            Giỏ Hàng Của Bạn<i class="glyphicon glyphicon-shopping-cart"></i>
+                        </h3> <!-- title category panel -->
+
+                        <div class="content_sortPagiBar clearfix">
+
+                            <div class="top-pagination-content clearfix">
+
+                            </div><!-- pagination-content bar -->
+                        </div><!-- sort bar -->
+
+
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td colspan="2" style="font-weight:bold; ">Sản Phẩm</td>
+                                    <td style="font-weight:bold; text-align:center;">Số Lượng</td>
+                                    <td style="font-weight:bold; text-align:center;">Đơn Giá</td>
+                                    <td style="font-weight:bold; text-align:center;">Thành Tiền</td>
+                                    <td>Xóa</td>
+                                </tr>
+                            </thead>
+                            <tbody id="table-data"></tbody>
+
+                        </table>
+                        <br />
+                    <br />
+                        <div class="row">
+                            <div class=" col-sm-8">                               
+                            </div>
+                            <div class=" col-sm-4">
+                                <a href="@Url.Action("Index","Home")">
+                                    <i class="btn btn-success"><span class="glyphicon glyphicon-circle-arrow-left"></span> Tiếp Tục Mua Hàng  </i>
+                                </a>
+                                <a href="@Url.Action("Checkout","Cart")" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-check"></span> Đặt Hàng
+                                </a>
+
+                            </div>
+                        </div>
+                    </div><!-- list product panel -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="row" style="position:relative; left:250px;">
+        <div class=" col-sm-6" style="right:4em;">
+            <a href="@Url.Action("Index","Product")">
+                <i class="btn btn-success"><span class="glyphicon glyphicon-circle-arrow-left"></span> Tiếp Tục Mua Hàng  </i>
+            </a>
+        </div>
+
+        <div class=" col-sm-6" style="right:150px;">
+            <a href="@Url.Action("Checkout","Cart")" class="btn btn-primary">
+                <span class="glyphicon glyphicon-check"></span> Đặt Hàng
+            </a>
+
+        </div>
+    </div>*@
+</div>
+
+
+<script id="data-template" type="x-tmpl-mustache">
+    <tr class="">
+        <td><img src="{{Image}}" style="width:100px; height:100px;"/></td>
+        <td><a class="product_img_link" itemprop="url" href="/Product/ProductDetails/{{Id}}">{{Name}}</a></td>
+        <td style="text-align:center;width:200px;">
+            <form action="@Url.Action("Update", "Cart")" method="post" class="frmUpdateCart">
+                <input type="hidden"
+                       name="id"
+                       value="{{Id}}" />
+                <div class="input-group">
+                    <input type="number"
+                           class="form-control"
+                           value="{{Quantity}}"
+                           name="quantity"
+                           min="1" />
+                    <span class="input-group-btn">
+                        <button class="label label-success"
+                                id="submitUpdate"
+                                type="submit"
+                                style="font-size:10px;">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </td>
+        <td style="text-align:center;">{{Price}}</td>
+        <td style="text-align:center;"> {{TotalProductPrice}}</td>
+        <td style="text-align:center;">
+            <form action="@Url.Action("Delete", "Cart")" method="post" id="deletedProduct">
+                <input type="hidden"
+                       name="id"
+                       value="{{Id}}" />
+                <button type="submit" class="label label-danger">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+            </form>
+        </td>
+    </tr>
+</script>
+<script id="last-row" type="x-tmpl-mustache">
+    <tr class="table-bordered">
+        <td colspan="2" class="table-bordered" style="font-weight:bold; text-align:center;">Tổng Số Lượng</td>
+
+        <td class="table-bordered" style="font-weight:bold;">{{TotalQuantity}}</td>
+        <td class="table-bordered" style="font-weight:bold; text-align:center;">
+            Tổng Thành Tiền
+        </td>
+
+        <td colspan="2" style="font-weight:bold;" class="table-bordered">
+            {{TotalPrice}}
+        </td>
+    </tr>
+    @section ajax{
+    <script src="~/Areas/Admin/Scripts/mustache.min.js"></script>
+    <script src="~/Scripts/cart/Cart.js"></script>
+}
+</script>
+
+@*<script>homeController.init();</script>*@
+
+

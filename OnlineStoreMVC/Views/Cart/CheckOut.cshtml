@@ -1,0 +1,57 @@
+﻿@model OnlineStore.Model.ViewModel.ShippingDetailsViewModel
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2 style="text-align:center;">Đặt Hàng</h2>
+</div>
+<br />
+@using (Html.BeginForm("Checkout", "Cart", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.ValidationSummary()
+    <div class="form-group">
+        @Html.LabelFor(x => x.Name, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-9">
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @required = "required" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Email, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-9">
+            @Html.TextBoxFor(x => x.Email, new { @class = "form-control" @required = "required" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Address, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-9">
+            @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @required = "required" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Phone, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-9">
+            @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @required = "required" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Note, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-9">
+            @Html.TextAreaFor(x => x.Note, new { @class = "form-control" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="col-sm-offset-5">
+            <button class="btn btn-success" type="submit">
+                Đặt Hàng
+            </button>
+            <a class="btn btn-default" href="@Url.Action("Index", "Home")">
+                Hủy
+            </a>
+
+        </div>
+    </div>
+    }
+
