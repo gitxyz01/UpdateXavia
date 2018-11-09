@@ -14,6 +14,7 @@ namespace OnlineStoreMVC.Controllers
 
         IBannerService _bannerService = new BannerService();
         ICMSNewsService _cmsNewsService = new CMSNewsService();
+        ICategoryManagementService _categoryService = new CategoryManagementService();
 
         #endregion
 
@@ -75,7 +76,10 @@ namespace OnlineStoreMVC.Controllers
         {
             return PartialView(_cmsNewsService.GetCMSNewsForHomePage());
         }
-
+        public ActionResult FooterPartial()
+        {
+            return PartialView(_categoryService);
+        }
         #endregion
 
         #region Release resources

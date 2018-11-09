@@ -39,7 +39,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         {
             IEnumerable<Define.Status> values = Enum.GetValues(typeof(Define.Status)).Cast<Define.Status>();
             IEnumerable<SelectListItem> items = from value in values
-                                                where value != Define.Status.Delete
+                                                where value != Define.Status.Delete && value != Define.Status.WaitingCreate && value != Define.Status.WaitingDelete
                                                 select new SelectListItem
                                                 {
                                                     Text = EnumHelper.GetDescriptionFromEnum((Define.Status)value),

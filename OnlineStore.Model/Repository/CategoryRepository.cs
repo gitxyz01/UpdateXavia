@@ -59,7 +59,7 @@ namespace OnlineStore.Model.Repository
         /// <returns></returns>
         public IEnumerable<ecom_Categories> GetAllActiveCategory()
         {
-            return dbSet.Where(c => c.Status == (int)Define.Status.Active || c.Status == (int)Define.Status.WaitingDelete).ToList();
+            return dbSet.Where(c => c.Status == (int)Define.Status.Active).ToList();
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace OnlineStore.Model.Repository
         /// <returns></returns>
         public IEnumerable<ecom_Categories> GetTopCategories()
         {
-            return dbSet.Where(c => c.Status == (int)Define.Status.Active && c.ParentId == null || c.Status == (int)Define.Status.WaitingDelete && c.ParentId == null).Take(8).ToList();
+            return dbSet.Where(c => c.Status == (int)Define.Status.Active && c.ParentId == null).Take(8).ToList();
         }
 
         #endregion

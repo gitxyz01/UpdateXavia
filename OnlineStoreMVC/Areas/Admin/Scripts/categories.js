@@ -54,6 +54,7 @@ var CategoryController = {
                 var data = response.data;
                 var template = $('#data-template-Active').html();
                 var template_Lock = $('#data-template-Locked').html();
+                var template_waitingDelete = $('#data-template-waitingDelete').html();
                 var table = $("#table").DataTable({
                     dom: "Blfrtip",
                     "searching": true,
@@ -116,16 +117,31 @@ var CategoryController = {
 
                     }
                     else {
-                        html = Mustache.render(template_Lock, {
-                            id: item.Id,
-                            SortOrder: item.SortOrder,
-                            Description: item.Description,
-                            CreateBy: item.CreatedBy,
-                            CategoryName: item.Name,
-                            CreatedDate: item.CreatedDate,
-                            CategoryId: item.Id
-                        });
+                        if (item.Status == "Duyệt xóa") {
+                            html = Mustache.render(template_waitingDelete, {
+                                id: item.Id,
+                                SortOrder: item.SortOrder,
+                                Description: item.Description,
+                                CreateBy: item.CreatedBy,
+                                CategoryName: item.Name,
+                                CreatedDate: item.CreatedDate,
+                                CategoryId: item.Id
+                            });
+                        }
+                        else {
+                            html = Mustache.render(template_Lock, {
+                                id: item.Id,
+                                SortOrder: item.SortOrder,
+                                Description: item.Description,
+                                CreateBy: item.CreatedBy,
+                                CategoryName: item.Name,
+                                CreatedDate: item.CreatedDate,
+                                CategoryId: item.Id
+                            });
+                        }
                     }
+                    
+                   
                     table.row.add($(html)).draw();
 
                 });
@@ -166,7 +182,6 @@ var CategoryController = {
             success: function (response) {
                 if (response.status == true) {
                     var data = response.data;
-                    console.log()
                     $('#modalCrUdTitle').text('Cập Nhật Danh Mục Sản Phẩm').removeClass().addClass('label label-primary');
                     $('#Id').val(data.Id);
                     $('.txtName').val(data.Name);
@@ -174,6 +189,7 @@ var CategoryController = {
                     $('.txtDescription').val(data.Description);
                     $('.parentId').val(parseInt(data.ParentId));
                     $('#btnSubmit').text('Cập Nhật');
+                    data.Status === "Đang hoạt động" ? $('.statusDrd').val(1) : $('.statusDrd').val(0);
                     $('#dismisModal').show();
                     $('#btn-crOrUd').show();
                 }

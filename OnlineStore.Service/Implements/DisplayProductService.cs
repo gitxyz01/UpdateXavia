@@ -73,23 +73,24 @@ namespace OnlineStore.Service.Implements
             {
                 case ProductsSortBy.PriceLowToHigh:
                     productsMatchingRefinement = productsMatchingRefinement
-                    .OrderBy(p => p.Price);
+                    .OrderBy(p => p.Price).ToList();
                     break;
                 case ProductsSortBy.PriceHighToLow:
                     productsMatchingRefinement = productsMatchingRefinement
-                    .OrderByDescending(p => p.Price);
+                    .OrderByDescending(p => p.Price).ToList();
                     break;
                 case ProductsSortBy.ProductNameAToZ:
                     productsMatchingRefinement = productsMatchingRefinement
-                    .OrderBy(p => p.Name);
+                    .OrderBy(p => p.Name).ToList();
                     break;
                 case ProductsSortBy.ProductNameZToA:
                     productsMatchingRefinement = productsMatchingRefinement
-                    .OrderByDescending(p => p.Name);
+                    .OrderByDescending(p => p.Name).ToList();
                     break;
             }
+            productsMatchingRefinement = productsMatchingRefinement.Where(x => x.Status == (int)Define.Status.Active).ToList();
 
-            return productsMatchingRefinement.ToList();
+            return productsMatchingRefinement;
 
         }
 
@@ -139,8 +140,8 @@ namespace OnlineStore.Service.Implements
                     .OrderByDescending(p => p.Name);
                     break;
             }
-
-            return productsMatchingRefinement.ToList();
+            productsMatchingRefinement = productsMatchingRefinement.Where(x => x.Status == (int)Define.Status.Active).ToList();
+            return productsMatchingRefinement;
         }
 
         /// <summary>

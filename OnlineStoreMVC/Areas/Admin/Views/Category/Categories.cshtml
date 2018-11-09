@@ -106,7 +106,7 @@
             <div class="form-group row">
                 @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-sm-9">
-                    @Html.DropDownList("Status", @ViewBag.Status as SelectList, new { @class = "form-control" })
+                    @Html.DropDownList("Status", @ViewBag.Status as SelectList, new { @class = "form-control statusDrd" })
                     @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -184,6 +184,19 @@
                 <button class="btn-danger btn-Delete" data-id="{{id}}">
                     <i class="icofont icofont-trash"></i>
                 </button>
+            </td>
+        </tr>
+    </script>
+    <script id="data-template-waitingDelete" type="x-tmpl-mustache">
+        <tr>
+            <td>{{CategoryName}}</td>
+            <td>{{SortOrder}}</td>
+            <td>{{CreateBy}}</td>
+            <td>{{CreatedDate}}</td>
+            <td><label class=" label label-warning">Chờ Duyệt!</label></td>
+            <td>              
+            </td>
+            <td class="col-sm-1">
             </td>
         </tr>
     </script>
