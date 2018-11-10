@@ -160,7 +160,9 @@ namespace OnlineStore.Service.Implements
                     IsBestSellProduct = newProduct.IsBestSellProduct,
                     SortOrder = newProduct.SortOrder,
                     Status = (int)Define.Status.WaitingCreate,
-                    CreateTy = newProduct.CreateBy                
+                    CreateTy = newProduct.CreateBy,
+                    CreatedDate = DateTime.Now,
+                    TotalBuy = 0
                 };
 
                 share_Images coverImage = imageRepository.GetByID(newProduct.CoverImageId);
@@ -330,12 +332,13 @@ namespace OnlineStore.Service.Implements
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool DeleteProduct(int id)
+        public bool DeleteProduct(int id, string deleteBy)
         {
             try
             {
                 ecom_Products product = GetProductById(id);
                 product.Status = (int)Define.Status.WaitingDelete;
+                product.ModifiedTy = deleteBy;
                 db.Save();
                 RefreshAll();
                 return true;
@@ -451,7 +454,11 @@ namespace OnlineStore.Service.Implements
                 Price = p.Price,
                 SortOrder = p.SortOrder,
                 Status = EnumHelper.GetDescriptionFromEnum((Define.Status)p.Status),
-                CoverImage = p.CoverImage
+                CoverImage = p.CoverImage,
+                Quantity = p.Quantity,
+                CreateBy = p.CreateTy,
+                ModifiedBy = p.ModifiedTy,
+                TotalBuy = p.TotalBuy
             }).ToList();
             return returnCategoryList;
         }
@@ -467,7 +474,10 @@ namespace OnlineStore.Service.Implements
                 Price = p.Price,
                 SortOrder = p.SortOrder,
                 Status = EnumHelper.GetDescriptionFromEnum((Define.Status)p.Status),
-                CoverImage = p.CoverImage
+                CoverImage = p.CoverImage,
+                Quantity = p.Quantity,
+                CreateBy = p.CreateTy,
+                ModifiedBy = p.ModifiedTy
             }).ToList();
             return returnCategoryList;
         }
@@ -486,6 +496,11 @@ namespace OnlineStore.Service.Implements
             {
                 return false;
             }
+        }
+
+        public IEnumerable<ecom_Categories> GetListCategoryTy()
+        {
+            return categoryRepository.GetListCategoriesTy();
         }
 
         #endregion

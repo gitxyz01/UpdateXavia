@@ -115,12 +115,12 @@ var VerifyController = {
 
     resetFormCreate: function () {
         $('#resultCreate').removeClass()
-            .addClass('btn btn-success fa fa-exclamation-triangle')
-                           .text('Bạn Muốn Đăng Sản Phẩm Này?');
+            .addClass('btn btn-grd-success')
+                           .text('Bạn Muốn Thêm Mới Sản Phẩm Này?');
     },
     resetFormDelete: function () {
         $('#resultDelete').removeClass()
-            .addClass('btn btn-warning fa fa-exclamation-triangle')
+            .addClass('btn btn-grd-danger')
                            .text('Bạn Muốn Xóa Sản Phẩm Này?');
     },
 

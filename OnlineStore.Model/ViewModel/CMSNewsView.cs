@@ -24,5 +24,6 @@ namespace OnlineStore.Model.ViewModel
         public Nullable<int> SortOrder { get; set; }
         public Nullable<int> Status { get; set; }
         public Nullable<DateTime> CreatedDate { get; set; }
+        public string ModifiedBy { get; set; }
     }
 }

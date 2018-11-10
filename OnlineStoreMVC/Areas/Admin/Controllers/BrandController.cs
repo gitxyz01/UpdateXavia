@@ -48,6 +48,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// </summary>
         /// <param name="id">id of brand</param>
         /// <returns></returns>
+        /// 
+        [Authorize(Roles = "Xem,Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -65,6 +67,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// Create GUI for Creat a new brand
         /// </summary>
         /// <returns></returns>
+        /// 
+        [Authorize(Roles = "Thêm,Administrator")]
         public ActionResult Create()
         {
             PopulateStatusDropDownList();
@@ -75,6 +79,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// </summary>
         /// <param name="brand">information of new brand</param>
         /// <returns></returns>
+        /// 
+        [Authorize(Roles = "Thêm,Administrator")]
         [HttpPost]
         public ActionResult Create(CreateBrandPostRequest brand)
         {
@@ -98,6 +104,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// </summary>
         /// <param name="id">id of brand, which need to update</param>
         /// <returns></returns>
+        /// 
+        [Authorize(Roles = "Xem,Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -117,6 +125,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// </summary>
         /// <param name="brand">information need to updated</param>
         /// <returns></returns>
+        [Authorize(Roles = "Sửa,Administrator")]
         [HttpPost]
         public ActionResult Edit(EditBrandManagementPostRequest brand)
         {
@@ -139,6 +148,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// </summary>
         /// <param name="id">id of needed delete brand</param>
         /// <returns></returns>
+        [Authorize(Roles = "Xóa,Administrator")]
         [HttpPost]
         public ActionResult Delete(int id)
         {

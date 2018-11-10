@@ -15,10 +15,10 @@
                         <div class="row">
                             <ul class="breadcrumb-title">
                                 <li class="breadcrumb-item">
-                                    <a href="/Admin/Home/NewLayout"> <i class="feather icon-home"></i> </a>
+                                    <a href="/Admin/Home"> <i class="feather icon-home"></i> </a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="#!">Danh Sách Danh Mục Chờ Duyệt</a>
+                                    <a href="#!">Danh Sách Danh Mục Tin Tức Chờ Duyệt</a>
                                 </li>
                             </ul>
                         </div>
@@ -35,6 +35,8 @@
                                             <th>
                                                 Mô tả
                                             </th>
+                                            <th>Người Tạo</th>
+                                            <th>Người Xóa</th>
                                             <th style="width: 100px;">
                                                 Trạng Thái
                                             </th>
@@ -52,9 +54,10 @@
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Description)
                                                 </td>
-                                                @*<td>
-                                                        @Html.DisplayFor(modelItem => item.CreatedDate)
-                                                    </td>*@
+                                                <td>
+                                                        @item.CreatedBy
+                                                    </td>
+                                                <td>@item.ModifiedBy</td>
                                                 <td>
                                                     @if (item.Status == 3)
                                                     {
@@ -68,11 +71,11 @@
                                                 <td class="center-text">
                                                     @if (item.Status == 3)
                                                     {
-                                                        <a class="btn btn hor-grd btn-grd-info  btn-sm icofont icofont-check-circled showCreate" data-id="@item.Id">Duyệt</a>
+                                                        <a class="btn btn-grd-primary  btn-sm icofont icofont-check-circled showCreate" data-id="@item.Id">Duyệt</a>
                                                     }
                                                     @if (item.Status == 4)
                                                     {
-                                                        <a class="btn btn hor-grd btn-grd-info  btn-sm icofont icofont-check-circled showDelete" data-id="@item.Id">Duyệt</a>
+                                                        <a class="btn btn-grd-primary  btn-sm icofont icofont-check-circled showDelete" data-id="@item.Id">Duyệt</a>
                                                     }
                                                 </td>
                                             </tr>
@@ -105,11 +108,11 @@
                                type="hidden"
                                name="id"
                                value="0" />
-                        <button type="button" class="btn btn-primary" id="AcceptCreate">
-                            Duyệt
+                        <button type="button" class="btn btn-grd-info" id="AcceptCreate">
+                            Thêm Mới
                         </button>
-                        <button type="button" class="btn btn-default" id="CancelCreate">
-                            Hủy
+                        <button type="button" class="btn btn-grd-inverse" id="CancelCreate">
+                            Không Thêm Mới
                         </button>
                     </form>
                 </div>
@@ -134,11 +137,11 @@
                                type="hidden"
                                name="id"
                                value="0" />
-                        <button type="button" class="btn btn-primary" id="AcceptDelete">
-                            Duyệt
+                        <button type="button" class="btn btn-grd-info" id="AcceptDelete">
+                            Xóa
                         </button>
-                        <button type="button" class="btn btn-default" id="CancelDelete">
-                            Hủy
+                        <button type="button" class="btn btn-grd-inverse" id="CancelDelete">
+                            Không Xóa
                         </button>
                     </form>
                 </div>

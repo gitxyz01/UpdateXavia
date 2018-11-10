@@ -8,8 +8,10 @@ using System.Web.Mvc;
 
 namespace OnlineStoreMVC.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class RoleController : Controller
     {
+     
         // GET: Admin/Role
         ApplicationDbContext context = new ApplicationDbContext();
         public ActionResult Index()

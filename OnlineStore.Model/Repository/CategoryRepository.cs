@@ -59,7 +59,7 @@ namespace OnlineStore.Model.Repository
         /// <returns></returns>
         public IEnumerable<ecom_Categories> GetAllActiveCategory()
         {
-            return dbSet.Where(c => c.Status == (int)Define.Status.Active).ToList();
+            return dbSet.Where(c => c.Status == (int)Define.Status.Active || c.Status == (int)Define.Status.WaitingDelete).ToList();
         }
 
         /// <summary>
@@ -71,6 +71,10 @@ namespace OnlineStore.Model.Repository
             return dbSet.Where(c => c.Status == (int)Define.Status.Active && c.ParentId == null).Take(8).ToList();
         }
 
+        public IEnumerable<ecom_Categories> GetListCategoriesTy()
+        {
+            return dbSet.Where(c => c.Status == (int)Define.Status.Active  || c.Status == (int)Define.Status.WaitingDelete).ToList();
+        }
         #endregion
     }
 }

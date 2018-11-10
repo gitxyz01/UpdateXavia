@@ -28,7 +28,7 @@ namespace OnlineStore.Model.Repository
         /// <returns></returns>
         public IEnumerable<ecom_Products> GetAllProducts()
         {
-            return dbSet.ToList();
+            return dbSet.OrderByDescending(x=>x.CreatedDate).ToList();
         }
 
         /// <summary>
@@ -37,12 +37,12 @@ namespace OnlineStore.Model.Repository
         /// <returns></returns>
         public IEnumerable<ecom_Products> GetAllProductsWithoutDelete()
         {
-            return dbSet.Include("share_Images").Include("CoverImage").Where(c => c.Status != (int)Define.Status.Delete && c.Status != (int)Define.Status.WaitingCreate).ToList();
+            return dbSet.Include("share_Images").Include("CoverImage").Where(c => c.Status != (int)Define.Status.Delete && c.Status != (int)Define.Status.WaitingCreate).OrderByDescending(x => x.CreatedDate).ToList();
         }
 
         public IEnumerable<ecom_Products> GetAllProductsWaiting()
         {
-            return dbSet.Include("share_Images").Include("CoverImage").Where(c => c.Status == (int)Define.Status.WaitingCreate || c.Status == (int)Define.Status.WaitingDelete).ToList();
+            return dbSet.Include("share_Images").Include("CoverImage").Where(c => c.Status == (int)Define.Status.WaitingCreate || c.Status == (int)Define.Status.WaitingDelete).OrderByDescending(x => x.CreatedDate).ToList();
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace OnlineStore.Model.Repository
 
         public IEnumerable<ecom_Products> GetProductsByCategory(int categoryId = 0)
         {
-            return dbSet.Include("share_Images").Include("CoverImage").Where(c => categoryId == 0 && c.Status != (int)Define.Status.Delete && c.Status != (int)Define.Status.WaitingCreate || c.ecom_Categories.Select(d => d.Id).Contains(categoryId) && c.Status != (int)Define.Status.Delete && c.Status != (int)Define.Status.WaitingCreate).ToList();
+            return dbSet.Include("share_Images").Include("CoverImage").Where(c => categoryId == 0 && c.Status != (int)Define.Status.Delete && c.Status != (int)Define.Status.WaitingCreate || c.ecom_Categories.Select(d => d.Id).Contains(categoryId) && c.Status != (int)Define.Status.Delete && c.Status != (int)Define.Status.WaitingCreate).OrderByDescending(x => x.CreatedDate).ToList();
         }
         #endregion
     }

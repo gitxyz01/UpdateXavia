@@ -39,7 +39,7 @@ namespace OnlineStore.Service.Implements
             {
                 customer.Name = shippingDetails.Name;
                 customer.Address = shippingDetails.Address;
-                customer.Phone = shippingDetails.Phone;
+                customer.Email = shippingDetails.Email;
             }
             context.SaveChanges();
 
@@ -49,8 +49,10 @@ namespace OnlineStore.Service.Implements
                 Status = (int)Define.OrderStatus.Waiting,
                 CustomerId = customer.Id,
                 AddressOfRecipient = customer.Address,
-                NameOfRecipient = customer.Email,
-                PhoneOfRecipient = customer.Phone
+                NameOfRecipient = customer.Name,
+                PhoneOfRecipient = customer.Phone,
+                EmailOfRecipient = shippingDetails.Email,
+                OrderNote = shippingDetails.Note,
             };
             context.ecom_Orders.Add(order);
             context.SaveChanges();
@@ -71,12 +73,17 @@ namespace OnlineStore.Service.Implements
             }
             context.SaveChanges();
 
-            //foreach (var item in cart.LineCollection)
-            //{
-            //    var model = context.ecom_Products.Where(x => x.Id == item.Product.Id).FirstOrDefault();
-            //    model.Quantity -= item.Quantity;
-            //}
-            //context.SaveChanges();
+            foreach (var item in cart.LineCollection)
+            {
+                var model = context.ecom_Products.Where(x => x.Id == item.Product.Id).FirstOrDefault();
+                if(model.TotalBuy == null)
+                {
+                    model.TotalBuy = 0;
+                }
+                model.Quantity -= item.Quantity;
+                model.TotalBuy += item.Quantity;
+            }
+            context.SaveChanges();
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append("<ol>");
             foreach (var line in cart.LineCollection)

@@ -15,6 +15,7 @@ namespace OnlineStoreMVC.Controllers
         IBannerService _bannerService = new BannerService();
         ICMSNewsService _cmsNewsService = new CMSNewsService();
         ICategoryManagementService _categoryService = new CategoryManagementService();
+        MenuFooterService _menuService = new MenuFooterService();
 
         #endregion
 
@@ -79,6 +80,17 @@ namespace OnlineStoreMVC.Controllers
         public ActionResult FooterPartial()
         {
             return PartialView(_categoryService);
+        }
+
+        public ActionResult MenuFooter1Partial()
+        {
+            var menuFooter1 = _menuService.GetMenusFooterForHomePage(1);
+            return PartialView(menuFooter1);
+        }
+        public ActionResult MenuFooter2Partial()
+        {
+            var menuFooter2 = _menuService.GetMenusFooterForHomePage(2);
+            return PartialView(menuFooter2);
         }
         #endregion
 

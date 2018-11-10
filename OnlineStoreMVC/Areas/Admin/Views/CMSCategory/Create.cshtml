@@ -18,10 +18,10 @@
                         <div class="row">
                             <ul class="breadcrumb-title">
                                 <li class="breadcrumb-item">
-                                    <a href="/Admin/Home/NewLayout"> <i class="feather icon-home"></i> </a>
+                                    <a href="/Admin/Home"> <i class="feather icon-home"></i> </a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="#!">Thêm Mới Sản Phẩm</a>
+                                    <a href="#!">Thêm Mới Danh Mục Tin Tức</a>
                                 </li>
                             </ul>
                         </div>
@@ -31,51 +31,51 @@
                         {
                             @Html.AntiForgeryToken()
 
-                            <div class="form-horizontal">
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                                <div class="form-group">
-                                    <label class="control-label col-md-2" for="ParentId">Danh mục cha</label>
-                                    <div class="col-md-10">
-                                        @Html.DropDownList("ParentId", ViewBag.AvailableCategories as List<SelectListItem>, "Vui lòng chọn", new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.ParentId, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-2" for="Title">Tiêu đề</label>
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-2" for="Description">Mô tả</label>
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Url, new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Url, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-2" for="SortOrder">Thứ tự</label>
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.SortOrder, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.SortOrder, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <input type="submit" value="Tạo mới" class="btn btn-primary" />
-                                        @Html.ActionLink("Quay lại danh sách", "Index", "CMSCategory", null, new { @class = "btn btn-default" })
-                                    </div>
+                            <div class="form-group row">
+                                <label class="control-label col-md-2" for="ParentId">Danh mục cha</label>
+                                <div class="col-sm-9">
+                                    @Html.DropDownList("ParentId", ViewBag.AvailableCategories as List<SelectListItem>, "Vui lòng chọn", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ParentId, "", new { @class = "text-danger" })
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label class="control-label col-md-2" for="Title">Tiêu đề</label>
+                                <div class="col-sm-9">
+                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-md-2" for="Description">Mô tả</label>
+                                <div class="col-sm-9">
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Url, new { @class = "control-label col-md-2" })
+                                <div class="col-sm-9">
+                                    @Html.EditorFor(model => model.Url, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-md-2" for="SortOrder">Thứ tự</label>
+                                <div class="col-sm-9">
+                                    @Html.EditorFor(model => model.SortOrder, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.SortOrder, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Tạo mới" class="btn btn-grd-info" />
+                                    @Html.ActionLink("Quay lại danh sách", "Index", "CMSCategory", null, new { @class = "btn btn-grd-inverse" })
+                                </div>
+                            </div>
+                        </div>
                         }
 
                     </div>

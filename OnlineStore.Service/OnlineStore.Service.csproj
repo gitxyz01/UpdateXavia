@@ -54,6 +54,7 @@
     <Compile Include="Implements\CartService.cs" />
     <Compile Include="Implements\CMSCategoryExtensions.cs" />
     <Compile Include="Implements\BannerService.cs" />
+    <Compile Include="Implements\MenuFooterService.cs" />
     <Compile Include="Implements\OrderService.cs" />
     <Compile Include="Implements\ProductGroupService.cs" />
     <Compile Include="Implements\SystemConfigService.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Implements\ProductService.cs" />
     <Compile Include="Interfaces\IBannerService.cs" />
     <Compile Include="Interfaces\ICartService.cs" />
+    <Compile Include="Interfaces\IMenuFooter.cs" />
     <Compile Include="Interfaces\IOrderService.cs" />
     <Compile Include="Interfaces\IProductGroupService.cs" />
     <Compile Include="Interfaces\ISystemConfigService.cs" />

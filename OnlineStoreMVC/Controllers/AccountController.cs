@@ -137,6 +137,8 @@ namespace OnlineStoreMVC.Controllers
 
         //
         // GET: /Account/Register
+
+        [Authorize(Roles = "Administrator")]
         [AllowAnonymous]
         public ActionResult Register()
         {

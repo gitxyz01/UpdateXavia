@@ -77,6 +77,8 @@ public partial class ecom_Products
 
     public string CreateTy { get; set; }
 
+    public string ModifiedTy { get; set; }
+
 
 
     public virtual ecom_Brands ecom_Brands { get; set; }

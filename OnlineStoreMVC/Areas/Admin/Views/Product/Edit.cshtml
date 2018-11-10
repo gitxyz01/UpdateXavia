@@ -173,8 +173,16 @@
                                                     @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
                                                     <div class="col-sm-9">
                                                         <select name="Status" class="form-control form-control-info">
-                                                            <option value="1">Hoạt Động</option>
-                                                            <option value="0">Khóa</option>
+                                                            @if (Model.Status == 1)
+    {
+                                                        <option value="1" selected>Hoạt Động</option>
+                                                        <option value="0">Khóa</option>
+}
+else
+{
+                                                        <option value="1" >Hoạt Động</option>
+                                                        <option value="0" selected>Khóa</option>
+}
                                                         </select>
                                                     </div>
                                                 </div>

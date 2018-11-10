@@ -25,8 +25,9 @@ namespace OnlineStore.Service.Implements
             foreach (var item in listOrderDetailsToDelete)
             {
                 orderRepository.DeleteOrderDetails(item);
-                var product = context.ecom_Products.Where(x => x.Id == item.Id).FirstOrDefault();
+                var product = context.ecom_Products.Where(x => x.Id == item.ProductID).FirstOrDefault();
                 product.Quantity += item.Quantity;
+                product.TotalBuy -= item.Quantity;
             }
             context.SaveChanges();
             orderRepository.DeleteOrder(orderToDelete);
@@ -102,6 +103,7 @@ namespace OnlineStore.Service.Implements
             if (orderToUpdate != null)
             {
                 orderToUpdate.ModifiedDate = DateTime.Now;
+                orderToUpdate.ModifiedByTy = order.ModifiedBy;
                 orderToUpdate.Status = order.Status;
                 orderRepository.Save();
             }

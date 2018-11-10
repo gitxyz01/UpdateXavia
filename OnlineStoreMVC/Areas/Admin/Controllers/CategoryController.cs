@@ -76,6 +76,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// <param name="keyword">search key</param>
         /// <param name="page">current page index</param>
         /// <returns></returns>
+        [Authorize(Roles = "Xem,Administrator")]
         public ActionResult Index(string keyword, int page = 1)
         {
             int totalItems = 0;
@@ -107,7 +108,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// <summary>
         /// Create GUI for create a new category
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns> 
+        [Authorize(Roles = "Thêm,Administrator")]
         public ActionResult Create()
         {
             PopulateStatusDropDownList();
@@ -120,6 +122,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// </summary>
         /// <param name="category"></param>
         /// <returns>if success return to index page or not return to Create page with error message</returns>
+        /// 
+        [Authorize(Roles = "Thêm,Administrator")]
         [HttpPost]
         public ActionResult Create(CreateCategoryPostRequest category)
         {
@@ -146,6 +150,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// </summary>
         /// <param name="id">id of category</param>
         /// <returns></returns>
+        /// 
+        [Authorize(Roles = "Sửa,Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -167,6 +173,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// </summary>
         /// <param name="category">information of category need to updated</param>
         /// <returns></returns>
+        /// 
+        [Authorize(Roles = "Sửa,Administrator")]
         [HttpPost]
         public ActionResult Edit(CategoryViewModel category)
         {
@@ -183,10 +191,13 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// </summary>
         /// <param name="id">id of category need to delete</param>
         /// <returns></returns>
+        /// 
+        [Authorize(Roles = "Xóa,Administrator")]
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            bool isSuccess = categoryService.DeleteCategory(id);
+            string deleteBy = User.Identity.GetUserName();
+            bool isSuccess = categoryService.DeleteCategory(id, deleteBy);
             if (!isSuccess)
             {
                 ModelState.AddModelError("ServerError", "Delete brand fail!");
@@ -194,13 +205,14 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [Authorize(Roles = "Xem,Administrator")]
         public ActionResult Categories()
         {
             PopulateStatusDropDownList();
             PopulateParentCategoryDropDownList();
             return View();
         }
+        [Authorize(Roles = "Xem,Administrator")]
         public ActionResult LoadData()
         {
             var model = categoryService.GetCategoriesAdminTy();
@@ -228,6 +240,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             }, JsonRequestBehavior.AllowGet);
 
         }
+
+        [Authorize(Roles = "Thêm,Sửa,Administrator")]
         [HttpPost]
         public ActionResult SaveCategory(CreateCategoryPostRequest category)
         {
@@ -273,12 +287,14 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             }
 
         }
+        [Authorize(Roles = "Xóa,Administrator")]
         [HttpPost]
         public ActionResult DeleteCategory(int id)
         {
             try
             {
-                categoryService.DeleteCategory(id);
+                string deleteBy = User.Identity.GetUserName();
+                categoryService.DeleteCategory(id, deleteBy);
                 return Json(new
                 {
                     status = true,

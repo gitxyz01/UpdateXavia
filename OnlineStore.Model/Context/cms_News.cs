@@ -50,6 +50,10 @@ public partial class cms_News
 
     public Nullable<System.DateTime> ModifiedDate { get; set; }
 
+    public string CreatedByTy { get; set; }
+
+    public string ModifiedByTy { get; set; }
+
 
 
     public virtual cms_Categories cms_Categories { get; set; }

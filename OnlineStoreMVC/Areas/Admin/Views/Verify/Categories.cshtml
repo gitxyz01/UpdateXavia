@@ -15,7 +15,7 @@
                         <div class="row">
                             <ul class="breadcrumb-title">
                                 <li class="breadcrumb-item">
-                                    <a href="/Admin/Home/NewLayout"> <i class="feather icon-home"></i> </a>
+                                    <a href="/Admin/Home/Index"> <i class="feather icon-home"></i> </a>
                                 </li>
                                 <li class="breadcrumb-item">
                                     <a href="#!">Danh Sách Danh Mục Chờ Duyệt</a>
@@ -35,8 +35,9 @@
                                             <th>
                                                Người Tạo
                                             </th>
+                                            <th>Người Xóa</th>
 
-                                            <th>Ngày Tạo</th>
+                                            @*<th>Ngày Tạo</th>*@
                                             <th>
                                                 Trạng Thái
                                             </th>
@@ -47,37 +48,38 @@
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
-                                            <tr>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Name)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.CreatedBy)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.CreatedDate)
-                                                </td>
-                                                <td>
-                                                    @if (item.Status == "Duyệt đăng")
-                                                    {
-                                                        <label class="label label-success">Chờ Đăng</label>
-                                                    }
-                                                    @if (item.Status == "Duyệt xóa")
-                                                    {
-                                                        <label class=" label label-warning">Chờ Xóa</label>
-                                                    }
-                                                </td>
-                                                <td class="center-text">
-                                                    @if (item.Status == "Duyệt đăng")
-                                                    {
-                                                        <a class="btn btn hor-grd btn-grd-info  btn-sm icofont icofont-check-circled showCreate" data-id="@item.Id">Duyệt</a>
-                                                    }
-                                                    @if (item.Status == "Duyệt xóa")
-                                                    {
-                                                        <a class="btn btn hor-grd btn-grd-info  btn-sm icofont icofont-check-circled showDelete" data-id="@item.Id">Duyệt</a>
-                                                    }
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CreatedBy)
+                                            </td>
+                                            <td>@item.ModifiedBy</td>
+                                            @*<td>
+                                                @Html.DisplayFor(modelItem => item.CreatedDate)
+                                            </td>*@
+                                            <td>
+                                                @if (item.Status == "Duyệt đăng")
+        {
+                                        <label class="label label-success">Chờ Đăng</label>
+}
+                                                @if (item.Status == "Duyệt xóa")
+        {
+                                        <label class=" label label-warning">Chờ Xóa</label>
+}
+                                            </td>
+                                            <td class="center-text">
+                                                @if (item.Status == "Duyệt đăng")
+        {
+                                        <a class="btn hor-grd btn-grd-primary  btn-sm icofont icofont-check-circled showCreate" data-id="@item.Id">Duyệt</a>
+}
+                                                @if (item.Status == "Duyệt xóa")
+        {
+                                        <a class="btn hor-grd btn-grd-primary  btn-sm icofont icofont-check-circled showDelete" data-id="@item.Id">Duyệt</a>
+}
+                                            </td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>
@@ -107,11 +109,11 @@
                                type="hidden"
                                name="id"
                                value="0" />
-                        <button type="button" class="btn btn-primary" id="AcceptCreate">
-                            Duyệt
+                        <button type="button" class="btn btn-info" id="AcceptCreate">
+                            Thêm Mới
                         </button>
-                        <button type="button" class="btn btn-default" id="CancelCreate">
-                            Hủy
+                        <button type="button" class="btn btn-grd-inverse" id="CancelCreate">
+                            Không Thêm Mới
                         </button>
                     </form>
                 </div>
@@ -136,11 +138,11 @@
                                type="hidden"
                                name="id"
                                value="0" />
-                        <button type="button" class="btn btn-primary" id="AcceptDelete">
-                            Duyệt
+                        <button type="button" class="btn btn-info" id="AcceptDelete">
+                            Xóa
                         </button>
-                        <button type="button" class="btn btn-default" id="CancelDelete">
-                            Hủy
+                        <button type="button" class="btn btn-grd-inverse" id="CancelDelete">
+                            Không Xóa
                         </button>
                     </form>
                 </div>

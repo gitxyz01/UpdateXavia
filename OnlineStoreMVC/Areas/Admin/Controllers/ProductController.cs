@@ -148,6 +148,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// </summary>
         /// <param name="productRequest">information of new product</param>
         /// <returns></returns>
+        /// 
+        [Authorize(Roles = "Thêm,Administrator")]
         [HttpPost, ValidateInput(false)]
         public ActionResult Create(CreateProductPostRequest productRequest)
         {
@@ -183,6 +185,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
                             var imageId = service.AddImage(photo);
                             // Add product
                             productRequest.CoverImageId = imageId;
+                            productRequest.CreateBy = User.Identity.GetUserName();
                             service.AddProduct(productRequest);
                             return RedirectToAction("Index");
                         }
@@ -205,6 +208,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// </summary>
         /// <param name="product">information of product need to updated</param>
         /// <returns></returns>
+        /// 
+        [Authorize(Roles = "Sửa,Administrator")]
         [HttpPost, ValidateInput(false)]
         public ActionResult Edit(ProductFullView product)
         {
@@ -235,6 +240,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// <param name="files"></param>
         /// <param name="IdProduct"></param>
         /// <returns></returns>
+        /// 
         [HttpPost, ValidateInput(false)]
         public ActionResult UploadImage(IEnumerable<HttpPostedFileBase> files, int productId)
         {
@@ -321,10 +327,13 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// </summary>
         /// <param name="id">id of product</param>
         /// <returns></returns>
+        /// 
+        [Authorize(Roles = "Xóa,Administrator")]
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            bool isSuccess = service.DeleteProduct(id);
+            string deleteBy = User.Identity.GetUserName();
+            bool isSuccess = service.DeleteProduct(id, deleteBy);
             if (!isSuccess)
             {
                 ModelState.AddModelError("ServerError", "Delete product fail!");
@@ -337,6 +346,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// update image of product
         /// </summary>
         /// <returns></returns>
+        /// 
+        [Authorize(Roles = "Sửa,Administrator")]
         [HttpPost]
         public ActionResult UpdateProductImage(UpdateProductImageRequest request)
         {
@@ -363,6 +374,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
+        /// 
+
         public ActionResult ListImageProduct(int productId)
         {
             ecom_Products product = service.GetProductById(productId);
@@ -375,6 +388,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             return PartialView("ListImageProduct", listImageViewModels);
         }
 
+        [Authorize(Roles = "Xem,Administrator")]
         public ActionResult Index(int id =0)
         {
             var products = service.GetListProductsAdminTy(id);
@@ -391,6 +405,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         //      JsonRequestBehavior.AllowGet
         //  );
         //}
+
+        [Authorize(Roles = "Thêm,Administrator")]
         public ActionResult Create()
         {
             PopulateStatusDropDownList();
@@ -398,6 +414,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             ViewBag.BrandId = PopulateListBrand();
             return View();
         }
+
+        [Authorize(Roles = "Sửa,Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -452,7 +470,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             var products = service.GetListProductsAdminTy(0);
             var total = products.Count();
             ViewBag.total = total;
-            IEnumerable<ecom_Categories> categories = service.GetListCategory();
+            IEnumerable<ecom_Categories> categories = service.GetListCategoryTy();
             return PartialView(categories);
         }
         #endregion

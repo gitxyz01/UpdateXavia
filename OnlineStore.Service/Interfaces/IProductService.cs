@@ -73,7 +73,7 @@ namespace OnlineStore.Service.Interfaces
         /// </summary>
         /// <param name="?"></param>
         /// <returns></returns>
-        bool DeleteProduct(int id);
+        bool DeleteProduct(int id, string deleteBy);
         /// <summary>
         /// Set as cover image of product
         /// </summary>
@@ -96,6 +96,8 @@ namespace OnlineStore.Service.Interfaces
         /// </summary>
         /// <returns></returns>
         IEnumerable<ecom_Categories> GetListCategory();
+
+        IEnumerable<ecom_Categories> GetListCategoryTy();
 
         bool VerifyProduct(int id, int status);
     }

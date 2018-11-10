@@ -74,6 +74,8 @@ public partial class OnlineStoreMVCEntities : DbContext
 
     public virtual DbSet<ecom_Customer> ecom_Customer { get; set; }
 
+    public virtual DbSet<Menu> Menus { get; set; }
+
 }
 
 }

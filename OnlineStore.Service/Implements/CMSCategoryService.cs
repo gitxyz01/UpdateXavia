@@ -43,8 +43,13 @@ namespace OnlineStore.Service.Implements
         {
             try
             {
+                if(categoryView.ParentId == null)
+                {
+                    categoryView.ParentId = 0;
+                }
                 using (var db = new OnlineStoreMVCEntities())
                 {
+                    
                     var category = new cms_Categories
                     {
                         ParentId = categoryView.ParentId,
@@ -54,7 +59,9 @@ namespace OnlineStore.Service.Implements
                         SortOrder = categoryView.SortOrder,
                         Status = (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingCreate,
                         CreatedDate = DateTime.Now,
-                        ModifiedDate = DateTime.Now
+                        ModifiedDate = DateTime.Now,
+                        CreateByTy = categoryView.CreatedBy,
+          
                     };
                     db.cms_Categories.Add(category);
                     db.SaveChanges();
@@ -72,6 +79,10 @@ namespace OnlineStore.Service.Implements
         {
             try
             {
+                if (categoryView.ParentId == null)
+                {
+                    categoryView.ParentId = 0;
+                }
                 using (var db = new OnlineStoreMVCEntities())
                 {
                     var category = db.cms_Categories.Find(categoryView.Id);
@@ -116,7 +127,7 @@ namespace OnlineStore.Service.Implements
 
         public IList<CMSCategoryView> GetChildCategoriesByParentId(int? parentId)
         {
-            if (parentId == null)
+            if (parentId == 0)
                 return null;
 
             using (var db = new OnlineStoreMVCEntities())
@@ -155,7 +166,7 @@ namespace OnlineStore.Service.Implements
             }
         }
 
-        public bool DeleteCMSCategory(int id)
+        public bool DeleteCMSCategory(int id, string deleteBy)
         {
             try
             {
@@ -163,6 +174,7 @@ namespace OnlineStore.Service.Implements
                 {
                     var category = db.cms_Categories.Find(id);
                     category.Status = (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingDelete;
+                    category.ModifiedByTy = deleteBy;
                     db.SaveChanges();
 
                     return true;
@@ -220,6 +232,8 @@ namespace OnlineStore.Service.Implements
                         Url = x.Url,
                         Description = x.Description,
                         Status = x.Status,
+                        CreatedBy = x.CreateByTy,
+                        ModifiedBy = x.ModifiedByTy,
                         totalNews = x.cms_News.Count()
                     }).ToList();
             }

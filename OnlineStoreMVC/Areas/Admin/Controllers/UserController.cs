@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace OnlineStoreMVC.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class UserController : Controller
     {
         ApplicationDbContext context = new ApplicationDbContext();
@@ -143,9 +144,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         }
 
         [HttpPost]
-
-        [ValidateAntiForgeryToken]
-
         [ActionName("Delete")]
 
         public ActionResult DeleteConfirmed(string Id)

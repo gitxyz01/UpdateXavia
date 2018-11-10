@@ -10,7 +10,7 @@ var NewCategoryController = {
         $.growl({
             icon: icon,
             title: ' Xóa ',
-            message: 'danh mục thành công',
+            message: 'tin tức thành công',
             url: ''
         }, {
             element: 'body',
@@ -52,7 +52,7 @@ var NewCategoryController = {
     resetFormDelete: function () {
         $('#submitDelete').show();
         $('#resultDelete').removeClass()
-            .addClass('btn btn-warning fa fa-exclamation-triangle')
+            .addClass('btn btn-grd-danger')
                            .text('Bạn Muốn Xóa Tin Tức Này?');
     },
 

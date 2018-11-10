@@ -1,0 +1,27 @@
+﻿@model List<OnlineStore.Model.Context.Menu>
+
+
+
+<ul class="tree dhtml">
+    @if (Model.Count > 0)
+    {
+        foreach (var item in Model)
+        {
+            <li>
+                <a style="text-decoration:none;" href="@item.Link" title="@item.Text">
+                    @item.Text
+                </a>
+            </li>
+        }
+    }
+    else
+    {
+        <li>
+            <a style="text-decoration:none;" href="#" title="Trống">
+                Trống
+            </a>
+        </li>
+    }
+</ul>
+
+

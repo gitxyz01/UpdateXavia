@@ -19,7 +19,7 @@ namespace OnlineStore.Service.Interfaces
         DetailCategoryViewModel GetDetailCategory(int id);
         bool AddCategory(CreateCategoryPostRequest category);
         bool UpdateCategory(CategoryViewModel category);
-        bool DeleteCategory(int id);
+        bool DeleteCategory(int id, string deleteBy);
         CategoryViewModel getCategoryViewModel(int id);
         IEnumerable<DetailCategoryViewModel> GetCategoriesAdminTy();
         bool VerifyCategory(int id, int status);

@@ -303,7 +303,7 @@ namespace OnlineStore.Service.Implements
             }
         }
 
-        public bool DeleteCMSNews(int id)
+        public bool DeleteCMSNews(int id, string deleteBy)
         {
             try
             {
@@ -311,6 +311,7 @@ namespace OnlineStore.Service.Implements
                 {
                     var news = db.cms_News.Find(id);
                     news.Status = (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingDelete;
+                    news.ModifiedByTy = deleteBy;
                     db.SaveChanges();
 
                     return true;
@@ -344,7 +345,8 @@ namespace OnlineStore.Service.Implements
                         Tags = x.Tags,
                         TotalView = x.TotalView,
                         Status = x.Status,
-                        CreatedDate = x.CreatedDate
+                        CreatedDate = x.CreatedDate,
+                        ModifiedBy = x.ModifiedByTy                        
                     }).ToList();
             }
         }
@@ -368,7 +370,8 @@ namespace OnlineStore.Service.Implements
                         Tags = x.Tags,
                         TotalView = x.TotalView,
                         Status = x.Status,
-                        CreatedDate = x.CreatedDate
+                        CreatedDate = x.CreatedDate,
+                        ModifiedBy = x.ModifiedByTy
                     }).ToList();
             }
         }

@@ -12,10 +12,10 @@
                     <div class="row">
                         <ul class="breadcrumb-title">
                             <li class="breadcrumb-item">
-                                <a href="/Admin/Home/NewLayout"> <i class="feather icon-home"></i> </a>
+                                <a href="/Admin/Home"> <i class="feather icon-home"></i> </a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#!">Thêm Mới Sản Phẩm</a>
+                                <a href="#!">Thêm Mới Tin Tức</a>
                             </li>
                         </ul>
                     </div>
@@ -36,64 +36,64 @@
                                         <input type="button" value="Chọn Ảnh ..." onclick="BrowseServer();" />
                                     </div>
                                 </div>*@
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label class="control-label col-md-2" for="ImageBanner">Ảnh đại diện</label>
-                                <div class="col-md-10">
-                                    <input type="file" id="ImageBanner" name="uploadFile"  required ="required"/>
+                                <div class="col-sm-9">
+                                    <input type="file" id="ImageBanner" name="uploadFile" required="required" />
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label class="control-label col-md-2" for="CategoryId">Thể loại</label>
-                                <div class="col-md-10">
+                                <div class="col-sm-9">
                                     @Html.DropDownList("CategoryId", ViewBag.AvailableCategories as List<SelectListItem>, "Vui lòng chọn", new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label class="control-label col-md-2" for="Title">Tiêu đề</label>
-                                <div class="col-md-10">
+                                <div class="col-sm-9">
                                     @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label class="control-label col-md-2" for="SubTitle">Tóm tắt</label>
-                                <div class="col-md-10">
+                                <div class="col-sm-9">
                                     @Html.EditorFor(model => model.SubTitle, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.SubTitle, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label class="control-label col-md-2" for="ContentNews">Nội dung</label>
-                                <div class="col-md-10">
-                                    @Html.TextAreaFor(model => model.ContentNews, new { @class = "form-control" ,@required = "required" })
+                                <div class="col-sm-9">
+                                    @Html.TextAreaFor(model => model.ContentNews, new { @class = "form-control", @required = "required" })
                                     @Html.ValidationMessageFor(model => model.ContentNews, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label class="control-label col-md-2" for="Authors">Tác giả</label>
-                                <div class="col-md-10">
+                                <div class="col-sm-9">
                                     @Html.EditorFor(model => model.Authors, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Authors, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label class="control-label col-md-2" for="Tags">Tags</label>
-                                <div class="col-md-10">
+                                <div class="col-sm-9">
                                     @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label class="control-label col-md-2" for="TotalView">Lượt xem</label>
-                                <div class="col-md-10">
+                                <div class="col-sm-9">
                                     @Html.EditorFor(model => model.TotalView, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.TotalView, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label class="control-label col-md-2" for="DisplayHomePage">Hiện ở trang chủ</label>
-                                <div class="col-md-10">
+                                <div class="col-sm-9">
                                     @Html.CheckBox("DisplayHomePage", new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.DisplayHomePage, "", new { @class = "text-danger" })
                                 </div>
@@ -107,8 +107,8 @@
                                 </div>*@
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Tạo mới" class="btn btn-primary" />
-                                    @Html.ActionLink("Quay lại danh sách", "Index", "CMSNews", null, new { @class = "btn btn-default" })
+                                    <input type="submit" value="Tạo mới" class="btn btn-grd-info" />
+                                    @Html.ActionLink("Quay lại danh sách", "Index", "CMSNews", null, new { @class = "btn-grd-inverse" })
                                 </div>
                             </div>
                         </div>

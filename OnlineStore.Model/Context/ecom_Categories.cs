@@ -51,6 +51,8 @@ public partial class ecom_Categories
 
     public string CreateTy { get; set; }
 
+    public string ModifiedTy { get; set; }
+
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

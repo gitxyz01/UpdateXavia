@@ -17,5 +17,7 @@ namespace OnlineStore.Model.ViewModel
         public Nullable<int> SortOrder { get; set; }
         public Nullable<int> Status { get; set; }
         public int totalNews { get; set; }
+        public string CreatedBy { get; set; }
+        public string ModifiedBy { get; set; }
     }
 }

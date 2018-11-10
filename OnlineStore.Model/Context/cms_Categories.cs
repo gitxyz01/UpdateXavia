@@ -49,6 +49,10 @@ public partial class cms_Categories
 
     public Nullable<System.DateTime> ModifiedDate { get; set; }
 
+    public string CreateByTy { get; set; }
+
+    public string ModifiedByTy { get; set; }
+
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

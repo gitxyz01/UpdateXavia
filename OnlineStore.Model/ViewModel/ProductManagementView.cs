@@ -23,6 +23,11 @@ namespace OnlineStore.Model.ViewModel
         public Nullable<int> SortOrder { get; set; }
         [DisplayName("Trạng thái")]
         public string Status { get; set; }
+        [DisplayName("Số Lượng")]
+        public int? Quantity { get; set; }
+        public String CreateBy { get; set; }
+        public String ModifiedBy { get; set; }
+        public int? TotalBuy { get; set; }
     }
 
     public class ProductFullView

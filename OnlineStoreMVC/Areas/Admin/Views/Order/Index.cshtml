@@ -15,7 +15,7 @@
                         <div class="row">
                             <ul class="breadcrumb-title">
                                 <li class="breadcrumb-item">
-                                    <a href="/Admin/Home/NewLayout"> <i class="feather icon-home"></i> </a>
+                                    <a href="/Admin/Home"> <i class="feather icon-home"></i> </a>
                                 </li>
                                 <li class="breadcrumb-item">
                                     <a href="#!">Danh Sách Đơn Hàng</a>
@@ -76,17 +76,29 @@
                                                 </td>
                                                 <td>
                                                     @if (item.Status == 0)
-                                                    {
-                                                        <label class="label label-warning">
-                                                            <i class="icofont icofont-ui-call"></i>
-                                                        </label>
-                                                    }
-                                                    else
-                                                    {
-                                                        <label class="btn-success">
-                                                            <i class="icofont icofont-space-shuttle"></i> Đang Giao Hàng
-                                                        </label>
-                                                    }
+    {
+                                                <label class="label label-warning">
+                                                    <i class="icofont icofont-ui-call"></i> Chờ Xác Nhận
+                                                </label>
+}
+                                                    @if (item.Status == 1)
+    {
+                                                <label class="label label-info">
+                                                    <i class="icofont icofont-space-shuttle"></i>   Đang Giao Hàng
+                                                </label>
+}
+                                                    @if (item.Status == 2)
+    {
+                                                <label class="label label-success">
+                                                    <i class="icofont icofont-money-bag"></i>Đã Giao Hàng
+                                                </label>
+}
+                                                    @if (item.Status == 3)
+    {
+                                                <label class="label label-danger">
+                                                    <i class="icofont icofont-delete-alt"></i>Đã Hủy
+                                                </label>
+}
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Note)
@@ -100,10 +112,10 @@
                                                 </td>
                                                 <td>
                                                     <a href="@Url.Action("OrderDetails", "Order",new { orderId = item.OrderId})">
-                                                        <i class="icofont icofont-edit-alt btn btn-sm btn-success"> </i>
+                                                        <i class="icofont icofont-edit-alt btn btn-sm btn-grd-primary"> </i>
                                                     </a>
                                                     <btn class="btn-Delete" data-id="@item.OrderId">
-                                                        <i class="icofont icofont-trash btn btn-sm btn-danger showDelete"> </i>
+                                                        <i class="icofont icofont-trash btn btn-sm btn-grd-danger showDelete"> </i>
                                                     </btn>
                                                 </td>
                                             </tr>

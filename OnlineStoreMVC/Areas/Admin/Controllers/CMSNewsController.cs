@@ -13,6 +13,7 @@ using PagedList;
 using OnlineStore.Model.ViewModel;
 using OnlineStoreMVC.Models.ImageModels;
 using System.IO;
+using Microsoft.AspNet.Identity;
 
 namespace OnlineStoreMVC.Areas.Admin.Controllers
 {
@@ -28,6 +29,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             var availableCategories = new List<SelectListItem>();
             int totalItems = 0;
             var categories = _cmsCategoryService.GetCMSCategories(1, int.MaxValue, out totalItems);
+            categories = categories.Where(x => x.ParentId != 0).ToList();
             foreach (var c in categories)
             {
                 if (c.Id != selectedItemId)
@@ -47,6 +49,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
 
 
         // GET: /Admin/CMSNews/Create
+        [Authorize(Roles = "Thêm,Administrator")]
         public ActionResult Create()
         {
             ViewBag.AvailableCategories = PrepareAllCategoriesModel();
@@ -54,6 +57,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         }
 
         // POST: /Admin/CMSNews/Create
+        [Authorize(Roles = "Thêm,Administrator")]
         [HttpPost, ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CMSNewsView model, HttpPostedFileBase uploadFile)
@@ -103,6 +107,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         }
 
         // GET: /Admin/CMSNews/Edit/5
+        [Authorize(Roles = "Sửa,Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -121,6 +126,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         }
 
         // POST: /Admin/CMSNews/Edit/5
+        [Authorize(Roles = "Sửa,Administrator")]
         [HttpPost, ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CMSNewsView model, HttpPostedFileBase uploadFile)
@@ -169,13 +175,14 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             PopulateStatusDropDownList((OnlineStore.Infractructure.Utility.Define.Status)model.Status);
             return View(model);
         }
-
+        [Authorize(Roles = "Xóa,Administrator")]
         [HttpPost]
         public ActionResult Delete(int id)
         {
             try
             {
-                _cmsNewsService.DeleteCMSNews(id);
+                string deleteBy = User.Identity.GetUserName();
+                _cmsNewsService.DeleteCMSNews(id, deleteBy);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -185,6 +192,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
 
             return View();
         }
+        [Authorize(Roles = "Xem,Administrator")]
         public ActionResult Index(int categoryId = 0)
         {
             var news = _cmsNewsService.GetCMSNewsTy(categoryId);
@@ -203,6 +211,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             var total = listCmsNews.Count();
             ViewBag.total = total;
             var newsCategories = _cmsCategoryService.GetCMSCategoriesTy();
+            newsCategories = newsCategories.Where(x => x.ParentId != 0).ToList();
             return PartialView(newsCategories);
         }
     }

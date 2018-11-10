@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace OnlineStoreMVC.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class VerifyController : Controller
     {
         private ICategoryManagementService _categoryService;

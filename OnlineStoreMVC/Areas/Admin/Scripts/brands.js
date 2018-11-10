@@ -20,7 +20,6 @@ var NewCategoryController = {
             ],
             "pagingType": "full_numbers",
             destroy: true,
-
             responsive: true,
             columnDefs: [
 
@@ -99,7 +98,7 @@ var NewCategoryController = {
     resetFormDelete: function () {
         $('#submitDelete').show();
         $('#resultDelete').removeClass()
-            .addClass('btn btn-warning fa fa-exclamation-triangle')
+            .addClass('btn btn-grd-danger')
                            .text('Bạn Muốn Xóa Thương Hiệu Này?');
     },
 

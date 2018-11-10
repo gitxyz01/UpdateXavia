@@ -11,6 +11,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using static OnlineStore.Infractructure.Utility.Define;
+using Microsoft.AspNet.Identity;
 
 namespace OnlineStoreMVC.Areas.Admin.Controllers
 {
@@ -53,7 +54,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         }
 
         // GET: Admin/ManageOrder
-        //[Authorize(Roles = "Đọc,Admin")]
+        [Authorize(Roles = "Xem Đơn Hàng,Administrator")]
         public ActionResult Index(long customerId = 0)
         {
             GetDropdowlistOrderStatus();
@@ -62,7 +63,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             return View(model);
         }
 
-        //[Authorize(Roles = "Đọc,Admin")]
+        [Authorize(Roles = "Xem Đơn Hàng,Administrator")]
         public ActionResult OrderDetails(long orderId)
         {
             GetDropdowlistOrderStatus();
@@ -71,27 +72,28 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             return View(model);
         }
 
-        //[Authorize(Roles = "Xóa,Admin")]
+        [Authorize(Roles = "Xóa Đơn Hàng,Administrator")]
         public ViewResult ConfirmDelete()
         {
             return View();
         }
-
+        [Authorize(Roles = "Xóa Đơn Hàng,Administrator")]
         public ActionResult Delete(int Id)
         {
             service.Delete(Id);
             return RedirectToAction("Index");
         }
 
-        //[Authorize(Roles = "Tình Trạng Đơn Hàng,Admin")]
+        [Authorize(Roles = "Cập Nhật Đơn Hàng,Administrator")]
         [HttpPost]
         public ActionResult Update(OrderViewModel model)
         {
             GetDropdowlistOrderStatus();
+            model.ModifiedBy = User.Identity.GetUserName();
             service.Update(model);
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = "Xem Danh Sách Khách Hàng,Administrator")]
         public ActionResult AllCustomers()
         {
             var model = service.GetListCustomer();

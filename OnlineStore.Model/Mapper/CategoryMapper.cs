@@ -64,7 +64,7 @@ namespace OnlineStore.Model.Mapper
                 ParentId = category.ParentId,
                 CreatedBy = category.CreateTy != null ? category.CreateTy : "",
                 CreatedDate = string.Format("{0:yyyy-MM-dd}", category.CreatedDate),
-                //ModifiedBy = modifiredBy != null ? createBy.UserName : "",
+                ModifiedBy = category.ModifiedTy != null ? category.ModifiedTy : "",
                 ModifiedDate = string.Format("{0:yyyy-MM-dd}", category.ModifiedDate)
             };
 

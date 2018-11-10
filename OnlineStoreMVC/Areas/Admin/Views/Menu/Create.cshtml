@@ -1,0 +1,88 @@
+﻿@model OnlineStore.Model.Context.Menu
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutTy.cshtml";
+}
+
+<div class="pcoded-inner-content">
+    <!-- Page-body start -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2></h2>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div id="simpletable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                            <div class="col-xs-12 col-sm-12">
+                                @using (Html.BeginForm())
+    {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group row">
+                                    <label class="control-label col-md-2" for="Title">Tên Menu</label>
+                                    <div class="col-sm-9">
+                                        @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-md-2" for="Title">Loại Menu</label>
+                                    <div class="col-sm-9">
+                                        <select name="MenuType" required class="form-control form-control-primary">
+                                            <option value="1">Footer1</option>
+                                            <option value="2">Footer2</option>
+                                        </select>
+                                        @Html.ValidationMessageFor(model => model.MenuType, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-md-2" for="Title">Đường Dẫn</label>
+                                    <div class="col-sm-9">
+                                        @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="control-label col-md-2" for="Title">Thứ Tự</label>
+                                    <div class="col-sm-9">
+                                        @Html.EditorFor(model => model.SortOrder, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.SortOrder, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="control-label col-md-2" for="Title">Trạng Thái</label>
+                                    <div class="col-sm-9">
+                                        <select name="Status" required class="form-control form-control-primary">
+                                            <option value="1">Đang Hoạt Động</option>
+                                            <option value="0">Ngưng Hoạt Động</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Tạo mới" class="btn btn-grd-info" />
+                                        @Html.ActionLink("Quay lại danh sách", "Index", "Menu", null, new { @class = "btn btn-grd-inverse" })
+                                    </div>
+                                </div>
+                            </div>
+}
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+    </div>
+

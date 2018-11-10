@@ -14,14 +14,14 @@
                     <div class="row">
                         <ul class="breadcrumb-title">
                             <li class="breadcrumb-item">
-                                <a href="/Admin/Home/NewLayout"> <i class="feather icon-home"></i> </a>
+                                <a href="/Admin/Home"> <i class="feather icon-home"></i> </a>
                             </li>
                             <li class="breadcrumb-item">
                                 <a href="#!">Danh Sách Danh Mục Sản Phẩm</a>
                             </li>
                         </ul>
                         <div style="margin-left: 650px;">
-                            <btn class="btn btn-primary btn-AddCategory">Thêm Mới</btn>
+                            <btn class="btn btn-grd-info btn-AddCategory">Thêm Mới</btn>
                         </div>
                     </div>
                 </div>
@@ -111,8 +111,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" id="btnSubmit"></button>
-                <button type="button" class="btn btn-warning" data-dismiss="modal" id="dismisModal">Hủy</button>
+                <button type="submit" class="btn btn-grd-info" id="btnSubmit"></button>
+                <button type="button" class="btn btn-grd-inverse" data-dismiss="modal" id="dismisModal">Hủy</button>
             </div>
 }
             </div>
@@ -137,13 +137,13 @@
                                    type="hidden"
                                    name="id"
                                    value="0" />
-                            <button type="submit" class="btn btn-danger" id="submitDelete">
+                            <button type="submit" class="btn btn-grd-danger" id="submitDelete">
                                 <i class="glyphicon glyphicon-trash">Xóa</i>
                             </button>
                         </form>
                     </div>
 
-                    <button type="button" class="btn btn-warning btn-info btn-reload" data-dismiss="modal" id="dismisModal">
+                    <button type="button" class="btn btn-grd-inverse btn-info btn-reload" data-dismiss="modal" id="dismisModal">
                         Thoát
                     </button>
 
@@ -161,10 +161,10 @@
             <td><label class="label label-success">Hoạt Động</label></td>
 
             <td>
-                <button class="btn-primary btn-Edit" data-id="{{id}}"> <i class="icofont icofont-edit-alt"></i></button>
+                <button class="btn-grd-primary btn-Edit" data-id="{{id}}"> <i class="icofont icofont-edit-alt"></i></button>
             </td>
             <td class="col-sm-1">
-                <button class="btn-danger btn-Delete" data-id="{{id}}">
+                <button class="btn-grd-danger btn-Delete" data-id="{{id}}">
                     <i class="icofont icofont-trash"></i>
                 </button>
             </td>
@@ -178,10 +178,10 @@
             <td>{{CreatedDate}}</td>
             <td><label class=" label label-warning">Khóa</label></td>
             <td>
-                <button class="btn-primary btn-Edit" data-id="{{id}}"> <i class="icofont icofont-edit-alt"></i></button>
+                <button class="btn-grd-primary btn-Edit" data-id="{{id}}"> <i class="icofont icofont-edit-alt"></i></button>
             </td>
             <td class="col-sm-1">
-                <button class="btn-danger btn-Delete" data-id="{{id}}">
+                <button class="btn-grd-danger btn-Delete" data-id="{{id}}">
                     <i class="icofont icofont-trash"></i>
                 </button>
             </td>
@@ -193,7 +193,7 @@
             <td>{{SortOrder}}</td>
             <td>{{CreateBy}}</td>
             <td>{{CreatedDate}}</td>
-            <td><label class=" label label-warning">Chờ Duyệt!</label></td>
+            <td><label class=" label label-warning">Duyệt Xóa!</label></td>
             <td>              
             </td>
             <td class="col-sm-1">

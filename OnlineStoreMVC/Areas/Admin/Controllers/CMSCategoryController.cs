@@ -11,12 +11,15 @@ using OnlineStore.Service.Implements;
 using OnlineStore.Service.Interfaces;
 using PagedList;
 using OnlineStore.Model.ViewModel;
+using Microsoft.AspNet.Identity;
+using OnlineStore.Infractructure.Utility;
 
 namespace OnlineStoreMVC.Areas.Admin.Controllers
 {
     public class CMSCategoryController : BaseManagementController
     {
         private ICMSCategoryService _cmsCategoryService = new CMSCategoryService();
+        OnlineStoreMVCEntities context = new OnlineStoreMVCEntities();
 
         [NonAction]
         protected virtual List<SelectListItem> PrepareAllCategoriesModel(int selectedItemId = 0)
@@ -40,11 +43,9 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         }
 
 
-
-        // GET: /Admin/CMS_Category/Create
-
-
         // POST: /Admin/CMS_Category/Create
+
+        [Authorize(Roles = "Thêm,Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CMSCategoryView model)
@@ -53,6 +54,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             {
                 try
                 {
+                    model.CreatedBy = User.Identity.GetUserName();
                     _cmsCategoryService.AddCMSCategory(model);
 
                     return RedirectToAction("Index");
@@ -70,6 +72,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
 
 
         // POST: /Admin/CMS_Category/Edit/5
+
+        [Authorize(Roles = "Sửa,Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CMSCategoryView model)
@@ -92,39 +96,67 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             PopulateStatusDropDownList((OnlineStore.Infractructure.Utility.Define.Status)model.Status);
             return View(model);
         }
-
+        [Authorize(Roles = "Xóa,Administrator")]
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            _cmsCategoryService.DeleteCMSCategory(id);
-            return RedirectToAction("Index");
-        }
 
+
+            var model = context.cms_Categories.Where(x => x.ParentId == id && x.Status != (int)Define.Status.Delete).FirstOrDefault();
+            if (model != null)
+            {
+                return Json(new
+                {
+                    status = false,
+                    message = "Bạn Cần Xóa Danh Mục Con Trước!"
+                }, JsonRequestBehavior.AllowGet);
+            }
+            string deleteBy = User.Identity.GetUserName();
+            bool isSuccess = _cmsCategoryService.DeleteCMSCategory(id, deleteBy);
+            if (!isSuccess)
+            {
+                ModelState.AddModelError("ServerError", "Delete brand fail!");
+            }
+            return Json(new
+            {
+                status = true,
+                message = "Xóa Danh Mục Tin Tức Thành Công!"
+            }, JsonRequestBehavior.AllowGet);
+        }
+        [Authorize(Roles = "Xem,Administrator")]
         public ActionResult Index()
         {
             var model = _cmsCategoryService.GetCMSCategoriesTy();
-            var availableCategories = new List<CMSCategoryView>();
-            foreach (var item in model)
-            {   
-                item.Title = CMSCategoryExtensions.GetFormattedBreadCrumb(item, _cmsCategoryService);
-                if(item.Title.Length> 30)
-                {
-                    item.Title = item.Title.Substring(0, 30) + "...";
-                }
-                if (item.Description.Length > 30)
-                {
-                    item.Description = item.Description.Substring(0, 30) + "...";
-                }
-                availableCategories.Add(item);
+            var data1 = model.OrderBy(x => x.ParentId).ThenBy(x => x.Title).ToList();
+
+            var stack = new Stack<CMSCategoryView>();
+            foreach (var section in model.Where(x => x.ParentId == default(int)).Reverse())
+            {
+                stack.Push(section);
+                data1.RemoveAt(0);
             }
-            return View(availableCategories);
+            var output = new List<CMSCategoryView>();
+            while (stack.Any())
+            {
+                var currentSection = stack.Pop();
+                var children = model.Where(x => x.ParentId == currentSection.Id).Reverse();
+                foreach (var section in children)
+                {
+                    stack.Push(section);
+                    data1.Remove(section);
+                }
+                output.Add(currentSection);
+            }
+            data1 = output;
+            return View(data1);
         }
+        [Authorize(Roles = "Thêm,Administrator")]
         public ActionResult Create()
         {
             ViewBag.AvailableCategories = PrepareAllCategoriesModel();
             return View();
         }
-
+        [Authorize(Roles = "Sửa,Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -140,6 +172,39 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             ViewBag.AvailableCategories = PrepareAllCategoriesModel(id.Value);
             PopulateStatusDropDownList((OnlineStore.Infractructure.Utility.Define.Status)category.Status);
             return View(category);
+        }
+        public ActionResult LoadData()
+        {
+            var model = _cmsCategoryService.GetCMSCategoriesTy();
+            var data1 = model.OrderBy(x => x.ParentId).ThenBy(x => x.Title).ToList();
+
+            var stack = new Stack<CMSCategoryView>();
+            foreach (var section in model.Where(x => x.ParentId == default(int)).Reverse())
+            {
+                stack.Push(section);
+                data1.RemoveAt(0);
+            }
+            var output = new List<CMSCategoryView>();
+            while (stack.Any())
+            {
+                var currentSection = stack.Pop();
+                var children = model.Where(x => x.ParentId == currentSection.Id).Reverse();
+                foreach (var section in children)
+                {
+                    stack.Push(section);
+                    data1.Remove(section);
+                }
+                output.Add(currentSection);
+            }
+            data1 = output;
+            return Json(new
+            {
+                status = true,
+                data = data1,
+            }, JsonRequestBehavior.AllowGet
+            );
+
+
         }
     }
 }

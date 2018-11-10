@@ -5,95 +5,13 @@
                 <h4>Danh mục</h4>
                 <div class="category_footer toggle-footer" style="">
                     <div class="list">
-                        <ul class="tree dhtml">
-                            <li>
-                                <a href="/Product/GetProductByCategory/8" title="Đồ kim loại">
-                                    Đồ kim loại
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/Product/GetProductByCategory/9" title="Đồng hồ">
-                                    Đồng hồ
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/Product/GetProductByCategory/10" title="Hoa giả, hoa khô, cỏ khô">
-                                    Hoa giả, hoa khô, cỏ khô
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/Product/GetProductByCategory/11" title="Hoa nhỏ Xavia">
-                                    Hoa nhỏ Xavia
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/Product/GetProductByCategory/12" title="Khung ảnh">
-                                    Khung ảnh
-                                </a>
-                            </li>
-                            @*<li>
-                                    <a href="/Product/GetProductByCategory/13" title="Set hoa cắm sẵn">
-                                        Set hoa cắm sẵn
-                                    </a>
-                                </li>*@
-                            @*<li>
-                                    <a href="/Product/GetProductByCategory/14" title="Tinh dầu">
-                                        Tinh dầu
-                                    </a>
-                                </li>*@
-                            <li>
-                                <a href="/Product/GetProductByCategory/15" title="Tranh treo tường">
-                                    Tranh treo tường
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/Product/GetProductByCategory/16" title="Tượng Composite">
-                                    Tượng Composite
-                                </a>
-                            </li>
-                        </ul>
+                        @{Html.RenderAction("MenuFooter1Partial", "Home", new { area = "" });}
                     </div>
                 </div>
             </section>
             <section class="footer-block col-xs-12 col-sm-3" id="block_various_links_footer">
                 <h4>Thông tin</h4>
-                <ul class="toggle-footer" style="">
-                    <li class="item">
-                        <a href="/News/Index/2" title="Thông tin khuyến mãi">
-                            Thông tin khuyến mãi
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="/Product/SearchProduct?searchString=&searchType=3" title="Sản phẩm mới">
-                            Sản phẩm mới
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="/Product/SearchProduct?searchString=&searchType=4" title="Sản phẩm Hot">
-                            Sản phẩm Hot
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="@Url.Action("About", "Home")" title="Về chúng tôi">
-                            Về chúng tôi
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="@Url.Action("Contact", "Home")" title="Liên hệ">
-                            Liên hệ
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/tin-tuc" title="Tin tức">
-                            Tin tức
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/blog" title="Blog">
-                            Blog
-                        </a>
-                    </li>
-                </ul>
+                @{Html.RenderAction("MenuFooter2Partial", "Home", new { area = "" });}
             </section>
             <div class="bottom-footer col-xs-12">
                 <div>

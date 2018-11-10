@@ -15,7 +15,7 @@
                         <div class="row">
                             <ul class="breadcrumb-title">
                                 <li class="breadcrumb-item">
-                                    <a href="/Admin/Home/NewLayout"> <i class="feather icon-home"></i> </a>
+                                    <a href="/Admin/Home"> <i class="feather icon-home"></i> </a>
                                 </li>
                                 <li class="breadcrumb-item">
                                     <a href="#!">Danh Sách Đơn Hàng</a>
@@ -40,7 +40,7 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.Phone)
                                     </th>
-                                    <th>Chi Tiết</th>
+                                    <th>Danh Sách Đơn Hàng</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,12 +62,11 @@
                                 @Html.DisplayFor(modelItem => item.Phone)
                             </td>
                             <td>
-                                <label>
-                                    <a href="@Url.Action("Index","Order",new {customerId = item.Id })">
-                                        Danh Sách Đơn Hàng
-                                        <i class="glyphicon glyphicon-list btn-success"></i>
+                                <button class="btn btn-grd-info btn-sm">
+                                    <a href="@Url.Action("Index","Order",new {customerId = item.Id })">                                  
+                                        <i class="icofont icofont-eye-alt"></i>
                                     </a>
-                                </label>
+                                </button>
                             </td>
                         </tr>
 }

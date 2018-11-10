@@ -66,7 +66,7 @@ var VerifyController = {
             },
             error: function (result) {
                 $('#resultDelete').addClass('btn-danger fa fa-exclamation-triangle')
-                    .text('Duyệt Sản Phẩm Thất Bại');
+                    .text('Duyệt Danh Mục Thất Bại');
             }
         });
     },
@@ -74,7 +74,7 @@ var VerifyController = {
         $.growl({
             icon: icon,
             title: ' Duyệt ',
-            message: 'Sản Phẩm Thành Công',
+            message: 'Danh Mục Thành Công',
             url: ''
         }, {
             element: 'body',
@@ -115,13 +115,13 @@ var VerifyController = {
 
     resetFormCreate: function () {
         $('#resultCreate').removeClass()
-            .addClass('btn btn-success fa fa-exclamation-triangle')
-                           .text('Bạn Muốn Đăng Sản Phẩm Này?');
+            .addClass('btn btn-grd-success')
+                           .text('Bạn Muốn Thêm Mới Danh Mục Này?');
     },
     resetFormDelete: function () {
         $('#resultDelete').removeClass()
-            .addClass('btn btn-warning fa fa-exclamation-triangle')
-                           .text('Bạn Muốn Xóa Sản Phẩm Này?');
+            .addClass('btn btn-grd-danger')
+                           .text('Bạn Muốn Xóa Danh Mục Này?');
     },
 
 

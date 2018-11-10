@@ -3,7 +3,7 @@
     ViewBag.Title = "NewLayout";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutTy.cshtml";
 }
-
+<link href="~/Areas/Admin/Scripts/TreeTableCss.css" rel="stylesheet" />
 <div class="pcoded-inner-content">
     <!-- Page-body start -->
     <div class="page-body">
@@ -15,14 +15,14 @@
                         <div class="row">
                             <ul class="breadcrumb-title">
                                 <li class="breadcrumb-item">
-                                    <a href="/Admin/Home/NewLayout"> <i class="feather icon-home"></i> </a>
+                                    <a href="/Admin/Home"> <i class="feather icon-home"></i> </a>
                                 </li>
                                 <li class="breadcrumb-item">
                                     <a href="#!">Danh Mục Tin Tức</a>
                                 </li>
                             </ul>
                             <div style="margin-left: 650px;">
-                                @Html.ActionLink("Thêm Mới", "Create", null, new { @class = "btn btn-primary btn-sm" })
+                                @Html.ActionLink("Thêm Mới", "Create", null, new { @class = "btn btn-grd-info" })
                             </div>
                         </div>
                     </div>
@@ -35,9 +35,7 @@
                                             <th>
                                                 Tiêu đề
                                             </th>
-                                            <th>
-                                                Mô tả
-                                            </th>
+
                                             <th style="width: 100px;">
                                                 Trạng Thái
                                             </th>
@@ -47,19 +45,40 @@
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
-                                            <tr id="row_@item.Id">
+                                            <tr data-tt-id="@item.Id" data-tt-parent-id="@item.ParentId">
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Title)
                                                 </td>
+
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Description)
-                                                </td>
-                                                <td class="text-center">
-                                                    <span class=" label @(item.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active ? "label-success" : "label-warning")">@(item.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active ? "Hoạt Động" : "Khóa")</span>
+
+                                                    @if (item.Status == 1)
+                                                    {
+                                                        <label class="label label-success">Hoạt Động</label>
+                                                    }
+                                                    @if (item.Status == 0)
+                                                    {
+                                                        <label class=" label label-warning">Khóa</label>
+                                                    }
+                                                    @if (item.Status == 4)
+                                                    {
+                                                        <label class=" label label-warning">Duyệt Xóa!</label>
+                                                    }
                                                 </td>
                                                 <td>
-                                                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-mini btn-primary icofont icofont-edit-alt" })
-                                                    <a class="btn btn-warning btn-mini icofont icofont-trash btn-Delete" data-id="@item.Id"></a>
+                                                    @if (item.Id == 1 || item.Id == 5 || item.Id == 1020 || item.Id == 1021 || item.Id == 11 || item.Id == 12 || item.Id == 9)
+                                                    {
+                                                @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-mini btn-grd-primary icofont icofont-edit-alt" })
+                                                     }
+                                                   else
+                                                    {
+                                                if (item.Status != 4)
+                                                    {
+                                                @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-mini btn-grd-primary icofont icofont-edit-alt" })
+                                                <a class="btn btn-grd-danger btn-mini icofont icofont-trash btn-Delete" data-id="@item.Id"></a>
+                                                        }
+                                                }
+                                                    
                                                 </td>
                                             </tr>
                                         }
@@ -93,7 +112,7 @@
                                type="hidden"
                                name="id"
                                value="0" />
-                        <button type="submit" class="btn btn-primary" id="submitDelete">
+                        <button type="submit" class="btn btn-grd-info" id="submitDelete">
                             <i class="icofont icofont-trash">Xóa</i>
                         </button>
                     </form>
@@ -121,53 +140,54 @@
 </script>
 @section scripts{
     <script src="~/Areas/Admin/Scripts/cmsCategories.js"></script>
+    <script src="~/Areas/Admin/Scripts/plugins/jquery.treetable.js"></script>
     <script>
-        var table = $("#table").DataTable({
+        //$('#table').DataTable();
+        //var table = $("#table").DataTable({
 
-            "searching": true,
-            "ordering": true,
-            dom: "Blfrtip",
-            buttons: [
-            {
-                extend: "csv",
-                className: "btn-sm",
-                text: "Excel"
-            },
-            {
-                extend: "pdf",
-                className: "btn-sm"
-            },
-            ],
-            "pagingType": "full_numbers",
-            destroy: true,
+        //    "searching": true,
+        //    "ordering": true,
+        //    dom: "Blfrtip",
+        //    buttons: [
+        //    {
+        //        extend: "csv",
+        //        className: "btn-sm",
+        //        text: "Excel"
+        //    },
+        //    {
+        //        extend: "pdf",
+        //        className: "btn-sm"
+        //    },
+        //    ],
+        //    "pagingType": "full_numbers",
+        //    destroy: true,
+        //    responsive: true,
 
-            responsive: true,
-            columnDefs: [
+     
+        //    columnDefs: [
 
-                { responsivePriority: 2, targets: -1 },
-                 { responsivePriority: 3, targets: -2 },
+        //        { responsivePriority: 2, targets: -1 },
+        //         { responsivePriority: 3, targets: -2 },
 
-            ],
+        //    ],
 
-            "language": {
-                "lengthMenu": "Hiển Thị _MENU_ Bản Ghi Trên Trang",
-                "search": "Tìm Kiếm:",
-                "info": "Hiển Thị _START_ Tới _END_ Của _TOTAL_ Bản Ghi",
-                "paginate": {
-                    "first": "Đầu",
-                    "last": "Cuối",
-                    "next": "Tới",
-                    "previous": "Lui"
-                },
-                "zeroRecords": "Không Có Bản Ghi Nào Được Tìm Thấy",
-                "infoEmpty": "Không Có Bản Ghi Nào Hiển Thị",
-                "infoFiltered": "(Trong Tổng Cộng _MAX_ Bản Ghi)",
-            },
-        });
+        //    "language": {
+        //        "lengthMenu": "Hiển Thị _MENU_ Bản Ghi Trên Trang",
+        //        "search": "Tìm Kiếm:",
+        //        "info": "Hiển Thị _START_ Tới _END_ Của _TOTAL_ Bản Ghi",
+        //        "paginate": {
+        //            "first": "Đầu",
+        //            "last": "Cuối",
+        //            "next": "Tới",
+        //            "previous": "Lui"
+        //        },
+        //        "zeroRecords": "Không Có Bản Ghi Nào Được Tìm Thấy",
+        //        "infoEmpty": "Không Có Bản Ghi Nào Hiển Thị",
+        //        "infoFiltered": "(Trong Tổng Cộng _MAX_ Bản Ghi)",
+        //    },
+        //});
         $(document).ready(function () {
-            $(".select2insidemodal").select2({
-                dropdownParent: $("#modalAddUpdate")
-            });
+            $("#table").treetable({ expandable: true }, "unloadBranch");
         });
 
     </script>

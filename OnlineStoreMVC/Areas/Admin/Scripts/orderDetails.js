@@ -116,8 +116,11 @@ var productController = {
         });
 
 
-        $('.btn-Delete').off('click').on('click', function () {
-            $('#modalDelete').modal('show');
+        $('.btn-Delete').on('click', function () {
+            $('#modalDelete1').modal('show');
+            console.log($(this).data('id'));
+            var id = $(this).data('id');
+            $('#hidenId').val(id);
             productController.resetFormDelete();
         });
     }

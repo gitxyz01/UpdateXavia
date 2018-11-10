@@ -40,6 +40,7 @@
         <AssociationConnector Association="OnlineStoreMVCModel.ecom_Products_ProductGroups1" />
         <EntityTypeShape EntityType="OnlineStoreMVCModel.ecom_Customer" Width="1.5" PointX="0.75" PointY="11.5" />
         <AssociationConnector Association="OnlineStoreMVCModel.FK_ecom_Orders_ecom_Customer" />
+        <EntityTypeShape EntityType="OnlineStoreMVCModel.Menu" Width="1.5" PointX="13.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

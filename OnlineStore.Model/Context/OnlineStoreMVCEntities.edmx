@@ -81,6 +81,8 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreateByTy" Type="nvarchar" MaxLength="100" />
+          <Property Name="ModifiedByTy" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="cms_News">
           <Key>
@@ -102,6 +104,8 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedByTy" Type="nvarchar" MaxLength="100" />
+          <Property Name="ModifiedByTy" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="ecom_Brands">
           <Key>
@@ -132,6 +136,7 @@
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="CreateTy" Type="nvarchar" MaxLength="200" />
+          <Property Name="ModifiedTy" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="ecom_Customer">
           <Key>
@@ -221,6 +226,7 @@
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="CreateTy" Type="nvarchar" MaxLength="200" />
+          <Property Name="ModifiedTy" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="ecom_Products_Categories">
           <Key>
@@ -245,6 +251,17 @@
           </Key>
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="GroupId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Link" Type="nvarchar" MaxLength="100" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="MenuType" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="share_Categories">
           <Key>
@@ -570,6 +587,7 @@
           <EntitySet Name="ecom_Products_Categories" EntityType="Self.ecom_Products_Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ecom_Products_Images" EntityType="Self.ecom_Products_Images" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ecom_Products_ProductGroups" EntityType="Self.ecom_Products_ProductGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="share_Categories" EntityType="Self.share_Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="share_Images" EntityType="Self.share_Images" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -666,6 +684,8 @@
           <Property Name="ModifiedBy" Type="Guid" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="cms_News" Relationship="OnlineStoreMVCModel.FK_cms_News_cms_Categories" FromRole="cms_Categories" ToRole="cms_News" />
+          <Property Name="CreateByTy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedByTy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ecom_Brands">
           <Key>
@@ -698,6 +718,7 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ecom_Products" Relationship="Self.ecom_Products_Categories" FromRole="ecom_Categories" ToRole="ecom_Products" />
           <Property Name="CreateTy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedTy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ecom_OrderDetails">
           <Key>
@@ -778,6 +799,7 @@
           <NavigationProperty Name="CoverImage" Relationship="OnlineStoreMVCModel.FK_ecom_Products_share_Images" FromRole="ecom_Products" ToRole="share_Images" />
           <NavigationProperty Name="ecom_ProductGroups" Relationship="OnlineStoreMVCModel.ecom_Products_ProductGroups1" FromRole="ecom_Products" ToRole="ecom_ProductGroups" />
           <Property Name="CreateTy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedTy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="share_Categories">
           <Key>
@@ -942,6 +964,7 @@
             <End Role="ecom_Customer" EntitySet="ecom_Customer" />
             <End Role="ecom_Orders" EntitySet="ecom_Orders" />
           </AssociationSet>
+          <EntitySet Name="Menus" EntityType="OnlineStoreMVCModel.Menu" />
         </EntityContainer>
         <EntityType Name="system_Menu">
           <Key>
@@ -1127,6 +1150,8 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="cms_Categories" Relationship="OnlineStoreMVCModel.FK_cms_News_cms_Categories" FromRole="cms_News" ToRole="cms_Categories" />
           <NavigationProperty Name="share_Images" Relationship="OnlineStoreMVCModel.FK_cms_News_share_Images" FromRole="cms_News" ToRole="share_Images" />
+          <Property Name="CreatedByTy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedByTy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_cms_News_cms_Categories">
           <End Type="OnlineStoreMVCModel.cms_Categories" Role="cms_Categories" Multiplicity="1" />
@@ -1199,6 +1224,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="MenuType" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1208,6 +1244,8 @@
           <EntitySetMapping Name="cms_Categories">
             <EntityTypeMapping TypeName="OnlineStoreMVCModel.cms_Categories">
               <MappingFragment StoreEntitySet="cms_Categories">
+                <ScalarProperty Name="ModifiedByTy" ColumnName="ModifiedByTy" />
+                <ScalarProperty Name="CreateByTy" ColumnName="CreateByTy" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ParentId" ColumnName="ParentId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -1239,6 +1277,7 @@
           <EntitySetMapping Name="ecom_Categories">
             <EntityTypeMapping TypeName="OnlineStoreMVCModel.ecom_Categories">
               <MappingFragment StoreEntitySet="ecom_Categories">
+                <ScalarProperty Name="ModifiedTy" ColumnName="ModifiedTy" />
                 <ScalarProperty Name="CreateTy" ColumnName="CreateTy" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1302,6 +1341,7 @@
           <EntitySetMapping Name="ecom_Products">
             <EntityTypeMapping TypeName="OnlineStoreMVCModel.ecom_Products">
               <MappingFragment StoreEntitySet="ecom_Products">
+                <ScalarProperty Name="ModifiedTy" ColumnName="ModifiedTy" />
                 <ScalarProperty Name="CreateTy" ColumnName="CreateTy" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
@@ -1498,6 +1538,8 @@
           <EntitySetMapping Name="cms_News">
             <EntityTypeMapping TypeName="OnlineStoreMVCModel.cms_News">
               <MappingFragment StoreEntitySet="cms_News">
+                <ScalarProperty Name="ModifiedByTy" ColumnName="ModifiedByTy" />
+                <ScalarProperty Name="CreatedByTy" ColumnName="CreatedByTy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -1553,6 +1595,18 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="OnlineStoreMVCModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="MenuType" ColumnName="MenuType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

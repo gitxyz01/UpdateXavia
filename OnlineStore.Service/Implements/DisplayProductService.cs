@@ -337,7 +337,7 @@ namespace OnlineStore.Service.Implements
         /// <returns></returns>
         public IEnumerable<SummaryCategoryViewModel> GetTopCategories()
         {
-            return categoryRepository.GetAllCategoriesWithoutDelete().ConvertToIndexCategoryViews();
+            return categoryRepository.GetAllActiveCategory().ConvertToIndexCategoryViews();
         }
 
         /// <summary>

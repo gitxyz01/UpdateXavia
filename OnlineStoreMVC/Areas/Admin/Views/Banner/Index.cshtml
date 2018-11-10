@@ -15,14 +15,14 @@
                         <div class="row">
                             <ul class="breadcrumb-title">
                                 <li class="breadcrumb-item">
-                                    <a href="/Admin/Home/NewLayout"> <i class="feather icon-home"></i> </a>
+                                    <a href="/Admin/Home"> <i class="feather icon-home"></i> </a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="#!">Danh Sách Sản Phẩm</a>
+                                    <a href="#!">Danh Sách Banner</a>
                                 </li>
                             </ul>
                             <div style="margin-left: 650px;">
-                                @Html.ActionLink("Thêm Mới", "Create", null, new { @class = "btn btn-primary btn-sm" })
+                                @Html.ActionLink("Thêm Mới", "Create", null, new { @class = "btn btn-grd-info" })
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                                                 Loại
                                             </th>
                                             <th style="width: 100px;">
-                                                Tình trạng
+                                              Trạng Thái
                                             </th>
                                             <th>Thao Tác</th>
                                         </tr>
@@ -58,8 +58,8 @@
                                                     <label class="label @(item.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active ? "label-success" : "label-warning")">@(item.Status == (int)OnlineStore.Infractructure.Utility.Define.Status.Active ? "Hoạt Động" : "Khóa")</label>
                                                 </td>
                                                 <td>
-                                                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm icofont icofont-edit-alt" })
-                                                    <a class="btn btn-warning btn-sm icofont icofont-trash btn-Delete" data-id="@item.Id"></a>
+                                                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-grd-primary btn-sm icofont icofont-edit-alt" })
+                                                    <a class="btn btn-grd-danger btn-sm icofont icofont-trash btn-Delete" data-id="@item.Id"></a>
                                                 </td>
                                             </tr>
                                         }

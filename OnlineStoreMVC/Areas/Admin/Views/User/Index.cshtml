@@ -48,29 +48,29 @@
                                     <tbody>
                                         @foreach (var item in Model)
 
-                {
+                                        {
 
-                        <tr>
-                            <td class="col-md-1" style="width:200px;">@item.Email</td>
-                            <td>
-                                <a href="@Url.Action("EditRole", "User",new { Id = item.Id})">
-                                    <i class=" icofont icofont-edit-alt btn btn-success"> </i>
-                                </a>
-                            </td>
-                            @if (item.Email != "Admin@gmail.com")
-    {
-                        <td>
-                            <a href="@Url.Action("Delete", "User",new { Id = item.Id })">
-                                <i class="icofont icofont-trash btn btn-danger"> </i>
-                            </a>
-                        </td>
-}
-else
-{
-                        <td></td>
-}
-                        </tr>
-}
+                                            <tr>
+                                                <td class="col-md-1" style="width:200px;">@item.Email</td>
+                                                <td>
+                                                    <a href="@Url.Action("EditRole", "User",new { Id = item.Id})">
+                                                        <i class=" icofont icofont-edit-alt btn btn-grd-info"> </i>
+                                                    </a>
+                                                </td>
+                                                @if (item.Email != "admin@xaviadecor.com")
+                                                {
+                                                    <td>
+                                                        <btn class="btn-Delete" data-id="@item.Id">
+                                                            <i class="icofont icofont-trash btn btn-danger"> </i>
+                                                        </btn>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td> <i class="btn btn-grd-primary icofont icofont-shield"> </i></td>
+                                                }
+                                            </tr>
+                                        }
                                     </tbody>
                                 </table>
                             </div>
@@ -82,4 +82,38 @@ else
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="resultDelete" style="font-size:1.25em;">
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <div>
+                    <form action="@Url.Action("Delete", "Admin/product/delete",new { area="Admin"})" method="get" id="frm-Delete">
+                        <input id="hidenId"
+                               type="hidden"
+                               name="Id"
+                               value="0" />
+                        <button type="submit" class="btn btn-primary" id="submitDelete">
+                            <i class="icofont icofont-trash">Xóa</i>
+                        </button>
+                    </form>
+                </div>
+
+                <button type="button" class="btn btn-default btn-reload" data-dismiss="modal" id="dismisModal">
+                    Thoát
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Areas/Admin/Scripts/User.js"></script>
+}
 

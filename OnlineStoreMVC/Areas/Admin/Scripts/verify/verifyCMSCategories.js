@@ -66,7 +66,7 @@ var VerifyController = {
             },
             error: function (result) {
                 $('#resultDelete').addClass('btn-danger fa fa-exclamation-triangle')
-                    .text('Duyệt Sản Phẩm Thất Bại');
+                    .text('Duyệt Danh Mục Tin Tức Thất Bại');
             }
         });
     },
@@ -115,12 +115,12 @@ var VerifyController = {
 
     resetFormCreate: function () {
         $('#resultCreate').removeClass()
-            .addClass('btn btn-success fa fa-exclamation-triangle')
-                           .text('Bạn Muốn Đăng Danh Mục Tin Tức Phẩm Này?');
+            .addClass('btn btn-grd-success fa fa-exclamation-triangle')
+                           .text('Bạn Muốn Đăng Danh Mục Tin Tức Này?');
     },
     resetFormDelete: function () {
         $('#resultDelete').removeClass()
-            .addClass('btn btn-warning fa fa-exclamation-triangle')
+            .addClass('btn btn-grd-danger fa fa-exclamation-triangle')
                            .text('Bạn Muốn Xóa Danh Mục Tin Tức Này?');
     },
 

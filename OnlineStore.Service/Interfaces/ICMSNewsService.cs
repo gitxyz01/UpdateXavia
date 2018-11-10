@@ -17,7 +17,7 @@ namespace OnlineStore.Service.Interfaces
         IList<CMSNewsView> GetRelatedCMSNews(int id);
         bool AddCMSNews(CMSNewsView cmsNewsView);
         bool EditCMSNews(CMSNewsView cmsNewsView);
-        bool DeleteCMSNews(int id);
+        bool DeleteCMSNews(int id, string deleteBy);
         bool UpdateCMSNewsCountView(int? newsId);
         CMSNewsView GetCMSNewsById(int? newsId);
         IList<CMSNewsView> GetCMSNewsTy(int categoryId = 0);

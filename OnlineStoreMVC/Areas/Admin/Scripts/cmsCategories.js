@@ -10,7 +10,7 @@ var NewCategoryController = {
         $.growl({
             icon: icon,
             title: ' Xóa ',
-            message: 'danh mục thành công',
+            message: 'Danh Mục Tin Tức Thành Công',
             url: ''
         }, {
             element: 'body',
@@ -52,7 +52,7 @@ var NewCategoryController = {
     resetFormDelete: function () {
         $('#submitDelete').show();
         $('#resultDelete').removeClass()
-            .addClass('btn btn-warning fa fa-exclamation-triangle')
+            .addClass('btn btn-grd-danger fa fa-exclamation-triangle')
                            .text('Bạn Muốn Xóa Danh Mục Này?');
     },
 
@@ -67,9 +67,19 @@ var NewCategoryController = {
                 url: '/Admin/CMSCategory/Delete',
                 data: $(this).serialize(),
                 success: function (response) {
-                    $('#modalDelete').modal('hide');
-                    window.location.replace("/Admin/CMSCategory/Index");
-                    NewCategoryController.notify("top", "right", '', "success", "", "");
+                    if (response.status == true) {
+                        $('#modalDelete').modal('hide');
+                        NewCategoryController.notify("top", "right", '', "success", "", "");
+                        window.location.replace("/Admin/CMSCategory/Index");
+                    }
+                    else {
+                        $('#resultDelete').addClass('btn-danger fa fa-exclamation-triangle')
+                            .text(response.message);
+
+                    }
+                    //$('#modalDelete').modal('hide');
+                    //window.location.replace("/Admin/CMSCategory/Index");
+                    //NewCategoryController.notify("top", "right", '', "success", "", "");
 
                 },
                 error: function (result) {

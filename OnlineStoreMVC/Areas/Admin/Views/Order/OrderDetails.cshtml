@@ -16,14 +16,14 @@
                         <div class="row">
                             <ul class="breadcrumb-title">
                                 <li class="breadcrumb-item">
-                                    <a href="/Admin/Home/NewLayout"> <i class="feather icon-home"></i> </a>
+                                    <a href="/Admin/Home"> <i class="feather icon-home"></i> </a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="#!">Danh Sách Sản Phẩm</a>
+                                    <a href="#!">Chi Tiết Đơn Hàng</a>
                                 </li>
                             </ul>
                             <div style="margin-left: 650px;">
-                                @Html.ActionLink("Danh Sách", "Index", null, new { @class = "btn btn-info btn-sm" })
+                                @Html.ActionLink("Danh Sách", "Index", null, new { @class = "btn btn-grd-info " })
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                                                             }
                                                             else
                                                             {
-                                                                <option value="3">Chờ Xác Nhận</option>}
+                                                                <option value="3">Đã Hủy</option>}
                                                         </select>
 
 
@@ -116,15 +116,15 @@
 
                                                         <div class="row" style="margin-top:20px;">
                                                             <div class="col-sm-6">
-                                                                <button type="submit" class="btn btn-sm btn-success">
+                                                                <button type="submit" class="btn btn-sm btn-grd-success">
                                                                     Cập Nhật
                                                                     <i class="icofont icofont-refresh">
                                                                     </i>
                                                                 </button>
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <button class="btn btn-sm btn-warning btn-Delete">                                                                 
-                                                                        Xóa Đơn Hàng <i class="glyphicon glyphicon-trash"> </i>
+                                                                <button type="button" class="btn btn-sm btn-grd-danger btn-Delete" data-id="@Model.OrderId">                                                                 
+                                                                        Xóa Đơn Hàng <i class="icofont icofont-ui-delete"> </i>
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -181,7 +181,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalDelete1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -196,7 +196,7 @@
                         <input id="hidenId"
                                type="hidden"
                                name="id"
-                               value="@Model.OrderId" />
+                               value="0" />
                         <button type="submit" class="btn btn-primary" id="submitDelete">
                             <i class="icofont icofont-trash">Xóa</i>
                         </button>

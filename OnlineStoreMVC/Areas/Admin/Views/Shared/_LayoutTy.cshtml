@@ -167,55 +167,73 @@
                             <div class="pcoded-navigatio-lavel">Navigation</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 @if (User.IsInRole("Administrator"))
-                                {
-                                    <li class="pcoded-hasmenu">
-                                        <a href="javascript:void(0)">
-                                            <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                                            <span class="pcoded-mtext">Quản Trị Admin</span>
+    {
+                            <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                    <span class="pcoded-mtext">Duyệt Hoạt Động</span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class=" ">
+                                        <a href="/Admin/Verify/Categories">
+                                            <span class="pcoded-mtext">Duyệt Danh Mục Sản Phẩm</span>
                                         </a>
-                                        <ul class="pcoded-submenu">
-                                            <li class=" ">
-                                                <a href="/Admin/Verify/Categories">
-                                                    <span class="pcoded-mtext">Duyệt Danh Mục Sản Phẩm</span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="/Admin/Verify/Products">
-                                                    <span class="pcoded-mtext">Duyệt Sản Phẩm</span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="/Admin/Verify/CmsCategories">
-                                                    <span class="pcoded-mtext">Duyệt Danh Mục Tin Tức</span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="/Admin/Verify/CMSNews">
-                                                    <span class="pcoded-mtext">Duyệt Tin Tức</span>
-                                                </a>
-                                            </li>
-                                        </ul>
                                     </li>
+                                    <li class="">
+                                        <a href="/Admin/Verify/Products">
+                                            <span class="pcoded-mtext">Duyệt Sản Phẩm</span>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/Admin/Verify/CmsCategories">
+                                            <span class="pcoded-mtext">Duyệt Danh Mục Tin Tức</span>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/Admin/Verify/CMSNews">
+                                            <span class="pcoded-mtext">Duyệt Tin Tức</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                                    <li class="pcoded-hasmenu">
-                                        <a href="javascript:void(0)">
-                                            <span class="pcoded-micon"><i class="feather icon-shield"></i></span>
-                                            <span class="pcoded-mtext">Thành Viên</span>
+                            <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="feather icon-shield"></i></span>
+                                    <span class="pcoded-mtext">Thành Viên</span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class="">
+                                        <a href="/Admin/User/Index">
+                                            <span class="pcoded-mtext">Danh Sách</span>
                                         </a>
-                                        <ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="/Admin/User/Index">
-                                                    <span class="pcoded-mtext">Danh Sách</span>
-                                                </a>
-                                            </li>
-                                            <li class=" ">
-                                                <a href="/Admin/Role/Index">
-                                                    <span class="pcoded-mtext">Phân Quyền</span>
-                                                </a>
-                                            </li>
-                                        </ul>
                                     </li>
-                                }
+                                    <li class=" ">
+                                        <a href="/Admin/Role/Index">
+                                            <span class="pcoded-mtext">Phân Quyền</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+}
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-shield"></i></span>
+                                        <span class="pcoded-mtext">Đơn Hàng & Khách Hàng</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="/Admin/Order/Index">
+                                                <span class="pcoded-mtext">Danh Sách Đơn Hàng</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="/Admin/Order/AllCustomers">
+                                                <span class="pcoded-mtext">Danh Sách Khách Hàng</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="">
                                     <a href="/Admin/Category/Categories">
                                         <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
@@ -255,6 +273,13 @@
                                         <span class="pcoded-micon"><i class="feather icon-aperture rotate-refresh"></i><b>A</b></span>
                                         <span class="pcoded-mtext">Banner</span>
                                     </a>
+                                </li>
+                          
+                                <li class="pcoded-hasmenu">
+                                    <a href="/Admin/Menu/Index">
+                                        <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
+                                        <span class="pcoded-mtext">Menu</span>
+                                    </a>                                  
                                 </li>
                             </ul>
                         </div>

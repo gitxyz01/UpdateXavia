@@ -42,11 +42,11 @@
                     foreach (var item in Model.Roles)
                     {
                         <tr>
-                            <td>@item.RoleId</td>
+                            <td><label class="label label-info">   @item.RoleId</label></td>
                             <td>
                                 <form action="@Url.Action("DeleteRoleFromUser", new { UserId = item.UserId, RoleId = item.RoleId })" method="post">
                                     @Html.AntiForgeryToken()
-                                    <button type="submit" class="btn btn-xs btn-danger icofont icofont-trash">Xóa</button>
+                                    <button type="submit" class="btn btn-sm btn-danger icofont icofont-trash">Xóa</button>
                                 </form>
                             </td>
                         </tr>

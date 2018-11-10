@@ -10,7 +10,7 @@ namespace OnlineStore.Infractructure.Utility
     public class Define
     {
         public const int PAGE_SIZE = 10;
-        public const int ID_PAGE_INTRODUCTION = 18;
+        public const int ID_PAGE_INTRODUCTION = 34;
         public enum SystemConfig
         {
             TotalVisitors
@@ -46,6 +46,14 @@ namespace OnlineStore.Infractructure.Utility
 
             [Description("Đã Hủy")]
             Remove = 3,
+        }
+        public enum MenuType
+        {
+            [Description("Footer1")]
+            Footer1 = 1,
+
+            [Description("Footer2")]
+            Footer2 = 2,
         }
 
         public enum MenuEnum
