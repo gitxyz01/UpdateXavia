@@ -13,7 +13,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="row">
+                        <div class="row" style="display:flex; justify-content:space-between;">
                             <ul class="breadcrumb-title">
                                 <li class="breadcrumb-item">
                                     <a href="/Admin/Home"> <i class="feather icon-home"></i> </a>
@@ -22,7 +22,7 @@
                                     <a href="#!">Chi Tiết Đơn Hàng</a>
                                 </li>
                             </ul>
-                            <div style="margin-left: 650px;">
+                            <div 
                                 @Html.ActionLink("Danh Sách", "Index", null, new { @class = "btn btn-grd-info " })
                             </div>
                         </div>
@@ -163,17 +163,16 @@
                     <tbody>
                         @foreach (var item in Model.ListOrderDetails)
                         {
-                            <tr>
-                                <td>
-                                    @item.ecom_Products.Name
-                                </td>
-                                <td>@item.Quantity</td>
-                                <td>
-                                    @String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:C0}", item.ecom_Products.Price)
-                                </td>
-
-                                <td>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:C0}", item.ecom_Products.Price * item.Quantity)</td>
-                            </tr>
+                        <tr>
+                            <td>
+                                @item.ecom_Products.Name
+                            </td>
+                            <td>
+                                @String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:C0}", item.ecom_Products.Price)
+                            </td>
+                            <td>@item.Quantity</td>
+                            <td>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:C0}", item.ecom_Products.Price * item.Quantity)</td>
+                        </tr>
                         }
                     </tbody>
                 </table>

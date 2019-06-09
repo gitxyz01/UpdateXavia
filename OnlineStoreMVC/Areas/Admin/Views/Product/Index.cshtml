@@ -12,7 +12,7 @@
                 <h2></h2>
                 <div class="card">
                     <div class="card-header">
-                        <div class="row">
+                        <div class="row" style="display:flex; justify-content:space-between;">
                             <ul class="breadcrumb-title">
                                 <li class="breadcrumb-item">
                                     <a href="/Admin/Home"> <i class="feather icon-home"></i> </a>
@@ -21,7 +21,7 @@
                                     <a href="#!">Danh Sách Sản Phẩm</a>
                                 </li>
                             </ul>
-                            <div style="margin-left: 650px;">
+                            <div>
                                 @Html.ActionLink("Thêm Mới", "Create", null, new { @class = "btn btn-grd-info" })
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                                                     @Html.DisplayFor(modelItem => item.Name)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Price)
+                                                    @Html.DisplayFor(modelItem => item.PriceFormat)
                                                 </td>
                                                 <td>
                                                     @if (item.CoverImage != null)
@@ -119,189 +119,6 @@
 
     </div>
 </div>
-<!-- Modal Create/Update-->
-@*<div class="modal fade bd-example-modal-lg" id="modalAddUpdate" " role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title" id="modalCrUdTitle" style="font-size:2em;">
-                        <div class="label-main">
-                            <label class="label label-lg label-primary">Thêm Mới Sản Phẩm</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal-body">
-
-                    @using (Html.BeginForm("Create", "Product", null, FormMethod.Post, new { @class = " frm-Create", }))
-                    {
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <input name="ProductID" id="hid-ProductID" value="0" type="hidden">
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="ProductCode">
-                                Mã Sản Phẩm <span class="required">*</span>
-                            </label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control " name="ProductCode" required="required">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="Name">
-                                Tên Sản Phẩm <span class="required"></span>
-                            </label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" required="required" name="Name">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="Categories">
-                                Danh Mục Sản Phẩm <span class="required"></span>
-                            </label>
-                            <div class="col-sm-9">
-                                <select class="select2insidemodal col-sm-12" name="Categories"
-                                        multiple="multiple">
-                                    <option value="AL">Alabama</option>
-                                    <option value="WY">Wyoming</option>
-                                    <option value="WY">Coming</option>
-                                    <option value="WY">Hanry Die</option>
-                                    <option value="WY">John Doe</option>
-                                </select>
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="BrandId">
-                                Thương Hiệu <span class="required"></span>
-                            </label>
-                            <div class="col-sm-9">
-                                @Html.DropDownList("BrandId", @ViewBag.BrandId as SelectList, "Chọn thương hiệu", htmlAttributes: new { @class = "form-control select2insidemodal col-sm-12" })
-                                <select class="select2insidemodal col-sm-12" name="brandId">
-                                        <option value="AL">Alabama</option>
-                                        <option value="WY">Wyoming</option>
-                                        <option value="WY">Coming</option>
-                                        <option value="WY">Hanry Die</option>
-                                        <option value="WY">John Doe</option>
-                                    </select>
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="Price">
-                                Đơn Giá <span class="required"></span>
-                            </label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control " name="Price" required="required">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="Quantity">
-                                Số Lượng <span class="required"></span>
-                            </label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control " name="Quantity" required="required">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="SortOrder">
-                                Thứ Tự <span class="required"></span>
-                            </label>
-                            <div class="col-sm-9">
-                                <input type="number" class="form-control autonumber" name="SortOrder">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="coverImage">
-                                Hình Ảnh <span class="required"></span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="coverImage" id="coverImage" />
-                                <input type="button" value="Chọn Ảnh ..." onclick="BrowseServer();" />
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="Description">
-                                Mô Tả <span class="required"></span>
-                            </label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="Description">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="Description2">
-                                Mô Tả Chi Tiết <span class="required"></span>
-                            </label>
-                            <div class="col-sm-9">
-                                <input type="text" id="ckeContent" name="Description2" class="form-control col-md-12 col-xs-12">
-                                <script>
-                    CKEDITOR.replace('ckeContent');
-                    CKFinder.setupCKEditor(null, '/ckfinder');
-                                </script>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="Tags">
-                                Từ Khóa Tìm Kiếm <span class="required"></span>
-                            </label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="Tags">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label class="col-sm-6 col-form-label" for="IsNewProduct">
-                                    Sản Phẩm Mới <span class="required"></span>
-                                </label>
-                                <div class="checkbox-fade fade-in-success col-sm-2">
-                                    <label>
-                                        <input type="checkbox" value="true" name="IsNewProduct">
-                                        <span class="cr">
-                                            <i class="cr-icon icofont icofont-ui-check txt-success"></i>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <label class="col-sm-6 col-form-label" for="IsBestSellProduct">
-                                    Sản Phẩm Hot <span class="required"></span>
-                                </label>
-                                <div class="checkbox-fade fade-in-success col-sm-2">
-                                    <label>
-                                        <input type="checkbox" value="true" name="IsBestSellProduct">
-                                        <span class="cr">
-                                            <i class="cr-icon icofont icofont-ui-check txt-success"></i>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <label class="col-sm-6 col-form-label" for="Status">
-                                    Trạng Thái Hoạt Động <span class="required"></span>
-                                </label>
-                                <div class="checkbox-fade fade-in-success col-sm-2">
-                                    <label>
-                                        <input type="checkbox" value="1" name="Status">
-                                        <span class="cr">
-                                            <i class="cr-icon icofont icofont-ui-check txt-success"></i>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" id="btn-crOrUd">Thêm Mới/Cập Nhật</button>
-                            <button type="button" class="btn btn-warning" data-dismiss="modal" id="dismisModal">Thoát</button>
-                        </div>
-                    }
-                </div>
-
-            </div>
-        </div>
-    </div>*@
-
 <!-- Modal Delete-->
 <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

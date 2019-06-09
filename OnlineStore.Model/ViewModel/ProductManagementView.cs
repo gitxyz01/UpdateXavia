@@ -17,6 +17,8 @@ namespace OnlineStore.Model.ViewModel
         public string Name { get; set; }
         [DisplayName("Giá bán")]
         public decimal Price { get; set; }
+        [DisplayName("Giá bán")]
+        public string PriceFormat { get; set; }
         [DisplayName("Ảnh đại diện")]
         public share_Images CoverImage { get; set; }
         [DisplayName("Ưu tiên sắp xếp")]

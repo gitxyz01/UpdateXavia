@@ -8,3 +8,11 @@
 .font-size-child-menu, .left-menu-product {
 font-size: 10.5pt !important;
 }
+
+
+
+@media (min-width: 1024px) {
+    .header_menu {
+        position: fixed;
+    }
+}
