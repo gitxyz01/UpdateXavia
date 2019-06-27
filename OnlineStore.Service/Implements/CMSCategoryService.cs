@@ -57,7 +57,7 @@ namespace OnlineStore.Service.Implements
                         Description = categoryView.Description,
                         Url = categoryView.Url,
                         SortOrder = categoryView.SortOrder,
-                        Status = (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingCreate,
+                        Status = categoryView.Status,
                         CreatedDate = DateTime.Now,
                         ModifiedDate = DateTime.Now,
                         CreateByTy = categoryView.CreatedBy,
@@ -148,7 +148,7 @@ namespace OnlineStore.Service.Implements
                 if (categories.Count() == 0)
                 {
                     var category = db.cms_Categories.Find(parentId);
-                    return db.cms_Categories.Where(x => x.ParentId == category.ParentId)
+                    return db.cms_Categories.Where(x => x.ParentId == category.ParentId && x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.Delete && x.Status != (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingCreate)
                     .Select(x => new CMSCategoryView
                     {
                         Id = x.Id,
@@ -166,14 +166,22 @@ namespace OnlineStore.Service.Implements
             }
         }
 
-        public bool DeleteCMSCategory(int id, string deleteBy)
+        public bool DeleteCMSCategory(int id, string deleteBy,bool isAdmin)
         {
             try
             {
                 using (var db = new OnlineStoreMVCEntities())
                 {
                     var category = db.cms_Categories.Find(id);
-                    category.Status = (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingDelete;
+                    if (isAdmin == true)
+                    {
+                        category.Status = (int)OnlineStore.Infractructure.Utility.Define.Status.Delete;
+                    }
+                    else
+                    {
+                        category.Status = (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingDelete;
+                    }
+                  
                     category.ModifiedByTy = deleteBy;
                     db.SaveChanges();
 

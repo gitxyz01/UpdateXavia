@@ -36,7 +36,11 @@
                                         <span id="view_full_size">
                                             <a class="jqzoom" title="" style="outline-style: none; text-decoration: none;">
                                                 <div class="zoomPad">
-                                                    <img id="CoverImage" src='@Model.CoverImageUrl.largeImagePath' data-zoom-image="@Model.CoverImageUrl.largeImagePath" title="" alt=" Sofa Sectional Furniture Set" style="opacity: 1;">
+
+                                        
+                                                    <img id="CoverImage" src='@Model.share_Images[0].smallImagePath' data-zoom-image="@Model.share_Images[0].smallImagePath" title="" alt=" Sofa Sectional Furniture Set" style="opacity: 1;">
+                                                    
+
                                                     <div class="zoomPup" style="width: 531px; height: 531px; position: absolute; display: none; border-width: 1px; left: 124.5px; top: 186.5px;"></div>
                                                     <div class="zoomPreload" style="top: 352px; left: 328.5px; position: absolute; visibility: hidden;">Loading zoom</div>
                                                 </div>
@@ -74,9 +78,13 @@
                                     <div class="product-info-line">
                                         <p id="product_condition">
                                             <label>Trạng thái: </label>
-                                            @if (Model.IsNewProduct)
+                                            @if (Model.Quantity > 0)
                                             {
-                                                <span class="editable">Sản phẩm mới</span>
+                                                <span class="editable">Hàng Có Sẵn</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="editable">Hàng Order</span>
                                             }
                                         </p>
                                     </div>

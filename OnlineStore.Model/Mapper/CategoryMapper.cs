@@ -101,7 +101,7 @@ namespace OnlineStore.Model.Mapper
                 Url = viewModel.Url,
                 SortOrder = viewModel.SortOrder,
                 ParentId = viewModel.ParentId,
-                Status = (int)Define.Status.WaitingCreate,
+                Status = viewModel.Status,
                 CreatedBy = null,
                 CreatedDate = DateTime.Now,
                 ModifiedBy = null,

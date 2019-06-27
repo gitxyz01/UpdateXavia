@@ -66,6 +66,14 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             {
                 try
                 {
+                    if (User.IsInRole("Administrator"))
+                    {
+                        model.Status = (int)OnlineStore.Infractructure.Utility.Define.Status.Active;
+                    }
+                    else
+                    {
+                        model.Status = (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingCreate;
+                    }
                     if (uploadFile != null && uploadFile.ContentLength > 0)
                     {
                         ImageUpload imageUpload = new ImageUpload { IsScale = false, SavePath = ImageUpload.LoadPathCMSNews };
@@ -181,8 +189,9 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         {
             try
             {
+                var isAdmin = User.IsInRole("Administrator");
                 string deleteBy = User.Identity.GetUserName();
-                _cmsNewsService.DeleteCMSNews(id, deleteBy);
+                _cmsNewsService.DeleteCMSNews(id, deleteBy, isAdmin);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)

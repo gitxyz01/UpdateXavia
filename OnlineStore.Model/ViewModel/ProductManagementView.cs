@@ -29,6 +29,8 @@ namespace OnlineStore.Model.ViewModel
         public int? Quantity { get; set; }
         public String CreateBy { get; set; }
         public String ModifiedBy { get; set; }
+        public String CreatedDate { get; set; }
+        public String ModifiedDate { get; set; }
         public int? TotalBuy { get; set; }
     }
 

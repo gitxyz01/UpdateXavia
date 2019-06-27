@@ -159,7 +159,7 @@ namespace OnlineStore.Service.Implements
                     IsNewProduct = newProduct.IsNewProduct,
                     IsBestSellProduct = newProduct.IsBestSellProduct,
                     SortOrder = newProduct.SortOrder,
-                    Status = (int)Define.Status.WaitingCreate,
+                    Status = newProduct.Status,
                     CreateTy = newProduct.CreateBy,
                     CreatedDate = DateTime.Now,
                     TotalBuy = 0
@@ -226,6 +226,7 @@ namespace OnlineStore.Service.Implements
                 product.IsBestSellProduct = productViewModel.IsBestSellProduct;
                 product.SortOrder = productViewModel.SortOrder;
                 product.Status = productViewModel.Status;
+                product.ModifiedDate = DateTime.Now;
 
                 if (productViewModel.CategoryId == null)
                 {
@@ -332,12 +333,19 @@ namespace OnlineStore.Service.Implements
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool DeleteProduct(int id, string deleteBy)
+        public bool DeleteProduct(int id, string deleteBy, bool isAdmin)
         {
             try
             {
                 ecom_Products product = GetProductById(id);
-                product.Status = (int)Define.Status.WaitingDelete;
+                if(isAdmin == true)
+                {
+                    product.Status = (int)Define.Status.Delete;
+                }
+                else
+                {
+                    product.Status = (int)Define.Status.WaitingDelete;
+                }
                 product.ModifiedTy = deleteBy;
                 db.Save();
                 RefreshAll();
@@ -446,7 +454,7 @@ namespace OnlineStore.Service.Implements
         public IEnumerable<ProductSummaryViewModel> GetListProductsAdminTy(int categoryId = 0)
         {
             IEnumerable<ecom_Products> products = db.GetProductsByCategory(categoryId);
-            IEnumerable<ProductSummaryViewModel> returnCategoryList = products.OrderBy(b => b.Name).Select(p => new ProductSummaryViewModel()
+            IEnumerable<ProductSummaryViewModel> returnCategoryList = products.Select(p => new ProductSummaryViewModel()
             {
                 Id = p.Id,
                 Name = p.Name,
@@ -459,15 +467,17 @@ namespace OnlineStore.Service.Implements
                 Quantity = p.Quantity,
                 CreateBy = p.CreateTy,
                 ModifiedBy = p.ModifiedTy,
-                TotalBuy = p.TotalBuy
-            }).ToList();
+                TotalBuy = p.TotalBuy,
+                CreatedDate = p.CreatedDate.ToString(),
+                ModifiedDate = p.ModifiedDate.ToString(),
+            }).Reverse().ToList();
             return returnCategoryList;
         }
 
         public IEnumerable<ProductSummaryViewModel> GetProductsVerify()
         {
             IEnumerable<ecom_Products> products = db.GetAllProductsWaiting();
-            IEnumerable<ProductSummaryViewModel> returnCategoryList = products.OrderBy(b => b.Name).Select(p => new ProductSummaryViewModel()
+            IEnumerable<ProductSummaryViewModel> returnCategoryList = products.Select(p => new ProductSummaryViewModel()
             {
                 Id = p.Id,
                 Name = p.Name,

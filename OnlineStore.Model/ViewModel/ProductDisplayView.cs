@@ -37,6 +37,7 @@ namespace OnlineStore.Model.ViewModel
         public string Tags { get; set; }
         public bool IsNewProduct { get; set; }
         public bool IsBestSellProduct { get; set; }
+        public int? Quantity { get; set; }
 
         public List<ImageInfor> share_Images { get; set; }
     }

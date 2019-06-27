@@ -154,6 +154,14 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         public ActionResult Create(CreateProductPostRequest productRequest)
         {
             productRequest.CreateBy = User.Identity.GetUserName();
+            if (User.IsInRole("Administrator"))
+            {
+                productRequest.Status = (int)Define.Status.Active;
+            }
+            else
+            {
+                productRequest.Status = (int)Define.Status.WaitingCreate;
+            }
             if (ModelState.IsValid)
             {
                 var file = Request.Files["coverImage"];
@@ -332,8 +340,9 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
+            var isAdmin = User.IsInRole("Administrator");
             string deleteBy = User.Identity.GetUserName();
-            bool isSuccess = service.DeleteProduct(id, deleteBy);
+            bool isSuccess = service.DeleteProduct(id, deleteBy, isAdmin);
             if (!isSuccess)
             {
                 ModelState.AddModelError("ServerError", "Delete product fail!");

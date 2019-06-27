@@ -207,7 +207,7 @@ namespace OnlineStore.Service.Implements
                         Tags = cmsNewsView.Tags,
                         TotalView = cmsNewsView.TotalView,
                         DisplayHomePage = cmsNewsView.DisplayHomePage,
-                        Status = (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingCreate,
+                        Status = cmsNewsView.Status,
                         SortOrder = cmsNewsView.SortOrder,
                         CreatedDate = DateTime.Now,
                         ModifiedDate = DateTime.Now
@@ -303,14 +303,23 @@ namespace OnlineStore.Service.Implements
             }
         }
 
-        public bool DeleteCMSNews(int id, string deleteBy)
+        public bool DeleteCMSNews(int id, string deleteBy, bool isAdmin)
         {
             try
             {
                 using (var db = new OnlineStoreMVCEntities())
                 {
+
                     var news = db.cms_News.Find(id);
-                    news.Status = (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingDelete;
+                    if (isAdmin == true)
+                    {
+                        news.Status = (int)OnlineStore.Infractructure.Utility.Define.Status.Delete;
+                    }
+                    else
+                    {
+                        news.Status = (int)OnlineStore.Infractructure.Utility.Define.Status.WaitingDelete;
+                    }
+                  
                     news.ModifiedByTy = deleteBy;
                     db.SaveChanges();
 

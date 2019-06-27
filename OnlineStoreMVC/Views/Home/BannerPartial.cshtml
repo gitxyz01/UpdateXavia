@@ -3,8 +3,21 @@
     <ul id="homeslider">
         @foreach (var item in Model)
         {
+            string[] tokens = item.Name.Split(',');
+            var link = "#";
+            var name = item.Name; ;
+            if (tokens.Length > 1)
+            {
+                name = tokens[0];
+                link = tokens[1];
+            }
+
+            if (link == null)
+            {
+                link = "#";
+            }
             <li class="homeslider-container">
-                <a href="#" title="@item.Name">
+                <a href="@link" title="@name">
                     <img src="@(item.ImagePath)" width="1770" height="721" alt="" />
                 </a>
             </li>

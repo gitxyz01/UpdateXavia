@@ -16,7 +16,7 @@ namespace OnlineStore.Service.Interfaces
         IList<cms_Categories> Getcms_CategoriesTy();
         bool AddCMSCategory(CMSCategoryView categoryView);
         bool EditCMSCategory(CMSCategoryView categoryView);
-        bool DeleteCMSCategory(int id, string deleteBy);
+        bool DeleteCMSCategory(int id, string deleteBy, bool isAdmin);
         CMSCategoryView GetCategoryById(int? categoryId);
         IList<CMSCategoryView> GetChildCategoriesByParentId(int? parentId);
         bool VerifyCMSCategory(int id, int status);

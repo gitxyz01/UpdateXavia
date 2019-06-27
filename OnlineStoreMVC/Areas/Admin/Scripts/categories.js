@@ -59,6 +59,7 @@ var CategoryController = {
                     dom: "Blfrtip",
                     "searching": true,
                     "ordering": true,
+                    "order": [[3, "desc"]],
                     buttons: [
 
                     {

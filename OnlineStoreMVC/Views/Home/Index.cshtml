@@ -73,12 +73,24 @@
                                     @if (ViewBag.Banner2 != null)
                                     {
                                         var banner2 = (OnlineStore.Model.ViewModel.BannerViewModel)ViewBag.Banner2;
+                                        string[] tokens = banner2.Name.Split(',');
+                                        var link = "#" ;
+                                        var name = banner2.Name; ;
+                                        if (tokens.Length > 1)
+                                        {
+                                            name = tokens[0];
+                                            link = tokens[1];
+                                        }
 
-                                        <a href="#" class="item-link active_hover" title="" style="font-size: 43.6949px;">
+                                        if(link == null)
+                                        {
+                                            link = "#";
+                                        }
+                                        <a href="@link" class="item-link active_hover" title="" style="font-size: 43.6949px;">
                                             <img src="@banner2.ImagePath" clas class="item-img" title="" alt="" width="100%" height="100%">
                                             <div class="item-html">
-                                                <h4>2016</h4>
-                                                <h3>Bộ sưu tập mới</h3>
+                                                <h4>@(DateTime.Now.Year)</h4>
+                                                <h3>@name</h3>
                                             </div>
                                         </a>
                                     }
@@ -100,10 +112,24 @@
 @if (ViewBag.BannerPopup != null)
 {
     var bannerPopup = (OnlineStore.Model.ViewModel.BannerViewModel)ViewBag.BannerPopup;
+    string[] tokens = bannerPopup.Name.Split(',');
+    var link = "#";
+    var name = bannerPopup.Name; ;
+    if (tokens.Length > 1)
+    {
+        name = tokens[0];
+        link = tokens[1];
+    }
+
+    if (link == null)
+    {
+        link = "#"; 
+    }
     <div style="display:none">
-        <a id="bannerPopup" rel="group" href="@bannerPopup.ImagePath" title="@bannerPopup.Name">
-            <img src="@bannerPopup.ImagePath" alt="" />
-        </a>
+            <a id="bannerPopup" rel="group" href="@bannerPopup.ImagePath" content="<div>content<div>" title="@name">
+                <img src="@bannerPopup.ImagePath" alt="" />
+              
+            </a>
     </div>
 }
 

@@ -131,6 +131,14 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             category.CreateBy = User.Identity.GetUserName();
             if (ModelState.IsValid)
             {
+                if (User.IsInRole("Administrator"))
+                {
+                    category.Status = (int)Define.Status.Active;
+                }
+                else
+                {
+                    category.Status = (int)Define.Status.WaitingCreate;
+                }
                 bool isSuccess = categoryService.AddCategory(category);
                 if (isSuccess)
                 {
@@ -196,8 +204,9 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
+            var isAdmin = User.IsInRole("Administrator");
             string deleteBy = User.Identity.GetUserName();
-            bool isSuccess = categoryService.DeleteCategory(id, deleteBy);
+            bool isSuccess = categoryService.DeleteCategory(id, deleteBy, isAdmin);
             if (!isSuccess)
             {
                 ModelState.AddModelError("ServerError", "Delete brand fail!");
@@ -293,8 +302,9 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         {
             try
             {
+                bool isAdmin = User.IsInRole("Administrator");
                 string deleteBy = User.Identity.GetUserName();
-                categoryService.DeleteCategory(id, deleteBy);
+                categoryService.DeleteCategory(id, deleteBy, isAdmin);
                 return Json(new
                 {
                     status = true,

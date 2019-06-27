@@ -161,12 +161,19 @@ namespace OnlineStore.Service.Implements
         /// </summary>
         /// <param name="id">id of category</param>
         /// <returns>return true if delete success and return false if delete fail</returns>
-        public bool DeleteCategory(int id, string deleteBy)
+        public bool DeleteCategory(int id, string deleteBy, bool isAdmin)
         {
             try
             {
                 ecom_Categories category = db.GetByID(id);
-                category.Status = (int)Define.Status.WaitingDelete;
+                if(isAdmin == true)
+                {
+                    category.Status = (int)Define.Status.Delete;
+                }
+                else
+                {
+                    category.Status = (int)Define.Status.WaitingDelete;
+                }
                 category.ModifiedTy = deleteBy;
                 db.Update(category);
                 db.Save();

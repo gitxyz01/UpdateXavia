@@ -241,7 +241,8 @@ namespace OnlineStore.Service.Implements
                     Description2 = product.Description2,
                     Tags = product.Tags,
                     IsNewProduct = product.IsNewProduct,
-                    IsBestSellProduct = product.IsBestSellProduct
+                    IsBestSellProduct = product.IsBestSellProduct,
+                    Quantity = product.Quantity,
                 };
 
                 ImageInfor coverImage;
@@ -282,7 +283,7 @@ namespace OnlineStore.Service.Implements
         /// <returns></returns>
         public IEnumerable<ProductSummaryView> GetAllNewProduct()
         {
-            IEnumerable<ecom_Products> products = db.Get(filter: p => p.IsNewProduct == true && p.Status == (int)Define.Status.Active).Take(10);
+            IEnumerable<ecom_Products> products = db.Get(filter: p => p.IsNewProduct == true && p.Status == (int)Define.Status.Active).OrderByDescending(x => x.CreatedDate).Take(10);
 
             return products.ConvertToProductSummaryViews();
         }
@@ -293,7 +294,7 @@ namespace OnlineStore.Service.Implements
         /// <returns></returns>
         public IEnumerable<ProductSummaryView> GetAllBestSellProduct()
         {
-            IEnumerable<ecom_Products> products = db.Get(filter: p => p.IsBestSellProduct == true && p.Status == (int)Define.Status.Active).Take(10);
+            IEnumerable<ecom_Products> products = db.Get(filter: p => p.IsBestSellProduct == true && p.Status == (int)Define.Status.Active).OrderByDescending(x => x.CreatedDate).Take(10);
 
             return products.ConvertToProductSummaryViews();
         }

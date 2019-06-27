@@ -187,9 +187,10 @@ else
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <div class="col-md-offset-2 col-md-10">
-                                                        <input type="submit" value="Cập nhật" class="btn btn-primary" />
+                                                    <div style="display:flex; justify-content:center" class="col-sm-12">
+
                                                         @Html.ActionLink("Hủy", "Index", null, new { @class = "btn btn-grd-inverse" })
+                                                        <input type="submit" value="Thêm" class="btn btn-primary" style="margin-left:10px" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -330,10 +331,11 @@ else
     }
     </script>
     <script>
-    $(document).ready(function () {
-        // CKEditor
-        CKEDITOR.replace('Description2');
-    })
+        $(document).ready(function () {
+            // CKEditor
+            CKEDITOR.replace('Description2');
+            CKFinder.setupCKEditor(null, '/Areas/Admin/Scripts/plugins/ckfinder');
+        })
     $(document).ready(function () {
         $(".multiDropdown").select2({
         });

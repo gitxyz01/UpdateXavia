@@ -39,7 +39,7 @@ public partial class ecom_Categories
 
     public Nullable<int> SortOrder { get; set; }
 
-    public int Status { get; set; }
+    public Nullable <int> Status { get; set; }
 
     public Nullable<System.Guid> CreatedBy { get; set; }
 

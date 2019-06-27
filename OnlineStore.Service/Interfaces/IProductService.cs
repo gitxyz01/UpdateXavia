@@ -73,7 +73,7 @@ namespace OnlineStore.Service.Interfaces
         /// </summary>
         /// <param name="?"></param>
         /// <returns></returns>
-        bool DeleteProduct(int id, string deleteBy);
+        bool DeleteProduct(int id, string deleteBy,bool isAdmin);
         /// <summary>
         /// Set as cover image of product
         /// </summary>

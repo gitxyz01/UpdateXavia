@@ -54,59 +54,70 @@
                                             <th>
                                                 Trạng Thái
                                             </th>
+                                            <th>
+                                                Ngày Tạo
+                                            </th>
+                                            <th>
+                                                Ngày Chỉnh Sửa
+                                            </th>
                                             <th>Thao Tác</th>
-                                           
+
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
-                                            <tr>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.ProductCode)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Name)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.PriceFormat)
-                                                </td>
-                                                <td>
-                                                    @if (item.CoverImage != null)
-                                                    {
-                                                        <img src="@item.CoverImage.ImagePath" height="70" width="70" alt="ảnh không tồn tại" />
-                                                    }
-                                                </td>
-                                                <td>@item.Quantity</td>
-                                                <td>@item.TotalBuy</td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.SortOrder)
-                                                </td>
-                                                <td>
-                                                    @if (item.Status == "Đang hoạt động")
-    {
-                                                <label class="label label-success">Hoạt Động</label>
-}
-                                                    @if (item.Status == "Ngưng hoạt động")
-    {
-                                                <label class=" label label-warning">Khóa</label>
-}
-                                                    @if (item.Status == "Duyệt xóa")
-    {
-                                                <label class=" label label-warning">Duyệt Xóa!</label>
-}
-                                                </td>
-                                              
-                                                <td class="center-text">
-                                                    @if (item.Status != "Duyệt xóa")
-    {
-                                                @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-grd-primary btn-mini icofont icofont-edit-alt" })
-                                                <a class="btn btn-grd-danger btn-mini icofont icofont-trash btn-Delete" data-id="@item.Id"></a>
-                                                    }
-                                                </td>
-                                                
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ProductCode)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PriceFormat)
+                                            </td>
+                                            <td>
+                                                @if (item.CoverImage != null)
+                                                {
+                                                    <img src="@item.CoverImage.ImagePath" height="70" width="70" alt="ảnh không tồn tại" />
+                                                }
+                                            </td>
+                                            <td>@item.Quantity</td>
+                                            <td>@item.TotalBuy</td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SortOrder)
+                                            </td>
+                                            <td>
+                                                @if (item.Status == "Đang hoạt động")
+                                                {
+                                                    <label class="label label-success">Hoạt Động</label>
+                                                }
+                                                @if (item.Status == "Ngưng hoạt động")
+                                                {
+                                                    <label class=" label label-warning">Khóa</label>
+                                                }
+                                                @if (item.Status == "Duyệt xóa")
+                                                {
+                                                    <label class=" label label-warning">Duyệt Xóa!</label>
+                                                }
+                                            </td>
+                                            <td>
+                                                @item.CreatedDate
+                                            </td>
+                                            <td>
+                                               @item.ModifiedDate
+                                            </td>
+                                            <td class="center-text">
+                                                @if (item.Status != "Duyệt xóa")
+                                                {
+                                                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-grd-primary btn-mini icofont icofont-edit-alt" })
+                                                    <a class="btn btn-grd-danger btn-mini icofont icofont-trash btn-Delete" data-id="@item.Id"></a>
+                                                }
+                                            </td>
 
-                                            </tr>
+
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>
@@ -211,6 +222,7 @@
 
             "searching": true,
             "ordering": true,
+            "order": [[ 6, "desc" ]],
             dom: "Blfrtip",
             buttons: [
             {
@@ -230,7 +242,7 @@
             columnDefs: [
 
                 { responsivePriority: 2, targets: -1 },
-                 { responsivePriority: 3, targets: -2 },
+                 { responsivePriority: 3, targets: -3 },
 
             ],
 

@@ -54,6 +54,14 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
             {
                 try
                 {
+                    if (User.IsInRole("Administrator"))
+                    {
+                        model.Status = (int)Define.Status.Active;
+                    }
+                    else
+                    {
+                        model.Status = (int)Define.Status.WaitingCreate;
+                    }
                     model.CreatedBy = User.Identity.GetUserName();
                     _cmsCategoryService.AddCMSCategory(model);
 
@@ -112,7 +120,8 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
             string deleteBy = User.Identity.GetUserName();
-            bool isSuccess = _cmsCategoryService.DeleteCMSCategory(id, deleteBy);
+            var isAdmin = User.IsInRole("Administrator");
+            bool isSuccess = _cmsCategoryService.DeleteCMSCategory(id, deleteBy, isAdmin);
             if (!isSuccess)
             {
                 ModelState.AddModelError("ServerError", "Delete brand fail!");
