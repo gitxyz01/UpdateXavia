@@ -25,7 +25,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(IdentityRole role)
         {
             try
@@ -52,7 +51,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
 
         [HttpPost]
 
-        [ValidateAntiForgeryToken]
 
         [ActionName("Delete")]
 

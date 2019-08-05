@@ -74,7 +74,6 @@
                                                 @using (Html.BeginForm("Update", "Order", FormMethod.Post, new { @class = "form-horizontal" }))
                                                 {
 
-                                                    @Html.AntiForgeryToken()
                                                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                                     @Html.HiddenFor(x => x.OrderId)
                                                     <div>

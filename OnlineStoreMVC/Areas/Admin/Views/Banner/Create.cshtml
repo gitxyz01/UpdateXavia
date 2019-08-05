@@ -24,8 +24,6 @@
                 <div class="card-block">
                     @using (Html.BeginForm("Create", "Banner", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
-                        @Html.AntiForgeryToken()
-
                         <div class="form-horizontal">
                             @Html.ValidationSummary(true)
                             <div class="form-group">

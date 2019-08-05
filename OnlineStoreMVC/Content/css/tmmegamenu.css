@@ -52,7 +52,8 @@
 .top_menu > ul, .top_menu .stickUpHolder > ul {
     padding: 0;
     position: relative;
-    background: #f7f9fb;
+    /*background: #f7f9fb;*/
+    background: #474343;
     margin-bottom: 0;
 }
 
@@ -84,7 +85,8 @@
 }
 .top_menu .dropbtn {
     background: #f7f9fb;
-    color: #263f52;
+    /*color: #263f52;*/
+    color: #474343;
     padding-left: 12px;
     font: 800 14px/32px "Open Sans",sans-serif;
     border: none;

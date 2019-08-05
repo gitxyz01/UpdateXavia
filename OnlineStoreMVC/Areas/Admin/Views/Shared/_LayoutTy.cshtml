@@ -146,7 +146,6 @@
                                     <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                                         @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                                         {
-                                            @Html.AntiForgeryToken()
                                         }
                                         <li class="feather icon-settings"> @Html.ActionLink("Cài Đặt", "Index", "Manage", new { Area = "" }, htmlAttributes: new { title = "Manage" })  </li>
                                         <li class="feather icon-log-out"><a href="javascript:document.getElementById('logoutForm').submit()">Đăng Xuất</a></li>

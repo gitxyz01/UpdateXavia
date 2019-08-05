@@ -59,7 +59,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         // POST: /Admin/CMSNews/Create
         [Authorize(Roles = "Thêm,Administrator")]
         [HttpPost, ValidateInput(false)]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(CMSNewsView model, HttpPostedFileBase uploadFile)
         {
             if (ModelState.IsValid)
@@ -136,7 +135,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         // POST: /Admin/CMSNews/Edit/5
         [Authorize(Roles = "Sửa,Administrator")]
         [HttpPost, ValidateInput(false)]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(CMSNewsView model, HttpPostedFileBase uploadFile)
         {
             if (ModelState.IsValid)

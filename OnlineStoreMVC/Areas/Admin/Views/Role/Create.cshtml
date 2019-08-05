@@ -44,7 +44,6 @@
                             <div class="col-sm-12">
                                 @using (Html.BeginForm("Create", "Role", FormMethod.Post, new { @class = "form-horizontal" }))
         {
-                        @Html.AntiForgeryToken()
                         @Html.ValidationSummary("", new { @class = "text-danger" })
                         <div class="form-group">
                             <label for="Id">Mã Quyền</label>

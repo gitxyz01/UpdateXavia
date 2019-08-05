@@ -36,7 +36,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
 
         // POST: /Admin/Profile/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="UserId,UserName,Emaill,Password,Phone,Address")] system_Profiles system_profiles)
         {
             if (ModelState.IsValid)
@@ -69,7 +68,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
 
         // POST: /Admin/Profile/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="UserId,UserName,Emaill,Password,Phone,Address")] system_Profiles system_profiles)
         {
             if (ModelState.IsValid)

@@ -45,7 +45,6 @@
                             <td><label class="label label-info">   @item.RoleId</label></td>
                             <td>
                                 <form action="@Url.Action("DeleteRoleFromUser", new { UserId = item.UserId, RoleId = item.RoleId })" method="post">
-                                    @Html.AntiForgeryToken()
                                     <button type="submit" class="btn btn-sm btn-danger icofont icofont-trash">Xóa</button>
                                 </form>
                             </td>
@@ -68,7 +67,6 @@ else
 
                                     <input type="hidden" name="UserId" value="@Url.RequestContext.RouteData.Values["Id"]" />
 
-                                    @Html.AntiForgeryToken()
 
                                     @Html.ListBox("RoleId", null, new { @class = "form-control", multiple = "multiple" })
 

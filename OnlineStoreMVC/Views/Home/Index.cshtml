@@ -45,8 +45,8 @@
                     <ul id="home-page-tabs" class="nav nav-tabs clearfix">
                         <li class="blocknewproducts active"><a data-toggle="tab" href="#blocknewproducts" class="blocknewproducts">Sản phẩm mới</a></li>
                         <li class="blockbestsellers"><a data-toggle="tab" href="#blockbestsellers" class="blockbestsellers">Sản phẩm HOT</a></li>
-                        <li class="classicstyle"><a data-toggle="tab" href="#classicstyle" class="classicstyle">Phong cách cổ điển</a></li>
-                        <li class="modelstyle"><a data-toggle="tab" href="#modelstyle" class="modelstyle">Phong cách hiện đại</a></li>
+                        @*<li class="classicstyle"><a data-toggle="tab" href="#classicstyle" class="classicstyle">Phong cách cổ điển</a></li>
+                        <li class="modelstyle"><a data-toggle="tab" href="#modelstyle" class="modelstyle">Phong cách hiện đại</a></li>*@
                     </ul>
                     <div class="tab-content">
                         <ul id="blocknewproducts" class="product_list grid row blocknewproducts tab-pane active">
@@ -57,13 +57,13 @@
                             @Html.Partial("ListFeatureProducts", (IEnumerable<OnlineStore.Model.ViewModel.ProductSummaryView>)ViewBag.BestSellProductList)
                         </ul>
 
-                        <ul id="classicstyle" class="product_list grid row classicstyle tab-pane">
+                        @*<ul id="classicstyle" class="product_list grid row classicstyle tab-pane">
                             @Html.Partial("ListFeatureProducts", (IEnumerable<OnlineStore.Model.ViewModel.ProductSummaryView>)ViewBag.ClassicStyleProductList)
                         </ul>
 
                         <ul id="modelstyle" class="product_list grid row modelstyle tab-pane">
                             @Html.Partial("ListFeatureProducts", (IEnumerable<OnlineStore.Model.ViewModel.ProductSummaryView>)ViewBag.ModernStyleProductList)
-                        </ul>
+                        </ul>*@
                     </div>
 
                     <div class="home-column">

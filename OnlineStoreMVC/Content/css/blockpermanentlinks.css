@@ -48,7 +48,8 @@ ul#header_links li a {
     font: 300 15px/18px "Open Sans",sans-serif;
     margin-right: 10px;
     cursor: pointer;
-    color: #630a34;
+    /*color: #630a34;*/
+    color: #f4f1f1 !important;
     font-weight: 600;
 }
 

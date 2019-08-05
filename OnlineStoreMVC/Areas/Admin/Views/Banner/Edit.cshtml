@@ -24,7 +24,6 @@
                 <div class="card-block">
                     @using (Html.BeginForm("Edit", "Banner", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
-                        @Html.AntiForgeryToken()
                         @Html.HiddenFor(model => model.Id)
                         @Html.HiddenFor(model => model.ImageId)
 

@@ -30,7 +30,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
 
         // POST: /Admin/Banner/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(BannerViewModel model, HttpPostedFileBase uploadFile)
         {
             if (ModelState.IsValid)
@@ -88,7 +87,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
 
         // POST: /Admin/Banner/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(BannerViewModel model, HttpPostedFileBase uploadFile)
         {
             if (ModelState.IsValid)

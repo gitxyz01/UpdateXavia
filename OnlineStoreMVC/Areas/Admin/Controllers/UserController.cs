@@ -37,7 +37,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
 
         [HttpPost]
 
-        [ValidateAntiForgeryToken]
 
         public ActionResult Edit(ApplicationUser model)
 
@@ -81,7 +80,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
 
         [HttpPost]
 
-        [ValidateAntiForgeryToken]
 
         public ActionResult AddToRole(string UserId, string[] RoleId)
 
@@ -115,7 +113,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
 
         [HttpPost]
 
-        [ValidateAntiForgeryToken]
 
         public ActionResult DeleteRoleFromUser(string UserId, string RoleId)
 

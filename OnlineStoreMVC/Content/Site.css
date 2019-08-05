@@ -9,7 +9,40 @@
 font-size: 10.5pt !important;
 }
 
+body {
+    background-color: #292424;
+}
 
+.top_menu > ul, .top_menu .stickUpHolder > ul {
+    padding: 0;
+    position: relative;
+    /*background: #f7f9fb;*/
+    background: #474343 !important;
+    margin-bottom: 0;
+}
+
+.top_menu .dropbtn {
+    background: #474343;
+    /*color: #263f52;*/
+    color: #f4f1f1 !important;
+    padding-left: 12px;
+    font: 800 14px/32px "Open Sans",sans-serif;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.top_menu .stickUpHolder > ul > li > a {
+    color: #f4f1f1 !important;
+}
+
+.layered_filter a {
+    color: #f4f1f1 !important;
+}
+
+.formEmail label {
+    color: #474343;
+}
 
 @media (min-width: 1024px) {
     .header_menu {

@@ -47,7 +47,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
 
         [Authorize(Roles = "Thêm,Administrator")]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(CMSCategoryView model)
         {
             if (ModelState.IsValid)
@@ -83,7 +82,6 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
 
         [Authorize(Roles = "Sửa,Administrator")]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(CMSCategoryView model)
         {
             if (ModelState.IsValid)

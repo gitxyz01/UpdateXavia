@@ -33,7 +33,6 @@
                                    
                                     @using (Html.BeginForm())
     {
-                                @Html.AntiForgeryToken()
                                 @Html.ValidationSummary("", new { @class = "text-danger" })
                                 <button type="submit" class="btn btn-grd-primary">Xóa</button>
                                 <a href="@Url.Action("Index")" class="btn btn-grd-inverse">Không xóa</a>
