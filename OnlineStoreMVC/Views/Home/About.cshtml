@@ -3,7 +3,7 @@
 }
 
 <div class="columns-container">
-    <div id="columns" class="container">
+    <div id="columns" class="container about-container">
 
         <div class="breadcrumb clearfix">
             <a class="home" href="/" title="Trở về Trang chủ">
@@ -13,16 +13,64 @@
             Giới thiệu
         </div>
 
-        @if (Request.IsAuthenticated && User.IsInRole("Administrator"))
-        {
-            <div class="pull-left">
-                <a class="btn btn-primary" href="@("/Admin/CMSNews/Edit/" + OnlineStore.Infractructure.Utility.Define.ID_PAGE_INTRODUCTION.ToString())">Chỉnh sửa nội dung</a>
-            </div>
-        }
+        @*@if (Request.IsAuthenticated && User.IsInRole("Administrator"))
+            {
+                <div class="pull-left">
+                    <a class="btn btn-primary" href="@("/Admin/CMSNews/Edit/" + OnlineStore.Infractructure.Utility.Define.ID_PAGE_INTRODUCTION.ToString())">Chỉnh sửa nội dung</a>
+                </div>
+            }
 
-        <div class="row">
-            <div class="large-left col-sm-12">
-                @Html.Raw(ViewBag.ContentNews)
+            <div class="row">
+                <div class="large-left col-sm-12">
+                    @Html.Raw(ViewBag.ContentNews)
+                </div>
+            </div>*@
+        <div class="col-md-12 col-sm-12">
+            <div class="col-md-8 col-sm-8">
+                <div class="image1">
+                    <img src="~/Content/Images/About/001.jpg" />
+                </div>
+                <div class="text2">
+                    <p>
+                        SỨ MỆNH CỦA NHẤN DECOR & INTERIOR <br>
+                        Hỗ trợ tìm kiếm và cung cấp tất cả ( hình ảnh, kích  thước, giá ) những sản phẩm từ Đèn trang trí, Đèn  chiếu sáng, các sản phẩm decor trang trí,Tranh treo  tường, Gương, Đồ gia dụng, Set đồ dùng phòng tắm... Cho đến bàn ghế, tủ giường, sofa...Đối với một bản thiết kế 3D của kiến trúc sư, chúng tôi đảm bảo cung cấp đến 90% các sản phẩm có trong thiết kế.
+                    </p>
+                </div>
+                <div class="image3">
+                    <img src="~/Content/Images/About/003.jpg" />
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="text1">
+                    <p>
+                        Sau nhiều năm nghiên cứu trong việc sản xuất và cung cấp nội thất nhằm tăng tính thực tế trong các sản phẩm thiết kế 3D của kiến trúc sư nội thất, cũng như việc giúp các chủ đầu tư tiết kiệm chi phí và thời gian khi bắt đầu vào phần xây dựng không gian nội thất của mình.
+                    </p>
+                </div>
+                <div class="image2">
+                    <img src="~/Content/Images/About/002.jpg" />
+                </div>
+                <div class="text3">
+                    <p>
+                        MANG ĐẾN NHỮNG Ý TƯỞNG MỚI <br>  Ngoài ra Nhấn decor & Interior còn có  thể tư vấn thiết kế và đưa ra những ý  tưởng mới lạ cho các công trình nội thất Vì chúng tôi luôn có đội ngũ kiến trúc  sư nội thất luôn cập nhật tất cả các  phong cách theo xu hướng mới nhất của  Châu Âu, điển hình nhất là phong cách  nội thất của Ý và Pháp, nơi khẳng định  được đẳng cấp mang tính mỹ thuật cao.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12" style="margin-top:40px;">
+            <div class="col-md-3 col-sm-3">
+                <div class="text4 col-md-12 reason">
+                    <p>
+                        TẠI SAO CHÚNG TÔI LÀM ĐƯỢC ĐIỀU NÀY? <br>  Vì chúng tôi đã hoạt động trong ngành nội thất hơn 6 năm  đã và đang làm việc với hơn 50 xưởng sản xuất với mỗi loại  sản phẩm chuyên sâu như : Nhà máy đồng hồ trang trí, Xưởng  Composite, Xưởng sản xuất bàn  ghế sofa tiêu chuẩn Ý, Xưởng  gốm sứ cao cấp, Xưởng gỗ, Tranh Hoa, Đèn trang trí ... Chúng  tôi đã dành rất nhiều công sức và thời gian để có thể tạo nên được giá trị của chúng tôi ngày  hôm nay.
+                    </p>
+                </div>
+                <div class="image5 col-md-12 condau">
+                    <img src="~/Content/Images/About/CONDAUFINAL.png" />
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-9">
+                <div class="image4">
+                    <img src="~/Content/Images/About/004.jpg" />
+                </div>
             </div>
         </div>
     </div>

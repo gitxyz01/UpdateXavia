@@ -5405,6 +5405,13 @@
     <Content Include="Content\font-awesome\4.3.0\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\4.3.0\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\html5shiv\3.7.2\html5shiv.min.js" />
+    <Content Include="Content\Images\About\000.jpg" />
+    <Content Include="Content\Images\About\001.jpg" />
+    <Content Include="Content\Images\About\002.jpg" />
+    <Content Include="Content\Images\About\003.jpg" />
+    <Content Include="Content\Images\About\004.jpg" />
+    <Content Include="Content\Images\About\CONDAUFINAL.png" />
+    <Content Include="Content\Images\About\NHẤN.png" />
     <Content Include="Content\Images\Banners\3dd8c7443cc774ec714eb69a49ffb01369b9be1c_banner2.jpg" />
     <Content Include="Content\Images\Banners\47f87d91a268e2f23b499c3cfc0dfc36a3c24f36_banner1.jpg" />
     <Content Include="Content\Images\Banners\58a7f9e3eb536aac771af3579db25f9864bcc3db_banner3.jpg" />
@@ -7567,6 +7574,7 @@
     <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\Edit.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\xaviadecor.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cart\Cart.js" />
