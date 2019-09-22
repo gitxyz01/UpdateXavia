@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineStore.Model.Context;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -37,6 +38,11 @@ namespace OnlineStore.Model.MessageModel
         [DisplayName("Trạng thái")]
         public Nullable<int> Status { get; set; }
         public String CreateBy { get; set; }
+        [DisplayName("Danh mục sản phẩm")]
+        public int[] CategoryId { get; set; }
+
+        [DisplayName("Danh mục sản phẩm")]
+        public IEnumerable<ecom_Categories> Categories { get; set; }
     }
     public class UpdateProductImageRequest
     {

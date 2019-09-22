@@ -23,9 +23,10 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
     {
 
         #region Constructures
-
+        private ICategoryManagementService categoryService = new CategoryManagementService();
         public ProductController()
         {
+            categoryService = new CategoryManagementService();
 
         }
 
@@ -153,6 +154,7 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         [HttpPost, ValidateInput(false)]
         public ActionResult Create(CreateProductPostRequest productRequest)
         {
+
             productRequest.CreateBy = User.Identity.GetUserName();
             if (User.IsInRole("Administrator"))
             {
@@ -418,7 +420,9 @@ namespace OnlineStoreMVC.Areas.Admin.Controllers
         [Authorize(Roles = "Thêm,Administrator")]
         public ActionResult Create()
         {
+            IEnumerable<ecom_Categories> categories = categoryService.GetAllCategories();
             PopulateStatusDropDownList();
+            ViewBag.Categories = PopulateListCategory();
             //ViewBag.ProductGroupId = PopulateListProductGroup();
             ViewBag.BrandId = PopulateListBrand();
             return View();

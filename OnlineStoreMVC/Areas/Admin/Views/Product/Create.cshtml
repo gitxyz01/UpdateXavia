@@ -67,10 +67,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    @Html.LabelFor(model => model.BrandId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <label class="col-sm-2 col-form-label" for="Categories">
+                                        Danh Mục Sản Phẩm <span class="required"></span>
+                                    </label>
                                     <div class="col-sm-9">
-                                        @Html.DropDownList("BrandId", @ViewBag.BrandId as SelectList, "Chọn thương hiệu", htmlAttributes: new { @class = "form-control form-control-info" })
-                                        @Html.ValidationMessageFor(model => model.BrandId, "", new { @class = "text-danger" })
+                                        @Html.DropDownList("CategoryId", ViewBag.Categories as MultiSelectList, new { multiple = "multiple", @class = "multiDropdown form-control", data_placeholder = "Chọn danh mục" })
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -160,16 +161,16 @@
 </div>
 
 @*@section scripts{
-    <script>
-    $(document).ready(function () {
-        // CKEditor
-        CKEDITOR.replace('Description2');
-    })
-    </script>
+        <script>
+        $(document).ready(function () {
+            // CKEditor
+            CKEDITOR.replace('Description2');
+        })
+        </script>
 
 
 
-}*@
+    }*@
 @section scripts{
     <script type="text/javascript">
         function BrowseServer() {
@@ -183,11 +184,17 @@
         //}
     </script>
     <script>
-    $(document).ready(function () {
-        // CKEditor
-        CKEDITOR.replace('Description2');
-        CKFinder.setupCKEditor(null, '/Areas/Admin/Scripts/plugins/ckfinder');
-    })
+        $(document).ready(function () {
+            // CKEditor
+            CKEDITOR.replace('Description2');
+            CKFinder.setupCKEditor(null, '/Areas/Admin/Scripts/plugins/ckfinder');
+        })
+                $(document).ready(function () {
+            $(".multiDropdown").select2({
+            });
+        });
     </script>
 }
+
+
 

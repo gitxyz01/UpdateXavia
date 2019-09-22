@@ -164,7 +164,32 @@ namespace OnlineStore.Service.Implements
                     CreatedDate = DateTime.Now,
                     TotalBuy = 0
                 };
-
+                if (newProduct.CategoryId == null)
+                {
+                    product.ecom_Categories = new List<ecom_Categories>();
+                }
+                else
+                {
+                    var selectedCategories = new HashSet<int>(newProduct.CategoryId);
+                    var categoriesProduct = new HashSet<int>(product.ecom_Categories.Select(c => c.Id));
+                    foreach (var category in categoryRepository.GetAllCategories())
+                    {
+                        if (selectedCategories.Contains(category.Id))
+                        {
+                            if (!categoriesProduct.Contains(category.Id))
+                            {
+                                product.ecom_Categories.Add(category);
+                            }
+                        }
+                        else
+                        {
+                            if (categoriesProduct.Contains(category.Id))
+                            {
+                                product.ecom_Categories.Remove(category);
+                            }
+                        }
+                    }
+                }
                 share_Images coverImage = imageRepository.GetByID(newProduct.CoverImageId);
                 product.share_Images.Add(coverImage);
                 db.Insert(product);
